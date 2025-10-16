@@ -24,10 +24,18 @@ const FounderNote = () => {
             <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-blue-mell/40 to-dark-slate/40 rounded-tr-xl -z-10"></div>
             
             <div className="prose prose-lg max-w-none text-dark-slate/90">
+              <div className="bg-charcoal/10 rounded-lg p-5 text-center mb-8">
+                <p className="text-xl font-heading font-bold text-charcoal">
+                  The average entrepreneur loses 26 hours of productivity every week
+                </p>
+                <p className="text-dark-slate/80 mt-2">
+                  ...before meaningful decisions even begin.
+                </p>
+              </div>
+              
               <p className="mb-4">
                 Between 16 hours lost weekly to admin and nearly 10 hours to interruptions and tool switching, the 
-                average entrepreneur is bleeding up to 26 hours of productivity every week before 
-                meaningful decisions even begin.
+                average entrepreneur is bleeding up to 26 hours of productivity every week.
               </p>
               
               <p className="mb-4">

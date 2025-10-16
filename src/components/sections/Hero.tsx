@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/70 to-cambridge-blue/60 py-20">
       {/* Mountain silhouette background */}
-      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-center bg-cover"></div>
+      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-left-top bg-cover"></div>
       <div className="absolute inset-0 z-0 opacity-20 bg-[url('/compass-bg.svg')] bg-no-repeat bg-center bg-contain"></div>
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,7 +21,12 @@ const Hero = () => {
               Stop trying to get more stuff done and start getting the right things done.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="group transition-all duration-300 font-heading" style={{ backgroundColor: '#364958', color: 'white' }}>
+              <Button 
+                size="lg" 
+                className="group transition-all duration-300 font-heading" 
+                style={{ backgroundColor: '#364958', color: 'white' }}
+                onClick={() => document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })}
+              >
                 Start Climbing
                 <span className="ml-2 group-hover:translate-x-1 transition-transform">
                   <ArrowRight size={18} />

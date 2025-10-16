@@ -57,9 +57,7 @@ const Method = () => {
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/50"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block p-3 bg-mountain-green/40 rounded-full mb-4 shadow-md">
-            <img src="/climbcoachfavicon_no_bg_nw_b15ea69e.png" alt="Climb.coach Logo" className="h-8 w-8" />
-          </div>
+          <img src="/climbcoachfavicon_no_bg_nw_b15ea69e.png" alt="Climb.coach Logo" className="h-14 w-14 mb-4 mx-auto" />
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
             The Climb Method
           </h2>
@@ -70,26 +68,34 @@ const Method = () => {
         </div>
 
         <Tabs defaultValue="insights" className="w-full max-w-4xl mx-auto">
-          <div className="flex justify-center mb-10">
-            <TabsList className="bg-cambridge-blue/50 p-1 rounded-lg shadow-md flex flex-wrap gap-1">
-              {methodPillars.map((pillar) => (
-                <TabsTrigger 
+          <div className="mb-10">
+            <div className="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
+              {methodPillars.map((pillar, index) => (
+                <button
                   key={pillar.id}
-                  value={pillar.id}
-                  className="data-[state=active]:bg-white data-[state=active]:text-charcoal data-[state=active]:shadow-md font-medium py-3 px-4 text-base" 
-                  style={{ 
-                    color: pillar.id === methodPillars[0].id ? '#223843' : '#223843', 
-                    backgroundColor: pillar.id === methodPillars[0].id ? 'white' : 'rgba(87, 130, 139, 0.3)' 
-                  }}
+                  onClick={() => document.querySelector(`[data-state=active][role=tab]`)?.setAttribute('aria-selected', 'false') || document.querySelector(`[data-value=${pillar.id}]`)?.click()}
+                  className={`flex flex-col items-center p-4 rounded-lg transition-all ${pillar.id === 'insights' ? 'bg-white shadow-md' : 'bg-cambridge-blue/20 hover:bg-cambridge-blue/30'}`}
                 >
-                  <span className="hidden md:inline-flex items-center gap-2">
-                    {React.cloneElement(pillar.icon, { className: 'h-5 w-5' })}
-                    <span>{pillar.title}</span>
-                  </span>
-                  <span className="md:hidden">{React.cloneElement(pillar.icon, { className: 'h-5 w-5' })}</span>
-                </TabsTrigger>
+                  <div className="w-12 h-12 rounded-full bg-mountain-green/20 flex items-center justify-center mb-2">
+                    {React.cloneElement(pillar.icon, { className: 'h-6 w-6 text-charcoal' })}
+                  </div>
+                  <span className="text-charcoal font-medium text-sm text-center">{pillar.title}</span>
+                </button>
               ))}
-            </TabsList>
+            </div>
+            <div className="hidden">
+              <TabsList>
+                {methodPillars.map((pillar) => (
+                  <TabsTrigger 
+                    key={pillar.id}
+                    value={pillar.id}
+                    data-value={pillar.id}
+                  >
+                    {pillar.title}
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+            </div>
           </div>
 
           <div className="relative">

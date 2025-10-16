@@ -20,16 +20,6 @@ const About = () => {
           <p className="text-lg text-dark-slate/90 mb-4">
             Helping you navigate your entrepreneurial journey with clarity, purpose, and focus.
           </p>
-          <div className="mt-4 mb-8 max-w-2xl mx-auto">
-            <div className="bg-charcoal/10 rounded-lg p-5 text-center">
-              <p className="text-xl font-heading font-bold text-charcoal">
-                The average entrepreneur loses 26 hours of productivity every week
-              </p>
-              <p className="text-dark-slate/80 mt-2">
-                ...before meaningful decisions even begin.
-              </p>
-            </div>
-          </div>
           <p className="text-lg text-dark-slate/90">
             After starting multiple businesses and being self-employed for 15 years, 
             we're convinced the most important decision any entrepreneur can make each day 
