@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Shifted mountains down by increasing y-coordinates -->
+  <path d="M0 900L360 550L560 750L880 330L1080 530L1440 100V900H0Z" fill="#364958"/>
+  <path d="M0 900L280 600L480 800L720 460L1000 740L1200 420L1440 660V900H0Z" fill="#3B6064"/>
+  <path d="M0 900L160 650L300 800L560 520L760 720L1100 380L1280 560L1440 400V900H0Z" fill="#55828B"/>
+  <path d="M0 900L240 700L400 860L640 600L800 780L1040 540L1200 700L1440 460V900H0Z" fill="#87BB82"/>
+</svg>

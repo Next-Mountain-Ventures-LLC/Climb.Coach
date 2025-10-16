@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/70 to-cambridge-blue/60 py-20">
-      {/* Mountain silhouette background */}
-      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-center bg-cover"></div>
+      {/* Mountain silhouette background - adjusted to be lower */}
+      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg-adjusted.svg')] bg-no-repeat bg-bottom bg-cover transform translate-y-1/4"></div>
       {/* Compass overlay removed as requested */}
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
