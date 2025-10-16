@@ -3,7 +3,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Compass, 
   Lightbulb, 
-  Network, 
+  GitBranch, 
   RefreshCw, 
   Users, 
   Settings, 
@@ -20,7 +20,7 @@ const Method = () => {
     },
     {
       id: "systems",
-      icon: <Network className="h-6 w-6" />,
+      icon: <GitBranch className="h-6 w-6" />,
       title: "System Thinking",
       content: "Coaching works best when paired with practical tools and frameworks. We integrate powerful systems into your daily workflow.",
     },
@@ -51,9 +51,9 @@ const Method = () => {
   ];
 
   return (
-    <section id="method-section" className="relative py-20 bg-gradient-to-b from-dark-slate/50 to-blue-mell/40">
-      <div className="absolute inset-0 z-0 opacity-40 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
-      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
+    <section id="method" className="relative py-20 bg-gradient-to-b from-mountain-green/40 to-blue-mell/30">
+      <div className="absolute inset-0 z-0 opacity-30 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
+      <div className="absolute inset-0 z-0 opacity-25 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block p-3 bg-mountain-green/40 rounded-full mb-4 shadow-md">
