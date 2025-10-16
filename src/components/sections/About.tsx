@@ -8,6 +8,8 @@ const About = () => {
     <section id="about" className="relative py-24 bg-gradient-to-b from-cambridge-blue/30 to-mountain-green/50">
       <div className="absolute inset-0 z-0 opacity-30 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-mountain-green/50 to-transparent z-0"></div>
+      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/mountain-path.jpg')] bg-no-repeat bg-cover bg-center"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/70 to-mountain-green/70"></div>
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
@@ -18,54 +20,30 @@ const About = () => {
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
             The Entrepreneur's Performance Coach
           </h2>
-          <p className="text-lg text-dark-slate/90">
+          <p className="text-lg text-dark-slate/90 mb-4">
             Helping you navigate your entrepreneurial journey with clarity, purpose, and focus.
+          </p>
+          <div className="mt-4 mb-8 max-w-2xl mx-auto">
+            <div className="bg-charcoal/10 rounded-lg p-5 text-center">
+              <p className="text-xl font-heading font-bold text-charcoal">
+                The average entrepreneur loses 26 hours of productivity every week
+              </p>
+              <p className="text-dark-slate/80 mt-2">
+                ...before meaningful decisions even begin.
+              </p>
+            </div>
+          </div>
+          <p className="text-lg text-dark-slate/90">
+            After starting multiple businesses and being self-employed for 15 years, 
+            we're convinced the most important decision any entrepreneur can make each day 
+            is where to invest their time, attention, and energy. That's why we created climb.coach, 
+            a method for the madness of entrepreneurial life.
           </p>
         </div>
         
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Column - Core Philosophy */}
-          <div className="lg:col-span-7">
-            <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 border border-mountain-green/50 shadow-xl">
-              <h3 className="text-2xl font-heading font-bold text-charcoal mb-6">
-                Why Climb.Coach Exists
-              </h3>
-              
-              <p className="text-lg text-dark-slate/90 mb-6">
-                After starting multiple businesses and being self-employed for 15 years, 
-                I'm convinced the most important decision any entrepreneur can make each day 
-                is where to invest their time, attention, and energy.
-              </p>
-              
-              <div className="flex items-center justify-center my-8">
-                <div className="w-full max-w-md bg-charcoal/10 rounded-lg p-5 text-center">
-                  <p className="text-xl font-heading font-bold text-charcoal">
-                    The average entrepreneur loses 26 hours of productivity every week
-                  </p>
-                  <p className="text-dark-slate/80 mt-2">
-                    ...before meaningful decisions even begin.
-                  </p>
-                </div>
-              </div>
-              
-              <p className="text-lg text-dark-slate/90 mb-6">
-                That's why I created climb.coach, a method for the madness of entrepreneurial life.
-                We help busy founders think clearly and live boldly, so every hour you work pushes 
-                you toward the life and business you want.
-              </p>
-              
-              <div className="mt-8 flex justify-center">
-                <Button className="px-6 py-2.5 text-lg" style={{ backgroundColor: '#364958', color: 'white' }}>
-                  Learn About The Climb Method
-                </Button>
-              </div>
-            </div>
-          </div>
-          
-          {/* Right Column - Core Values */}
-          <div className="lg:col-span-5">
-            <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Core Values Cards - Now 3 in a row horizontally */}
               {/* Value Card 1 */}
               <div className="bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-mountain-green/50 transform transition-transform hover:translate-y-[-5px]">
                 <div className="h-2 bg-gradient-to-r from-mountain-green to-cambridge-blue"></div>
@@ -126,8 +104,6 @@ const About = () => {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
         
         {/* Founder Bio */}
         <div className="mt-20 max-w-4xl mx-auto">
