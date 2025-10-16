@@ -17,8 +17,8 @@ const Hero = () => {
               <span className="block">Live Boldly.</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-dark-slate/90 max-w-2xl">
-              Break your hustle habit and design a life of constant, beautiful progress. 
-              Stop trying to get more stuff done and start getting the right things done.
+              <span className="font-bold">Break</span> your hustle habit and <span className="font-bold">design</span> a life of 
+              <span className="font-bold italic"> constant, beautiful progress</span>.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button 
