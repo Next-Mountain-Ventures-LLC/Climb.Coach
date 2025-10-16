@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
   Lightbulb, 
   Network, 
@@ -67,7 +66,7 @@ const Method = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="insights" className="w-full max-w-4xl mx-auto">
+        <div className="w-full max-w-4xl mx-auto">
           <div className="mb-10">
             <div className="grid grid-cols-3 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
               {methodPillars.map((pillar, index) => (
@@ -99,11 +98,7 @@ const Method = () => {
                       content.classList.remove('hidden');
                     }
                     
-                    // Also trigger the Tabs component
-                    const tabTrigger = document.querySelector(`[data-value="${pillar.id}"]`);
-                    if (tabTrigger instanceof HTMLElement) {
-                      tabTrigger.click();
-                    }
+                    // No need to trigger shadcn Tabs component anymore
                   }}
                   className={`flex flex-col items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md ${pillar.id === methodPillars[0].id ? 'bg-white shadow-lg ring-4 ring-mountain-green/20' : 'bg-white/80 hover:bg-white'}`}
                 >
@@ -114,26 +109,13 @@ const Method = () => {
                 </button>
               ))}
             </div>
-            <div className="hidden">
-              <TabsList>
-                {methodPillars.map((pillar) => (
-                  <TabsTrigger 
-                    key={pillar.id}
-                    value={pillar.id}
-                    data-value={pillar.id}
-                  >
-                    {pillar.title}
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-            </div>
           </div>
 
           <div className="relative">
             <div className="absolute inset-0 bg-mountain-green/30 rounded-xl transform -rotate-1"></div>
             <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 border border-mountain-green/50 shadow-lg">
               {methodPillars.map((pillar) => (
-                <TabsContent key={pillar.id} value={pillar.id} data-tab-content={pillar.id} className={`focus:outline-none mt-0 ${pillar.id === methodPillars[0].id ? '' : 'hidden'}`}>
+                <div key={pillar.id} data-tab-content={pillar.id} className={pillar.id === methodPillars[0].id ? '' : 'hidden'}>
                   <div className="grid md:grid-cols-5 gap-8 items-center">
                     <div className="md:col-span-2 flex justify-center">
                       <div className="w-32 h-32 flex items-center justify-center bg-gradient-to-br from-mountain-green/20 to-blue-mell/20 rounded-full p-6">
@@ -173,11 +155,11 @@ const Method = () => {
                       </div>
                     </div>
                   </div>
-                </TabsContent>
+                </div>
               ))}
             </div>
           </div>
-        </Tabs>
+        </div>
       </div>
     </section>
   );
