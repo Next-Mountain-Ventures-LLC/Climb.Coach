@@ -24,6 +24,22 @@ const { title, description, ogImage } = Astro.props;
       </main>
       <!-- DO NOT REMOVE - Necessary for making visual edits via new.website! -->
       <script src="https://api.new.website/static/new-website.js"></script>
+      <script>
+        // Mountain scroll animation
+        document.addEventListener('DOMContentLoaded', () => {
+          const mountainBg = document.querySelector('.bg-\\[url\\(\\\'/mountain-bg\\.svg\\\'\\)\\]');
+          if (mountainBg) {
+            let initialPosition = 50;
+            window.addEventListener('scroll', () => {
+              const scrolled = window.scrollY;
+              if (scrolled < 1000) {
+                const newPosition = initialPosition - (scrolled * 0.05);
+                mountainBg.style.backgroundPositionX = `${newPosition}%`;
+              }
+            });
+          }
+        });
+      </script>
       <Footer />
     </div>
   </body>

@@ -56,7 +56,7 @@ const Newsletter = () => {
   return (
     <section className="relative py-16 bg-gradient-to-b from-cambridge-blue/30 to-mountain-green/20">
       <div className="absolute inset-0 z-0 opacity-30 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
-      <div className="absolute inset-0 z-0 opacity-40 bg-[url('/subtle-pattern.jpg')] bg-no-repeat bg-cover bg-center"></div>
+      <div className="absolute inset-0 z-0 opacity-40 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-left bg-contain transform scale-x-[-1]"></div>
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/40"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden border border-mountain-green/50 shadow-lg transform hover:scale-[1.01] transition-all duration-300">

@@ -6,8 +6,8 @@ const Hero = () => {
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/70 to-cambridge-blue/60 py-20">
       {/* Mountain silhouette background */}
-      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-left-top bg-cover"></div>
-      <div className="absolute inset-0 z-0 opacity-20 bg-[url('/compass-bg.svg')] bg-no-repeat bg-center bg-contain"></div>
+      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-center bg-cover"></div>
+      {/* Compass overlay removed as requested */}
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

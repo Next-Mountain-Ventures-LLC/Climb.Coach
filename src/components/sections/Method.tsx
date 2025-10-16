@@ -73,14 +73,31 @@ const Method = () => {
               {methodPillars.map((pillar, index) => (
                 <button
                   key={pillar.id}
+                  data-tab-id={pillar.id}
                   onClick={() => {
-                    // First remove active state from currently active tab
-                    const activeTab = document.querySelector(`[data-state=active][role=tab]`);
-                    if (activeTab) activeTab.setAttribute('aria-selected', 'false');
+                    // Get all buttons and reset their styling
+                    const buttons = document.querySelectorAll('[data-tab-id]');
+                    buttons.forEach(btn => {
+                      btn.className = 'flex flex-col items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md bg-white/80 hover:bg-white';
+                    });
                     
-                    // Then click the new tab
-                    const targetTab = document.querySelector(`[data-value=${pillar.id}]`);
-                    if (targetTab) targetTab.click();
+                    // Apply active styling to clicked button
+                    const button = document.querySelector(`[data-tab-id="${pillar.id}"]`);
+                    if (button) {
+                      button.className = 'flex flex-col items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md bg-white shadow-lg ring-4 ring-mountain-green/20';
+                    }
+                    
+                    // Hide all tab contents
+                    const tabContents = document.querySelectorAll('[data-tab-content]');
+                    tabContents.forEach(content => {
+                      content.classList.add('hidden');
+                    });
+                    
+                    // Show the selected tab content
+                    const content = document.querySelector(`[data-tab-content="${pillar.id}"]`);
+                    if (content) {
+                      content.classList.remove('hidden');
+                    }
                   }}
                   className={`flex flex-col items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md ${pillar.id === methodPillars[0].id ? 'bg-white shadow-lg ring-4 ring-mountain-green/20' : 'bg-white/80 hover:bg-white'}`}
                 >
@@ -110,7 +127,7 @@ const Method = () => {
             <div className="absolute inset-0 bg-mountain-green/30 rounded-xl transform -rotate-1"></div>
             <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 border border-mountain-green/50 shadow-lg">
               {methodPillars.map((pillar) => (
-                <TabsContent key={pillar.id} value={pillar.id} className="focus:outline-none mt-0">
+                <TabsContent key={pillar.id} value={pillar.id} data-tab-content={pillar.id} className={`focus:outline-none mt-0 ${pillar.id === methodPillars[0].id ? '' : 'hidden'}`}>
                   <div className="grid md:grid-cols-5 gap-8 items-center">
                     <div className="md:col-span-2 flex justify-center">
                       <div className="w-32 h-32 flex items-center justify-center bg-gradient-to-br from-mountain-green/20 to-blue-mell/20 rounded-full p-6">
