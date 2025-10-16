@@ -70,12 +70,16 @@ const Method = () => {
 
         <Tabs defaultValue="insights" className="w-full max-w-4xl mx-auto">
           <div className="flex justify-center mb-10">
-            <TabsList className="bg-dark-slate/50 p-2 rounded-lg shadow-md">
+            <TabsList className="bg-dark-slate p-2 rounded-lg shadow-md">
               {methodPillars.map((pillar) => (
                 <TabsTrigger 
                   key={pillar.id}
                   value={pillar.id}
-                  className="data-[state=active]:bg-white data-[state=active]:text-charcoal data-[state=active]:shadow-md font-medium text-white py-3 px-4 text-base"
+                  className="data-[state=active]:bg-white data-[state=active]:text-charcoal data-[state=active]:shadow-md font-medium py-3 px-4 text-base" 
+                  style={{ 
+                    color: pillar.id === methodPillars[0].id ? '#223843' : '#C9E4CA', 
+                    backgroundColor: pillar.id === methodPillars[0].id ? 'white' : '#223843' 
+                  }}
                 >
                   <span className="hidden md:inline-flex items-center gap-2">
                     {React.cloneElement(pillar.icon, { className: 'h-5 w-5' })}
