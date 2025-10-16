@@ -98,6 +98,12 @@ const Method = () => {
                     if (content) {
                       content.classList.remove('hidden');
                     }
+                    
+                    // Also trigger the Tabs component
+                    const tabTrigger = document.querySelector(`[data-value="${pillar.id}"]`);
+                    if (tabTrigger instanceof HTMLElement) {
+                      tabTrigger.click();
+                    }
                   }}
                   className={`flex flex-col items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md ${pillar.id === methodPillars[0].id ? 'bg-white shadow-lg ring-4 ring-mountain-green/20' : 'bg-white/80 hover:bg-white'}`}
                 >

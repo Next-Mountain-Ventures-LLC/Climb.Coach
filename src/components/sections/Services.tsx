@@ -63,11 +63,6 @@ const Services = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
           {services.map((service, index) => (
             <div key={index} className={`relative ${service.primary ? 'md:-mt-4 md:mb-4' : ''}`}>
-              {service.primary && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-charcoal text-white px-4 py-1 rounded-full text-sm font-medium z-10">
-                  Most Popular
-                </div>
-              )}
               <Card className={`h-full border-2 ${service.primary ? 'border-blue-mell shadow-xl ring-4 ring-blue-mell/20' : 'border-mountain-green/60 shadow-md'} overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
                 <div className={`p-6 ${service.primary ? 'bg-gradient-to-br from-blue-mell/40 to-blue-mell/20' : 'bg-gradient-to-br from-mountain-green/25 to-cambridge-blue/10'}`}>
                   <div className="mb-4">{service.icon}</div>
