@@ -4,14 +4,14 @@ import { Separator } from '@/components/ui/separator';
 
 const About = () => {
   return (
-    <section id="about" className="relative py-20 bg-gradient-to-b from-white to-mountain-green/20">
-      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+    <section id="about" className="relative py-20 bg-gradient-to-b from-cambridge-blue/20 to-mountain-green/40">
+      <div className="absolute inset-0 z-0 opacity-25 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative">
-              <div className="absolute inset-0 bg-blue-mell/10 rounded-lg transform rotate-3"></div>
-              <div className="relative bg-white rounded-lg p-6 border border-mountain-green/30 shadow-sm">
+              <div className="absolute inset-0 bg-blue-mell/25 rounded-lg transform rotate-3"></div>
+              <div className="relative bg-white/90 backdrop-filter backdrop-blur-sm rounded-lg p-6 border border-mountain-green/50 shadow-md">
                 <div className="flex items-start space-x-4">
                   <div className="bg-mountain-green/20 rounded-full p-2 mt-1">
                     <Star className="h-6 w-6 text-dark-slate" />
@@ -64,7 +64,7 @@ const About = () => {
                 before meaningful decisions even begin. That's why I created climb.coach, a method 
                 for the madness of entrepreneurial life.
               </p>
-              <div className="bg-white/50 backdrop-blur-sm rounded-lg border border-mountain-green/30 p-6 my-8">
+              <div className="bg-white/70 backdrop-blur-sm rounded-lg border border-mountain-green/50 p-6 my-8 shadow-lg">
                 <h3 className="font-heading font-bold text-xl text-charcoal mb-3">
                   About Tyson Ruer
                 </h3>

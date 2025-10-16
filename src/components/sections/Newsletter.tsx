@@ -37,9 +37,10 @@ const Newsletter = () => {
     }
   };
   return (
-    <section className="py-16 bg-gradient-to-b from-dark-slate/5 to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-mell to-dark-slate rounded-xl overflow-hidden shadow-lg">
+    <section className="relative py-16 bg-gradient-to-b from-dark-slate/25 to-mountain-green/20">
+      <div className="absolute inset-0 z-0 opacity-20 bg-[url('/mountain-pattern.svg')] bg-repeat opacity-25"></div>
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-mell to-dark-slate rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.01] transition-all duration-300">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 md:p-10 flex flex-col justify-center">
               <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
@@ -95,8 +96,8 @@ const Newsletter = () => {
               </form>
             </div>
             <div className="hidden md:block relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-mountain-green/20 to-cambridge-blue/20 transform -skew-x-6"></div>
-              <div className="absolute inset-0 bg-[url('/mountain-pattern.svg')] bg-no-repeat bg-cover opacity-20"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-mountain-green/40 to-cambridge-blue/40 transform -skew-x-6"></div>
+              <div className="absolute inset-0 bg-[url('/mountain-pattern.svg')] bg-no-repeat bg-cover opacity-35"></div>
               <div className="relative h-full flex flex-col items-center justify-center p-10 text-center">
                 <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
                   <div className="text-white text-lg font-heading font-bold mb-2">Join Our Community</div>

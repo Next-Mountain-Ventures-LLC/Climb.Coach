@@ -4,10 +4,10 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/40 to-cambridge-blue/40 py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/70 to-cambridge-blue/60 py-20">
       {/* Mountain silhouette background */}
-      <div className="absolute inset-0 z-0 opacity-20 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-center bg-cover"></div>
-      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/compass-bg.svg')] bg-no-repeat bg-center bg-contain"></div>
+      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-center bg-cover"></div>
+      <div className="absolute inset-0 z-0 opacity-20 bg-[url('/compass-bg.svg')] bg-no-repeat bg-center bg-contain"></div>
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -37,7 +37,7 @@ const Hero = () => {
           </div>
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-mountain-green to-cambridge-blue rounded-full blur-3xl opacity-20 transform scale-95"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-mountain-green to-cambridge-blue rounded-full blur-3xl opacity-40 transform scale-95"></div>
               <div className="relative bg-white/80 backdrop-blur-sm rounded-xl shadow-xl border border-mountain-green/50 p-8">
                 <div className="flex items-center justify-center w-16 h-16 mb-6 bg-mountain-green/20 rounded-full">
                   <Compass className="w-8 h-8 text-blue-mell" />

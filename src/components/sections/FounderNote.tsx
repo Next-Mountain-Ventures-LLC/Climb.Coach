@@ -4,12 +4,13 @@ import { Separator } from '@/components/ui/separator';
 
 const FounderNote = () => {
   return (
-    <section className="relative py-16 bg-gradient-to-b from-dark-slate/5 to-mountain-green/10">
-      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+    <section className="relative py-16 bg-gradient-to-b from-cambridge-blue/25 to-mountain-green/35">
+      <div className="absolute inset-0 z-0 opacity-25 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+      <div className="absolute inset-0 z-0 opacity-15 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom bg-contain"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
-            <div className="inline-block p-3 bg-mountain-green/20 rounded-full">
+            <div className="inline-block p-4 bg-mountain-green/40 rounded-full shadow-md">
               <Quote className="h-6 w-6 text-blue-mell" />
             </div>
             <h2 className="mt-4 text-2xl md:text-3xl font-heading font-bold text-charcoal">
@@ -17,9 +18,9 @@ const FounderNote = () => {
             </h2>
           </div>
 
-          <div className="relative bg-white rounded-xl p-8 shadow-md border border-mountain-green/30">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-mountain-green/20 to-cambridge-blue/20 rounded-bl-xl -z-10"></div>
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-tr from-blue-mell/20 to-dark-slate/20 rounded-tr-xl -z-10"></div>
+          <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-mountain-green/50 transform hover:scale-[1.01] transition-all duration-300">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-mountain-green/40 to-cambridge-blue/40 rounded-bl-xl -z-10"></div>
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-blue-mell/40 to-dark-slate/40 rounded-tr-xl -z-10"></div>
             
             <div className="prose prose-lg max-w-none text-dark-slate/90">
               <p className="mb-4">
@@ -55,7 +56,7 @@ const FounderNote = () => {
             <Separator className="my-6 bg-mountain-green/30" />
             
             <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-blue-mell/10 rounded-full flex items-center justify-center">
+              <div className="w-16 h-16 bg-gradient-to-br from-blue-mell/30 to-dark-slate/30 rounded-full flex items-center justify-center shadow-md">
                 <div className="text-xl font-heading font-bold text-blue-mell">TR</div>
               </div>
               <div>

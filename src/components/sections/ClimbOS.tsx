@@ -35,14 +35,14 @@ const ClimbOS = () => {
   ];
 
   return (
-    <section id="climbos" className="relative py-20 bg-gradient-to-b from-cambridge-blue/5 to-dark-slate/10">
-      <div className="absolute inset-0 z-0 opacity-15 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom bg-cover transform scale-y-[-1]"></div>
-      <div className="absolute inset-0 z-0 bg-[url('/compass-bg.svg')] bg-no-repeat bg-left bg-contain opacity-5"></div>
+    <section id="climbos" className="relative py-20 bg-gradient-to-b from-cambridge-blue/30 to-dark-slate/30">
+      <div className="absolute inset-0 z-0 opacity-25 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom bg-cover transform scale-y-[-1]"></div>
+      <div className="absolute inset-0 z-0 bg-[url('/compass-bg.svg')] bg-no-repeat bg-left bg-contain opacity-15"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <div className="max-w-lg">
-              <div className="inline-flex items-center bg-mountain-green/20 rounded-full py-1 px-3 mb-6">
+              <div className="inline-flex items-center bg-mountain-green/40 rounded-full py-1.5 px-4 mb-6 shadow-md">
                 <LayoutTemplate className="h-4 w-4 text-blue-mell mr-2" />
                 <span className="text-xs font-medium text-dark-slate">INCLUDED WITH ALL COACHING</span>
               </div>
@@ -60,7 +60,7 @@ const ClimbOS = () => {
               <div className="space-y-6">
                 {features.map((feature, index) => (
                   <div key={index} className="flex items-start space-x-4">
-                    <div className="flex-shrink-0 mt-1 bg-mountain-green/20 rounded-full p-2">
+                    <div className="flex-shrink-0 mt-1 bg-mountain-green/40 rounded-full p-2.5 shadow-sm">
                       {feature.icon}
                     </div>
                     <div>
@@ -73,7 +73,7 @@ const ClimbOS = () => {
 
               <Separator className="my-8 bg-mountain-green/30" />
 
-              <div className="bg-gradient-to-r from-blue-mell/10 to-cambridge-blue/10 rounded-lg p-6">
+              <div className="bg-gradient-to-r from-blue-mell/30 to-cambridge-blue/20 rounded-lg p-6 shadow-md border border-mountain-green/20">
                 <h3 className="font-heading font-bold text-lg text-charcoal mb-3">
                   Why ClimbOS Makes the Difference
                 </h3>
@@ -91,8 +91,8 @@ const ClimbOS = () => {
           
           <div className="lg:col-span-6 flex justify-center lg:justify-end">
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-mountain-green/30 to-blue-mell/30 rounded-xl blur-md opacity-50"></div>
-              <div className="relative bg-white rounded-lg border border-mountain-green/30 shadow-lg overflow-hidden">
+              <div className="absolute -inset-4 bg-gradient-to-br from-mountain-green/50 to-blue-mell/50 rounded-xl blur-md opacity-70"></div>
+              <div className="relative bg-white/90 backdrop-blur-sm rounded-lg border border-mountain-green/40 shadow-xl overflow-hidden">
                 <div className="bg-dark-slate p-4 flex items-center space-x-2">
                   <div className="flex space-x-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>

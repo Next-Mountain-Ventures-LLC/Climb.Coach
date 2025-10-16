@@ -51,12 +51,12 @@ const Method = () => {
   ];
 
   return (
-    <section id="method" className="relative py-20 bg-gradient-to-b from-mountain-green/20 to-cambridge-blue/10">
-      <div className="absolute inset-0 z-0 opacity-15 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
-      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
+    <section id="method" className="relative py-20 bg-gradient-to-b from-mountain-green/40 to-blue-mell/30">
+      <div className="absolute inset-0 z-0 opacity-30 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
+      <div className="absolute inset-0 z-0 opacity-25 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-block p-2 bg-mountain-green/20 rounded-full mb-4">
+          <div className="inline-block p-3 bg-mountain-green/40 rounded-full mb-4 shadow-md">
             <Compass className="h-8 w-8 text-dark-slate" />
           </div>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
@@ -70,12 +70,12 @@ const Method = () => {
 
         <Tabs defaultValue="insights" className="w-full max-w-4xl mx-auto">
           <div className="flex justify-center mb-10">
-            <TabsList className="bg-mountain-green/20 p-1 rounded-lg">
+            <TabsList className="bg-mountain-green/40 p-1.5 rounded-lg shadow-md">
               {methodPillars.map((pillar) => (
                 <TabsTrigger 
                   key={pillar.id}
                   value={pillar.id}
-                  className="data-[state=active]:bg-white data-[state=active]:text-charcoal data-[state=active]:shadow-sm font-medium py-3"
+                  className="data-[state=active]:bg-white data-[state=active]:text-charcoal data-[state=active]:shadow-md font-medium py-3"
                 >
                   <span className="hidden md:inline-flex items-center gap-2">
                     {React.cloneElement(pillar.icon, { className: 'h-5 w-5' })}
@@ -88,8 +88,8 @@ const Method = () => {
           </div>
 
           <div className="relative">
-            <div className="absolute inset-0 bg-mountain-green/5 rounded-xl transform -rotate-1"></div>
-            <div className="relative bg-white rounded-xl p-8 border border-mountain-green/30 shadow-sm">
+            <div className="absolute inset-0 bg-mountain-green/30 rounded-xl transform -rotate-1"></div>
+            <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 border border-mountain-green/50 shadow-lg">
               {methodPillars.map((pillar) => (
                 <TabsContent key={pillar.id} value={pillar.id} className="focus:outline-none mt-0">
                   <div className="grid md:grid-cols-5 gap-8 items-center">

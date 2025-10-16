@@ -47,8 +47,8 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="relative py-20 bg-gradient-to-b from-cambridge-blue/5 to-mountain-green/10">
-      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+    <section id="services" className="relative py-20 bg-gradient-to-b from-blue-mell/25 to-mountain-green/30">
+      <div className="absolute inset-0 z-0 opacity-25 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
@@ -68,8 +68,8 @@ const Services = () => {
                   Most Popular
                 </div>
               )}
-              <Card className={`h-full border ${service.primary ? 'border-blue-mell shadow-lg' : 'border-mountain-green/50'} overflow-hidden hover:shadow-md transition-shadow duration-300`}>
-                <div className={`p-6 ${service.primary ? 'bg-gradient-to-br from-blue-mell/10 to-blue-mell/5' : 'bg-mountain-green/5'}`}>
+              <Card className={`h-full border ${service.primary ? 'border-blue-mell shadow-xl' : 'border-mountain-green/60 shadow-md'} overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
+                <div className={`p-6 ${service.primary ? 'bg-gradient-to-br from-blue-mell/30 to-blue-mell/10' : 'bg-gradient-to-br from-mountain-green/25 to-cambridge-blue/10'}`}>
                   <div className="mb-4">{service.icon}</div>
                   <CardTitle className="text-xl font-heading font-bold text-charcoal">{service.title}</CardTitle>
                   <div className="mt-2 mb-4 flex items-baseline">
@@ -100,7 +100,7 @@ const Services = () => {
           ))}
         </div>
 
-        <div className="mt-16 bg-gradient-to-r from-mountain-green/20 to-cambridge-blue/20 rounded-xl p-6 sm:p-10">
+        <div className="mt-16 bg-gradient-to-r from-mountain-green/40 to-cambridge-blue/30 rounded-xl p-6 sm:p-10 shadow-lg border border-mountain-green/30">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div className="flex items-center">
               <Flag className="h-10 w-10 text-blue-mell mr-4" />
