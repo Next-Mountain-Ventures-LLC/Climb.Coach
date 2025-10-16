@@ -39,17 +39,17 @@ const FounderNote = () => {
               </div>
               
               <p className="mb-4">
-                Between 16 hours lost weekly to admin and nearly 10 hours to interruptions and tool switching, the average entrepreneur is bleeding up to 26 hours of productivity every week.                                                                            What scares me about the stat above is that even if you claw back those 26 lost hours, if you make the wrong calls on where to spend them—on things misaligned with your values or strategic goals—then all of your time, attention, and energy for the week may still be wasted.
+                Between 16 hours lost weekly to admin and nearly 10 hours to interruptions and tool switching, the average entrepreneur is bleeding up to 26 hours of productivity every week.
+              </p>
+              
+              <p className="mb-4">
+                What scares me about the stat above is that even if you claw back those 26 lost hours, if you make the wrong calls on where to spend them—on things misaligned with your values or strategic goals—then all of your time, attention, and energy for the week may still be wasted.
               </p>
               
               <p className="mb-4">
                 After starting multiple businesses and being self-employed for 15 years, I'm convinced 
                 the most important decision any entrepreneur can make each day is where to invest 
                 their time, attention, and energy.
-              </p>
-              
-              <p className="mb-4">
-                
               </p>
               
               <p className="mb-4">
