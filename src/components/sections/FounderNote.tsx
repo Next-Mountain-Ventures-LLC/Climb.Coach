@@ -53,9 +53,7 @@ const FounderNote = () => {
               </p>
               
               <p className="mb-4">
-                That's why I created climb.coach, a method for the madness of entrepreneurial life. 
-                We help busy founders think clearly and live boldly, so every hour you work pushes 
-                you toward the life and business you want.
+                That's why I created Climb.Coach, a method for the madness of entrepreneurial life. We help busy founders think clearly and live boldly, so every hour you work pushes you toward the life and business you want.
               </p>
               
               <p>
