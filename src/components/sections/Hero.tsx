@@ -25,7 +25,7 @@ const Hero = () => {
                 size="lg" 
                 className="group transition-all duration-300 font-heading" 
                 style={{ backgroundColor: '#364958', color: 'white' }}
-                onClick={() => document.getElementById('services-section')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => window.location.href = 'https://buy.stripe.com/4gM00kgix9gKfyU9Cogfu02'}
               >
                 Start Climbing
                 <span className="ml-2 group-hover:translate-x-1 transition-transform">

@@ -17,6 +17,8 @@ const Services = () => {
       ],
       icon: <Calendar className="h-12 w-12 text-mountain-green" />,
       primary: true,
+      link: 'https://buy.stripe.com/4gM00kgix9gKfyU9Cogfu02',
+      buttonText: 'Start Climbing'
     },
     {
       title: 'Monthly Summit Meeting',
@@ -30,6 +32,8 @@ const Services = () => {
       ],
       icon: <Route className="h-12 w-12 text-cambridge-blue" />,
       primary: false,
+      link: 'https://buy.stripe.com/aFaeVegixcsW72o7uggfu01',
+      buttonText: 'Book Now'
     },
     {
       title: 'On-Demand Session',
@@ -43,6 +47,8 @@ const Services = () => {
       ],
       icon: <Compass className="h-12 w-12 text-blue-mell" />,
       primary: false,
+      link: 'https://book.stripe.com/6oU9AU8Q578CaeA7uggfu00',
+      buttonText: 'Book Now'
     },
   ];
 
@@ -81,8 +87,12 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className="w-full mt-8" style={{ backgroundColor: service.primary ? '#364958' : '#3B6064', color: 'white' }}>
-                    {service.primary ? 'Start Climbing' : 'Book Now'}
+                  <Button 
+                    className="w-full mt-8" 
+                    style={{ backgroundColor: service.primary ? '#364958' : '#3B6064', color: 'white' }}
+                    onClick={() => window.location.href = service.link}
+                  >
+                    {service.buttonText}
                   </Button>
                   {service.primary && (
                     <p className="mt-2 text-xs text-center text-dark-slate/70">
@@ -104,7 +114,12 @@ const Services = () => {
                 <p className="text-dark-slate/80">Let's find your next summit together, no commitment required.</p>
               </div>
             </div>
-            <Button size="lg" className="whitespace-nowrap" style={{ backgroundColor: '#364958', color: 'white' }}>
+            <Button 
+              size="lg" 
+              className="whitespace-nowrap" 
+              style={{ backgroundColor: '#364958', color: 'white' }}
+              onClick={() => window.location.href = 'https://buy.stripe.com/4gM00kgix9gKfyU9Cogfu02'}
+            >
               Book Your Free Sessions
             </Button>
           </div>
