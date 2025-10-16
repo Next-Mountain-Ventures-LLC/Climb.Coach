@@ -51,8 +51,10 @@ const Method = () => {
   ];
 
   return (
-    <section id="method" className="py-20 bg-gradient-to-b from-mountain-green/10 to-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="method" className="relative py-20 bg-gradient-to-b from-mountain-green/20 to-cambridge-blue/10">
+      <div className="absolute inset-0 z-0 opacity-15 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
+      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block p-2 bg-mountain-green/20 rounded-full mb-4">
             <Compass className="h-8 w-8 text-dark-slate" />

@@ -4,8 +4,9 @@ import { Separator } from '@/components/ui/separator';
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-white to-mountain-green/10">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="about" className="relative py-20 bg-gradient-to-b from-white to-mountain-green/20">
+      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative">

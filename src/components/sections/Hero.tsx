@@ -4,9 +4,10 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/30 to-cambridge-blue/30 py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/40 to-cambridge-blue/40 py-20">
       {/* Mountain silhouette background */}
-      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-center bg-cover"></div>
+      <div className="absolute inset-0 z-0 opacity-20 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-center bg-cover"></div>
+      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/compass-bg.svg')] bg-no-repeat bg-center bg-contain"></div>
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

@@ -35,8 +35,10 @@ const ClimbOS = () => {
   ];
 
   return (
-    <section id="climbos" className="py-20 bg-gradient-to-b from-white to-dark-slate/5">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="climbos" className="relative py-20 bg-gradient-to-b from-cambridge-blue/5 to-dark-slate/10">
+      <div className="absolute inset-0 z-0 opacity-15 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom bg-cover transform scale-y-[-1]"></div>
+      <div className="absolute inset-0 z-0 bg-[url('/compass-bg.svg')] bg-no-repeat bg-left bg-contain opacity-5"></div>
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-6">
             <div className="max-w-lg">

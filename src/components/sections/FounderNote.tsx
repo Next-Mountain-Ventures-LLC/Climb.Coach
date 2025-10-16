@@ -4,8 +4,9 @@ import { Separator } from '@/components/ui/separator';
 
 const FounderNote = () => {
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="relative py-16 bg-gradient-to-b from-dark-slate/5 to-mountain-green/10">
+      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
             <div className="inline-block p-3 bg-mountain-green/20 rounded-full">

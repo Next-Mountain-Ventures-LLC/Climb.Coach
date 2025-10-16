@@ -47,8 +47,9 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="relative py-20 bg-gradient-to-b from-cambridge-blue/5 to-mountain-green/10">
+      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+      <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
             Find Your Path Forward
