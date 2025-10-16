@@ -110,8 +110,8 @@ const About = () => {
             
             <div className="flex items-start gap-6 flex-col md:flex-row">
               <div className="flex-shrink-0">
-                <div className="w-24 h-24 bg-gradient-to-br from-dark-slate to-blue-mell rounded-full flex items-center justify-center shadow-lg border-4 border-white">
-                  <span className="text-2xl font-heading font-bold text-white">TR</span>
+                <div className="w-24 h-24 rounded-full shadow-lg border-4 border-white overflow-hidden">
+                  <img src="/tyson_headshot_nw_54942062.png" alt="Tyson Reuer" className="w-full h-full object-cover" />
                 </div>
               </div>
               
