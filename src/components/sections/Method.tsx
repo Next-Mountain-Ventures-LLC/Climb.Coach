@@ -51,10 +51,10 @@ const Method = () => {
 
   return (
     <section id="method" className="relative py-20 bg-gradient-to-b from-cambridge-blue/30 to-mountain-green/40">
-      <div className="absolute inset-0 z-0 opacity-30 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
-      <div className="absolute inset-0 z-0 opacity-40 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
-      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/50"></div>
+      <div className="absolute inset-0 z-0 opacity-40 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+      <div className="absolute inset-0 z-0 opacity-50 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
+      <div className="absolute inset-0 z-0 opacity-45 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/80 to-mountain-green/90"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <img src="/climbcoachfavicon_no_bg_nw_b15ea69e.png" alt="Climb.coach Logo" className="h-14 w-14 mb-4 mx-auto" />
@@ -73,13 +73,21 @@ const Method = () => {
               {methodPillars.map((pillar, index) => (
                 <button
                   key={pillar.id}
-                  onClick={() => document.querySelector(`[data-state=active][role=tab]`)?.setAttribute('aria-selected', 'false') || document.querySelector(`[data-value=${pillar.id}]`)?.click()}
-                  className={`flex flex-col items-center p-4 rounded-lg transition-all ${pillar.id === 'insights' ? 'bg-white shadow-md' : 'bg-cambridge-blue/20 hover:bg-cambridge-blue/30'}`}
+                  onClick={() => {
+                    // First remove active state from currently active tab
+                    const activeTab = document.querySelector(`[data-state=active][role=tab]`);
+                    if (activeTab) activeTab.setAttribute('aria-selected', 'false');
+                    
+                    // Then click the new tab
+                    const targetTab = document.querySelector(`[data-value=${pillar.id}]`);
+                    if (targetTab) targetTab.click();
+                  }}
+                  className={`flex flex-col items-center p-4 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md ${pillar.id === methodPillars[0].id ? 'bg-white shadow-lg ring-4 ring-mountain-green/20' : 'bg-white/80 hover:bg-white'}`}
                 >
-                  <div className="w-12 h-12 rounded-full bg-mountain-green/20 flex items-center justify-center mb-2">
+                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-mountain-green/30 to-blue-mell/30 flex items-center justify-center mb-2 transition-all duration-300 group-hover:from-mountain-green/50 group-hover:to-blue-mell/50">
                     {React.cloneElement(pillar.icon, { className: 'h-6 w-6 text-charcoal' })}
                   </div>
-                  <span className="text-charcoal font-medium text-sm text-center">{pillar.title}</span>
+                  <span className="text-charcoal font-bold text-sm text-center">{pillar.title}</span>
                 </button>
               ))}
             </div>
