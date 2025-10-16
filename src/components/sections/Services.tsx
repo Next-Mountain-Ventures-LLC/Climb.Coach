@@ -63,7 +63,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div key={index} className={`relative ${service.primary ? 'md:-mt-4 md:mb-4' : ''}`}>
               {service.primary && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-mell text-white px-4 py-1 rounded-full text-sm font-medium">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-charcoal text-white px-4 py-1 rounded-full text-sm font-medium">
                   Most Popular
                 </div>
               )}
@@ -85,7 +85,7 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className={`w-full mt-8 ${service.primary ? 'bg-blue-mell hover:bg-dark-slate' : 'bg-cambridge-blue hover:bg-blue-mell'} text-white`}>
+                  <Button className={`w-full mt-8 ${service.primary ? 'bg-charcoal hover:bg-dark-slate' : 'bg-dark-slate hover:bg-charcoal'} text-white`}>
                     {service.primary ? 'Start Climbing' : 'Get Started'}
                   </Button>
                   {service.primary && (
@@ -108,7 +108,7 @@ const Services = () => {
                 <p className="text-dark-slate/80">Let's find your next summit together, no commitment required.</p>
               </div>
             </div>
-            <Button size="lg" className="whitespace-nowrap bg-blue-mell hover:bg-dark-slate text-white">
+            <Button size="lg" className="whitespace-nowrap bg-charcoal hover:bg-dark-slate text-white">
               Book Your Free Sessions
             </Button>
           </div>

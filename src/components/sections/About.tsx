@@ -13,7 +13,7 @@ const About = () => {
               <div className="relative bg-white rounded-lg p-6 border border-mountain-green/30 shadow-sm">
                 <div className="flex items-start space-x-4">
                   <div className="bg-mountain-green/20 rounded-full p-2 mt-1">
-                    <Star className="h-6 w-6 text-blue-mell" />
+                    <Star className="h-6 w-6 text-dark-slate" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-lg text-charcoal">Today's insights become tomorrow's advantage</h3>
@@ -25,7 +25,7 @@ const About = () => {
                 
                 <div className="flex items-start space-x-4">
                   <div className="bg-mountain-green/20 rounded-full p-2 mt-1">
-                    <Mountain className="h-6 w-6 text-blue-mell" />
+                    <Mountain className="h-6 w-6 text-dark-slate" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-lg text-charcoal">Build a better life one week at a time</h3>
@@ -37,7 +37,7 @@ const About = () => {
                 
                 <div className="flex items-start space-x-4">
                   <div className="bg-mountain-green/20 rounded-full p-2 mt-1">
-                    <TrendingUp className="h-6 w-6 text-blue-mell" />
+                    <TrendingUp className="h-6 w-6 text-dark-slate" />
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-lg text-charcoal">Coaching that turns insights into actions</h3>

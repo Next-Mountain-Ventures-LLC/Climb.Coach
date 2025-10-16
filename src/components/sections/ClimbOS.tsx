@@ -42,7 +42,7 @@ const ClimbOS = () => {
             <div className="max-w-lg">
               <div className="inline-flex items-center bg-mountain-green/20 rounded-full py-1 px-3 mb-6">
                 <LayoutTemplate className="h-4 w-4 text-blue-mell mr-2" />
-                <span className="text-xs font-medium text-blue-mell">INCLUDED WITH ALL COACHING</span>
+                <span className="text-xs font-medium text-dark-slate">INCLUDED WITH ALL COACHING</span>
               </div>
               
               <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-6">
@@ -79,7 +79,7 @@ const ClimbOS = () => {
                   Most coaching sessions end with insights that quickly fade. ClimbOS ensures your 
                   insights become lasting change by embedding them into your daily workflow.
                 </p>
-                <Button className="mt-2 bg-blue-mell hover:bg-dark-slate text-white group">
+                <Button className="mt-2 bg-charcoal hover:bg-dark-slate text-white group">
                   See ClimbOS in Action
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -104,15 +104,15 @@ const ClimbOS = () => {
                   <div className="grid grid-cols-3 gap-3 mb-4">
                     <div className="bg-mountain-green/20 rounded p-3 text-center">
                       <div className="text-sm font-medium text-charcoal">Weekly Tasks</div>
-                      <div className="text-xl font-bold text-blue-mell mt-1">12/15</div>
+                      <div className="text-xl font-bold text-dark-slate mt-1">12/15</div>
                     </div>
                     <div className="bg-cambridge-blue/20 rounded p-3 text-center">
                       <div className="text-sm font-medium text-charcoal">Habits</div>
-                      <div className="text-xl font-bold text-blue-mell mt-1">8/10</div>
+                      <div className="text-xl font-bold text-dark-slate mt-1">8/10</div>
                     </div>
                     <div className="bg-blue-mell/20 rounded p-3 text-center">
                       <div className="text-sm font-medium text-charcoal">Focus Score</div>
-                      <div className="text-xl font-bold text-blue-mell mt-1">87%</div>
+                      <div className="text-xl font-bold text-dark-slate mt-1">87%</div>
                     </div>
                   </div>
                   
@@ -121,7 +121,7 @@ const ClimbOS = () => {
                       <div className="text-xs text-charcoal/70 uppercase font-medium mb-1">Current Goal</div>
                       <div className="text-sm font-medium text-charcoal">Launch new product feature by Nov 15</div>
                       <div className="w-full bg-gray-200 h-2 rounded mt-2">
-                        <div className="bg-blue-mell h-2 rounded" style={{ width: '65%' }}></div>
+                        <div className="bg-dark-slate h-2 rounded" style={{ width: '65%' }}></div>
                       </div>
                       <div className="text-xs text-right mt-1 text-charcoal/70">65% complete</div>
                     </div>
@@ -136,7 +136,7 @@ const ClimbOS = () => {
                     <div className="text-xs text-charcoal/70 uppercase font-medium mb-2">Next Summit Meeting</div>
                     <div className="flex items-center justify-between">
                       <div className="text-sm font-medium text-charcoal">Thursday, 10:00 AM</div>
-                      <Button variant="outline" size="sm" className="text-xs border-blue-mell text-blue-mell h-7">
+                      <Button variant="outline" size="sm" className="text-xs border-dark-slate text-dark-slate h-7">
                         Prepare
                       </Button>
                     </div>

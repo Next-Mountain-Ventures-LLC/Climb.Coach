@@ -29,7 +29,7 @@ const Newsletter = () => {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full bg-white hover:bg-mountain-green hover:text-charcoal text-blue-mell font-medium">
+                <Button type="submit" className="w-full bg-white hover:bg-mountain-green hover:text-charcoal text-dark-slate font-medium">
                   <Send className="mr-2 h-4 w-4" />
                   Subscribe
                 </Button>

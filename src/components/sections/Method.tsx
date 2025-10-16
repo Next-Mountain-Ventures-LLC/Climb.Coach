@@ -55,7 +55,7 @@ const Method = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block p-2 bg-mountain-green/20 rounded-full mb-4">
-            <Compass className="h-8 w-8 text-blue-mell" />
+            <Compass className="h-8 w-8 text-dark-slate" />
           </div>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
             The Climb Method
@@ -93,7 +93,7 @@ const Method = () => {
                   <div className="grid md:grid-cols-5 gap-8 items-center">
                     <div className="md:col-span-2 flex justify-center">
                       <div className="w-32 h-32 flex items-center justify-center bg-gradient-to-br from-mountain-green/20 to-blue-mell/20 rounded-full p-6">
-                        {React.cloneElement(pillar.icon, { className: 'h-16 w-16 text-blue-mell' })}
+                        {React.cloneElement(pillar.icon, { className: 'h-16 w-16 text-dark-slate' })}
                       </div>
                     </div>
                     <div className="md:col-span-3">
