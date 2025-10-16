@@ -70,7 +70,7 @@ const FounderNote = () => {
               </div>
               <div>
                 <div className="font-heading font-bold text-lg text-charcoal">Tyson Reuer</div>
-                <div className="text-dark-slate/80">Creator of the Climb Method & Founder of climb.coach</div>
+                <div className="text-dark-slate/80">Creator of the Climb Method & Founder of Climb.Coach</div>
               </div>
             </div>
           </div>

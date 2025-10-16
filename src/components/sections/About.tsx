@@ -23,7 +23,7 @@ const About = () => {
           <p className="text-lg text-dark-slate/90">
             After starting multiple businesses and being self-employed for 15 years, 
             we're convinced the most important decision any entrepreneur can make each day 
-            is where to invest their time, attention, and energy. That's why we created climb.coach, 
+            is where to invest their time, attention, and energy. That's why we created Climb.Coach, 
             a method for the madness of entrepreneurial life.
           </p>
         </div>
