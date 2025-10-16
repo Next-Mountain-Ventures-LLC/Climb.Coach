@@ -68,8 +68,8 @@ const Services = () => {
                   Most Popular
                 </div>
               )}
-              <Card className={`h-full border ${service.primary ? 'border-blue-mell shadow-xl' : 'border-mountain-green/60 shadow-md'} overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
-                <div className={`p-6 ${service.primary ? 'bg-gradient-to-br from-blue-mell/30 to-blue-mell/10' : 'bg-gradient-to-br from-mountain-green/25 to-cambridge-blue/10'}`}>
+              <Card className={`h-full border-2 ${service.primary ? 'border-blue-mell shadow-xl ring-4 ring-blue-mell/20' : 'border-mountain-green/60 shadow-md'} overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
+                <div className={`p-6 ${service.primary ? 'bg-gradient-to-br from-blue-mell/40 to-blue-mell/20' : 'bg-gradient-to-br from-mountain-green/25 to-cambridge-blue/10'}`}>
                   <div className="mb-4">{service.icon}</div>
                   <CardTitle className="text-xl font-heading font-bold text-charcoal">{service.title}</CardTitle>
                   <div className="mt-2 mb-4 flex items-baseline">
@@ -87,7 +87,7 @@ const Services = () => {
                     ))}
                   </ul>
                   <Button className="w-full mt-8" style={{ backgroundColor: service.primary ? '#364958' : '#3B6064', color: 'white' }}>
-                    {service.primary ? 'Start Climbing' : 'Get Started'}
+                    {service.primary ? 'Start Climbing' : 'Book Now'}
                   </Button>
                   {service.primary && (
                     <p className="mt-2 text-xs text-center text-dark-slate/70">

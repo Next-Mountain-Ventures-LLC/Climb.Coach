@@ -19,18 +19,23 @@ const FounderNote = () => {
             </h2>
           </div>
 
-          <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-xl border border-mountain-green/50 transform hover:scale-[1.01] transition-all duration-300">
-            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-mountain-green/40 to-cambridge-blue/40 rounded-bl-xl -z-10"></div>
-            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-blue-mell/40 to-dark-slate/40 rounded-tr-xl -z-10"></div>
+          <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-xl border-2 border-mountain-green/60 transform hover:scale-[1.01] transition-all duration-300 hover:shadow-2xl">
+            <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-mountain-green/40 to-cambridge-blue/40 rounded-bl-xl -z-10 animate-pulse"></div>
+            <div className="absolute bottom-0 left-0 w-40 h-40 bg-gradient-to-tr from-blue-mell/40 to-dark-slate/40 rounded-tr-xl -z-10 animate-pulse"></div>
+            <div className="absolute inset-0 -z-5 bg-gradient-to-r from-blue-mell/5 to-mountain-green/5 rounded-xl"></div>
             
             <div className="prose prose-lg max-w-none text-dark-slate/90">
-              <div className="bg-charcoal/10 rounded-lg p-5 text-center mb-8">
+              <div className="bg-gradient-to-r from-charcoal/20 to-blue-mell/20 rounded-lg p-5 text-center mb-8 border border-charcoal/10 shadow-md transform hover:scale-[1.01] transition-all duration-300 cursor-pointer">
                 <p className="text-xl font-heading font-bold text-charcoal">
                   The average entrepreneur loses 26 hours of productivity every week
                 </p>
                 <p className="text-dark-slate/80 mt-2">
                   ...before meaningful decisions even begin.
                 </p>
+                <div className="w-full bg-charcoal/10 h-1.5 rounded-full mt-4">
+                  <div className="bg-blue-mell h-1.5 rounded-full w-[26%]"></div>
+                </div>
+                <p className="text-xs text-dark-slate/70 mt-2 text-right">26 hours lost / 100 hour work week</p>
               </div>
               
               <p className="mb-4">
@@ -64,9 +69,9 @@ const FounderNote = () => {
 
             <Separator className="my-6 bg-mountain-green/30" />
             
-            <div className="flex items-center space-x-4">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-mell/30 to-dark-slate/30 rounded-full flex items-center justify-center shadow-md">
-                <img src="/tyson_headshot_nw_54942062.png" alt="Tyson Reuer" className="w-full h-full rounded-full object-cover" />
+            <div className="flex items-center space-x-4 bg-gradient-to-r from-blue-mell/10 to-mountain-green/10 p-4 rounded-lg border border-blue-mell/20 transform hover:translate-x-1 hover:shadow-md transition-all duration-300">
+              <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-md ring-4 ring-cambridge-blue/30 overflow-hidden">
+                <img src="/tyson_headshot_nw_54942062.png" alt="Tyson Reuer" className="w-full h-full object-cover" />
               </div>
               <div>
                 <div className="font-heading font-bold text-lg text-charcoal">Tyson Reuer</div>

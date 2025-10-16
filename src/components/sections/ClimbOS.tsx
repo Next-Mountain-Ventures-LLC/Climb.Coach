@@ -42,8 +42,8 @@ const ClimbOS = () => {
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/50"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6">
-            <div className="max-w-lg">
+          <div className="lg:col-span-7">
+            <div className="max-w-xl">
               <div className="inline-flex items-center bg-mountain-green/40 rounded-full py-1.5 px-4 mb-6 shadow-md">
                 <LayoutTemplate className="h-4 w-4 text-blue-mell mr-2" />
                 <span className="text-xs font-medium text-dark-slate">INCLUDED WITH ALL COACHING</span>
@@ -91,7 +91,7 @@ const ClimbOS = () => {
             </div>
           </div>
           
-          <div className="lg:col-span-6 flex justify-center lg:justify-end">
+          <div className="lg:col-span-5 flex justify-center">
             <div className="relative">
               <div className="absolute -inset-4 bg-gradient-to-br from-mountain-green/50 to-blue-mell/50 rounded-xl blur-md opacity-70"></div>
               <div className="relative bg-white/90 backdrop-blur-sm rounded-lg border border-mountain-green/40 shadow-xl overflow-hidden">
