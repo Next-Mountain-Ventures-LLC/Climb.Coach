@@ -17,8 +17,8 @@ const Hero = () => {
               <span className="block">Live Boldly.</span>
             </h1>
             <p className="mt-6 text-lg md:text-xl text-dark-slate/90 max-w-2xl">
-              Stop trying to get <span className="font-bold">more</span> stuff done and start getting the 
-              <span className="font-bold text-blue-mell"> right</span> things done.
+              Stop trying to get <span className="font-bold underline decoration-2 underline-offset-2">more</span> stuff done and start getting the 
+              <span className="font-bold text-blue-mell underline decoration-2 underline-offset-2"> right</span> things done.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button 
