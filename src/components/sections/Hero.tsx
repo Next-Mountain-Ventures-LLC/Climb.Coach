@@ -4,10 +4,32 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/70 to-cambridge-blue/60 py-20">
-      {/* Mountain silhouette background - adjusted to be lower */}
-      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg-adjusted.svg')] bg-no-repeat bg-bottom bg-cover transform translate-y-1/4"></div>
-      {/* Compass overlay removed as requested */}
+    <section className="relative overflow-hidden py-20">
+      {/* Base gradient background */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-mountain-green/80 via-cambridge-blue/70 to-blue-mell/60"></div>
+      
+      {/* Decorative elements that stay at the bottom and don't interfere with text */}
+      <div 
+        className="absolute bottom-0 left-0 right-0 h-32 z-0"
+        style={{
+          backgroundImage: "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 100%)"
+        }}
+      ></div>
+      
+      {/* Subtle wave effect at bottom only */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 z-0 opacity-20"
+        style={{
+          background: "radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%)"
+        }}
+      ></div>
+      
+      {/* Very subtle diagonal line pattern */}
+      <div className="absolute inset-0 z-0 opacity-5"
+        style={{
+          backgroundImage: "repeating-linear-gradient(45deg, #ffffff, #ffffff 1px, transparent 1px, transparent 10px)",
+          backgroundSize: "20px 20px"
+        }}
+      ></div>
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

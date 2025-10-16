@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Soft wave patterns at bottom that don't reach the text area -->
+  <path d="M0 700C240 650 480 750 720 700C960 650 1200 750 1440 700V900H0V700Z" fill="#55828B" opacity="0.4"/>
+  <path d="M0 750C240 700 480 800 720 750C960 700 1200 800 1440 750V900H0V750Z" fill="#3B6064" opacity="0.5"/>
+  <path d="M0 800C240 750 480 850 720 800C960 750 1200 850 1440 800V900H0V800Z" fill="#364958" opacity="0.6"/>
+  
+  <!-- Scattered dots -->
+  <circle cx="100" cy="850" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="300" cy="820" r="2" fill="#FFFFFF" opacity="0.2"/>
+  <circle cx="500" cy="860" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="700" cy="830" r="2" fill="#FFFFFF" opacity="0.2"/>
+  <circle cx="900" cy="850" r="3" fill="#FFFFFF" opacity="0.3"/>
+  <circle cx="1100" cy="820" r="2" fill="#FFFFFF" opacity="0.2"/>
+  <circle cx="1300" cy="860" r="3" fill="#FFFFFF" opacity="0.3"/>
+  
+  <!-- Very subtle diagonal lines -->
+  <line x1="0" y1="700" x2="1440" y2="900" stroke="#FFFFFF" stroke-width="0.5" opacity="0.05"/>
+  <line x1="0" y1="720" x2="1440" y2="920" stroke="#FFFFFF" stroke-width="0.5" opacity="0.05"/>
+  <line x1="0" y1="740" x2="1440" y2="940" stroke="#FFFFFF" stroke-width="0.5" opacity="0.05"/>
+  <line x1="0" y1="760" x2="1440" y2="960" stroke="#FFFFFF" stroke-width="0.5" opacity="0.05"/>
+</svg>

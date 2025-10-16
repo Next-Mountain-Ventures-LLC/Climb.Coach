@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Bottom wave pattern -->
+  <path d="M0 700C240 650 480 750 720 700C960 650 1200 750 1440 700V900H0V700Z" fill="#55828B" opacity="0.4"/>
+  <path d="M0 750C240 700 480 800 720 750C960 700 1200 800 1440 750V900H0V750Z" fill="#3B6064" opacity="0.5"/>
+  <path d="M0 800C240 750 480 850 720 800C960 750 1200 850 1440 800V900H0V800Z" fill="#364958" opacity="0.6"/>
+  
+  <!-- Subtle diagonal lines pattern -->
+  <pattern id="diagonalLines" patternUnits="userSpaceOnUse" width="20" height="20" patternTransform="rotate(45)">
+    <line x1="0" y1="0" x2="0" y2="20" stroke="#FFFFFF" stroke-width="1" opacity="0.1"/>
+  </pattern>
+  <rect width="1440" height="900" fill="url(#diagonalLines)" opacity="0.1"/>
+  
+  <!-- Subtle dot grid -->
+  <pattern id="dots" patternUnits="userSpaceOnUse" width="30" height="30">
+    <circle cx="15" cy="15" r="1" fill="#FFFFFF" opacity="0.3"/>
+  </pattern>
+  <rect width="1440" height="900" fill="url(#dots)" opacity="0.1"/>
+</svg>
