@@ -54,11 +54,20 @@ const Newsletter = () => {
               <form 
                 className="space-y-4"
                 onSubmit={handleSubmit}
+                method="post"
+                action="https://api.new.website/api/submit-form/"
+                encType="multipart/form-data"
               >
+                <input 
+                  type="hidden" 
+                  name="form_name" 
+                  value="Newsletter Signup" 
+                />
                 <div className="flex gap-3">
                   <input 
                     type="email" 
                     name="email" 
+                    id="email"
                     placeholder="Your email address"
                     aria-label="Email address"
                     className="flex-1 px-4 py-3 rounded-lg bg-white border border-mountain-green/30 text-dark-slate placeholder:text-dark-slate/60 focus:outline-none focus:ring-2 focus:ring-mountain-green/30"
