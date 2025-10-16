@@ -50,10 +50,11 @@ const Method = () => {
   ];
 
   return (
-    <section id="method" className="relative py-20 bg-gradient-to-b from-dark-slate/60 to-blue-mell/50">
+    <section id="method" className="relative py-20 bg-gradient-to-b from-cambridge-blue/30 to-mountain-green/40">
+      <div className="absolute inset-0 z-0 opacity-30 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
       <div className="absolute inset-0 z-0 opacity-40 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
       <div className="absolute inset-0 z-0 opacity-35 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
-      <div className="absolute inset-0 z-0 bg-gradient-to-b from-dark-slate/70 to-blue-mell/60"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/50"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block p-3 bg-mountain-green/40 rounded-full mb-4 shadow-md">
@@ -70,15 +71,15 @@ const Method = () => {
 
         <Tabs defaultValue="insights" className="w-full max-w-4xl mx-auto">
           <div className="flex justify-center mb-10">
-            <TabsList className="bg-dark-slate p-2 rounded-lg shadow-md">
+            <TabsList className="bg-cambridge-blue/50 p-1 rounded-lg shadow-md flex flex-wrap gap-1">
               {methodPillars.map((pillar) => (
                 <TabsTrigger 
                   key={pillar.id}
                   value={pillar.id}
                   className="data-[state=active]:bg-white data-[state=active]:text-charcoal data-[state=active]:shadow-md font-medium py-3 px-4 text-base" 
                   style={{ 
-                    color: pillar.id === methodPillars[0].id ? '#223843' : '#C9E4CA', 
-                    backgroundColor: pillar.id === methodPillars[0].id ? 'white' : '#223843' 
+                    color: pillar.id === methodPillars[0].id ? '#223843' : '#223843', 
+                    backgroundColor: pillar.id === methodPillars[0].id ? 'white' : 'rgba(87, 130, 139, 0.3)' 
                   }}
                 >
                   <span className="hidden md:inline-flex items-center gap-2">

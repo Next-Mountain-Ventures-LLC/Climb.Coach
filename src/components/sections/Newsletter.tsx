@@ -37,39 +37,40 @@ const Newsletter = () => {
     }
   };
   return (
-    <section className="relative py-16 bg-gradient-to-b from-dark-slate/25 to-mountain-green/20">
-      <div className="absolute inset-0 z-0 opacity-20 bg-[url('/mountain-pattern.svg')] bg-repeat opacity-25"></div>
+    <section className="relative py-16 bg-gradient-to-b from-cambridge-blue/30 to-mountain-green/20">
+      <div className="absolute inset-0 z-0 opacity-30 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+      <div className="absolute inset-0 z-0 opacity-40 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-cover bg-center"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/40"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto bg-gradient-to-r from-blue-mell to-dark-slate rounded-xl overflow-hidden shadow-2xl transform hover:scale-[1.01] transition-all duration-300">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 md:p-10 flex flex-col justify-center">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+        <div className="max-w-2xl mx-auto bg-white/90 backdrop-blur-sm rounded-xl overflow-hidden border border-mountain-green/50 shadow-lg transform hover:scale-[1.01] transition-all duration-300">
+          <div className="p-8">
+            <div className="flex flex-col justify-center">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-charcoal mb-4 text-center">
                 Climb Higher with Weekly Insights
               </h2>
-              <p className="text-white/80 mb-6">
+              <p className="text-dark-slate/90 mb-6 text-center">
                 Get exclusive productivity tips, entrepreneurial wisdom, and actionable advice delivered straight to your inbox.
               </p>
               <form 
                 className="space-y-4"
                 onSubmit={handleSubmit}
               >
-                <div>
+                <div className="flex gap-3">
                   <input 
                     type="email" 
                     name="email" 
                     placeholder="Your email address"
                     aria-label="Email address"
-                    className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/30"
+                    className="flex-1 px-4 py-3 rounded-lg bg-white border border-mountain-green/30 text-dark-slate placeholder:text-dark-slate/60 focus:outline-none focus:ring-2 focus:ring-mountain-green/30"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
-                </div>
-                <Button 
-                  type="submit" 
-                  className="w-full bg-white hover:bg-mountain-green hover:text-charcoal text-dark-slate font-medium"
-                  disabled={isSubmitting}
-                >
+                  <Button 
+                    type="submit" 
+                    className="bg-dark-slate hover:bg-blue-mell text-white font-medium"
+                    disabled={isSubmitting}
+                  >
                   {isSubmitting ? (
                     'Subscribing...'
                   ) : submitStatus === 'success' ? (
@@ -84,28 +85,17 @@ const Newsletter = () => {
                     </>
                   )}
                 </Button>
+              </div>
                 
                 {submitStatus === 'error' && (
                   <div className="p-2 bg-red-700/80 rounded text-white text-sm text-center">
                     Subscription failed. Please try again.
                   </div>
                 )}
-                <p className="text-xs text-white/60 text-center">
+                <p className="text-xs text-dark-slate/60 text-center mt-4">
                   We respect your privacy. Unsubscribe at any time.
                 </p>
               </form>
-            </div>
-            <div className="hidden md:block relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-mountain-green/40 to-cambridge-blue/40 transform -skew-x-6"></div>
-              <div className="absolute inset-0 bg-[url('/mountain-pattern.svg')] bg-no-repeat bg-cover opacity-35"></div>
-              <div className="relative h-full flex flex-col items-center justify-center p-10 text-center">
-                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 border border-white/20">
-                  <div className="text-white text-lg font-heading font-bold mb-2">Join Our Community</div>
-                  <p className="text-white/80 text-sm">
-                    Connect with like-minded entrepreneurs on the climb toward purposeful success.
-                  </p>
-                </div>
-              </div>
             </div>
           </div>
         </div>

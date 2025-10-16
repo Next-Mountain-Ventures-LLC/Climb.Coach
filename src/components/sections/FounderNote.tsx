@@ -4,9 +4,10 @@ import { Separator } from '@/components/ui/separator';
 
 const FounderNote = () => {
   return (
-    <section className="relative py-16 bg-gradient-to-b from-cambridge-blue/25 to-mountain-green/35">
-      <div className="absolute inset-0 z-0 opacity-25 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
-      <div className="absolute inset-0 z-0 opacity-15 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom bg-contain"></div>
+    <section className="relative py-16 bg-gradient-to-b from-cambridge-blue/30 to-mountain-green/40">
+      <div className="absolute inset-0 z-0 opacity-30 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+      <div className="absolute inset-0 z-0 opacity-20 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom bg-contain"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/50"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-8">
@@ -57,10 +58,10 @@ const FounderNote = () => {
             
             <div className="flex items-center space-x-4">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-mell/30 to-dark-slate/30 rounded-full flex items-center justify-center shadow-md">
-                <div className="text-xl font-heading font-bold text-blue-mell">TR</div>
+                <img src="/tyson_headshot_nw_54942062.png" alt="Tyson Reuer" className="w-full h-full rounded-full object-cover" />
               </div>
               <div>
-                <div className="font-heading font-bold text-lg text-charcoal">Tyson Ruer</div>
+                <div className="font-heading font-bold text-lg text-charcoal">Tyson Reuer</div>
                 <div className="text-dark-slate/80">Creator of the Climb Method & Founder of climb.coach</div>
               </div>
             </div>

@@ -21,22 +21,4 @@ import FounderNote from '@/components/sections/FounderNote';
   <ClimbOS client:load />
   <FounderNote client:load />
   <Newsletter client:load />
-  <section id="contact" class="relative py-16 bg-gradient-to-b from-mountain-green/40 to-blue-mell/30">
-    <div class="absolute inset-0 z-0 opacity-25 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
-    <div class="absolute inset-0 z-0 opacity-20 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom bg-cover"></div>
-    <div class="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-12">
-        <h2 class="text-3xl font-heading font-bold text-charcoal mb-4">
-          Ready to Start Your Climb?
-        </h2>
-        <p class="text-lg text-dark-slate/80 mb-8">
-          Have questions about coaching or ClimbOS? Send us a message and we'll get back to you shortly.
-        </p>
-      </div>
-      <!-- KEEP ALL FORMS client:load !! DO NOT USE client:visible AS THIS CAUSES HYDRATION ISSUES!!-->
-      <div class="max-w-2xl mx-auto bg-white/90 backdrop-blur-sm p-8 rounded-xl border border-mountain-green/50 shadow-lg transform hover:scale-[1.01] transition-all duration-300">
-        <ContactForm client:load />
-      </div>
-    </div>
-  </section>
 </BaseLayout>
