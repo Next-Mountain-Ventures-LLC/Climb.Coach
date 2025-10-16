@@ -4,15 +4,19 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden py-20">
-      {/* Geometric background with clean lines */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-mountain-green/90 via-cambridge-blue/80 to-blue-mell/70"></div>
-      {/* Diagonal lines overlay for depth */}
-      <div className="absolute inset-0 z-0 opacity-10" 
-           style={{
-             backgroundImage: `repeating-linear-gradient(45deg, #ffffff, #ffffff 1px, transparent 1px, transparent 20px)`,
-             backgroundSize: '30px 30px'
-           }}
+    <section className="relative overflow-hidden py-20 bg-gradient-to-r from-[#3B6064] via-[#55828B] to-[#87BBA2]">
+      {/* Subtle wave pattern overlay */}
+      <div className="absolute inset-0 opacity-10 z-0" 
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'100%25\' height=\'100%25\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cdefs%3E%3Cpattern id=\'waves\' patternUnits=\'userSpaceOnUse\' width=\'100\' height=\'20\' patternTransform=\'rotate(0 50 50)\'%3E%3Cpath d=\'M0 10 Q 12.5 0, 25 10 T 50 10 T 75 10 T 100 10\' stroke=\'%23FFFFFF\' fill=\'none\'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=\'100%25\' height=\'100%25\' fill=\'url(%23waves)\'/%3E%3C/svg%3E")',
+          backgroundSize: '100px 20px'
+        }}
+      ></div>
+      {/* Top wave accent */}
+      <div className="absolute top-0 left-0 right-0 h-20 opacity-20 z-0" 
+        style={{
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, transparent 100%)'
+        }}
       ></div>
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
