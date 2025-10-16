@@ -1,29 +1,53 @@
 ---
 import { buttonVariants } from "@/components/ui/button";
+import { Image } from "astro:assets";
+import logo from "../assets/logo_nw_ff8e895d.jpg";
 ---
 
 <header
-  class="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b backdrop-blur"
+  class="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b border-mountain-green/30 backdrop-blur"
 >
   <div
     class="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0"
   >
     <div class="flex gap-6 md:gap-10">
       <a href="/" class="flex items-center space-x-2">
-        <span class="inline-block font-bold">Home</span>
+        <Image src={logo} alt="climb.coach" width={140} height={35} class="h-8 w-auto" />
       </a>
     </div>
     <div class="flex flex-1 items-center justify-end space-x-4">
-      <nav class="flex items-center space-x-1">
+      <nav class="hidden md:flex items-center space-x-6 font-medium text-charcoal">
         <a
-          href="https://github.com/"
-          target="_blank"
-          rel="noreferrer"
-          class={buttonVariants({ variant: 'ghost' })}
+          href="#about"
+          class="hover:text-blue-mell transition-colors"
         >
-          Example link
+          About
+        </a>
+        <a
+          href="#method"
+          class="hover:text-blue-mell transition-colors"
+        >
+          The Method
+        </a>
+        <a
+          href="#services"
+          class="hover:text-blue-mell transition-colors"
+        >
+          Services
+        </a>
+        <a
+          href="#climbos"
+          class="hover:text-blue-mell transition-colors"
+        >
+          ClimbOS
         </a>
       </nav>
+      <a
+        href="#services"
+        class={buttonVariants({ variant: 'default', size: 'sm' }) + " bg-blue-mell hover:bg-dark-slate text-white"}
+      >
+        Start Climbing
+      </a>
     </div>
   </div>
 </header>

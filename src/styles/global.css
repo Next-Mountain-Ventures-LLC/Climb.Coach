@@ -34,8 +34,9 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-sm: calc(var(--radius) - 4px);
 
-  --font-sans: Inter, Inter override, ui-sans-serif, system-ui, sans-serif,
+  --font-sans: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-heading: 'Montserrat', ui-sans-serif, system-ui, sans-serif;
 
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
@@ -94,31 +95,35 @@
 
 @layer base {
   :root {
+    /* Mountain color palette from client brief */
+    /* C9E4CA (T Green), 87BB82 (Cambridge Blue), 55828B (Blue Mell), 3B6064 (Dark Slate Gray), 364958 (Charcoal) */
     --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --foreground: 211 24% 28%; /* 364958 Charcoal */
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 211 24% 28%; /* 364958 Charcoal */
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --popover-foreground: 211 24% 28%; /* 364958 Charcoal */
+    --primary: 146 30% 84%; /* C9E4CA T Green */
+    --primary-foreground: 211 24% 28%; /* 364958 Charcoal */
+    --secondary: 120 23% 62%; /* 87BB82 Cambridge Blue */
+    --secondary-foreground: 211 24% 28%; /* 364958 Charcoal */
+    --muted: 0 0% 97%;
+    --muted-foreground: 211 20% 30%; /* Slightly lighter Charcoal */
+    --accent: 191 25% 44%; /* 55828B Blue Mell */
+    --accent-foreground: 0 0% 100%;
+    --neutral: 193 35% 31%; /* 3B6064 Dark Slate Gray */
+    --neutral-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --border: 146 30% 84%; /* C9E4CA T Green */
+    --input: 193 35% 31%; /* 3B6064 Dark Slate Gray */
+    --ring: 146 30% 84%; /* C9E4CA T Green */
+    --radius: 0.75rem; /* Rounded edges as per design brief */
+    --chart-1: 146 30% 84%; /* C9E4CA T Green */
+    --chart-2: 120 23% 62%; /* 87BB82 Cambridge Blue */
+    --chart-3: 191 25% 44%; /* 55828B Blue Mell */
+    --chart-4: 193 35% 31%; /* 3B6064 Dark Slate Gray */
+    --chart-5: 211 24% 28%; /* 364958 Charcoal */
   }
 }
 

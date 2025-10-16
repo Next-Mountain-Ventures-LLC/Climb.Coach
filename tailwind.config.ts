@@ -30,6 +30,10 @@ export default {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
         },
+        neutral: {
+          DEFAULT: 'hsl(var(--neutral))',
+          foreground: 'hsl(var(--neutral-foreground))',
+        },
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
@@ -38,6 +42,21 @@ export default {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        // Custom colors matching the client brief
+        'mountain-green': '#C9E4CA',
+        'cambridge-blue': '#87BB82',
+        'blue-mell': '#55828B',
+        'dark-slate': '#3B6064',
+        'charcoal': '#364958',
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)'],
+        heading: ['var(--font-heading)'],
+      },
+      backgroundImage: {
+        'mountain-gradient': 'linear-gradient(to bottom, #C9E4CA, #87BB82)',
+        'sky-gradient': 'linear-gradient(to bottom, #55828B, #3B6064)',
+        'dark-gradient': 'linear-gradient(to bottom, #3B6064, #364958)',
       },
     },
   },

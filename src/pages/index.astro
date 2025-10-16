@@ -1,35 +1,40 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import ContactForm from '@/components/ContactForm';
-import { buttonVariants } from "@/components/ui/button";
+import Hero from '@/components/sections/Hero';
+import Services from '@/components/sections/Services';
+import About from '@/components/sections/About';
+import Method from '@/components/sections/Method';
+import ClimbOS from '@/components/sections/ClimbOS';
+import Newsletter from '@/components/sections/Newsletter';
+import FounderNote from '@/components/sections/FounderNote';
 ---
 
 <BaseLayout
-  title="Example title"
-  description="Example description"
+  title="climb.coach | The Entrepreneur's Performance Coach"
+  description="Break your hustle habit and design a life of constant, beautiful progress. Coaching for entrepreneurs who have already chosen to climb their mountain."
 >
-  <section class="container grid items-center gap-6 pt-6 pb-8 md:py-10">
-    <div class="flex max-w-[980px] flex-col items-start gap-2">
-      <h1
-        class="text-3xl leading-tight font-extrabold tracking-tighter md:text-4xl"
-      >
-        Example header
-      </h1>
-      <p class="text-muted-foreground max-w-[700px] text-lg">
-        Example introductory text
-      </p>
+  <Hero client:load />
+  <About client:load />
+  <Method client:load />
+  <Services client:load />
+  <ClimbOS client:load />
+  <FounderNote client:load />
+  <Newsletter client:load />
+  <section id="contact" class="py-16 bg-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="text-3xl font-heading font-bold text-charcoal mb-4">
+          Ready to Start Your Climb?
+        </h2>
+        <p class="text-lg text-dark-slate/80 mb-8">
+          Have questions about coaching or ClimbOS? Send us a message and we'll get back to you shortly.
+        </p>
+      </div>
+      <!-- KEEP ALL FORMS client:load !! DO NOT USE client:visible AS THIS CAUSES HYDRATION ISSUES!!-->
+      <div class="max-w-2xl mx-auto bg-white p-8 rounded-xl border border-mountain-green/30 shadow-sm">
+        <ContactForm client:load />
+      </div>
     </div>
-    <div class="flex gap-4">
-      <a
-        href="https://ui.shadcn.com"
-        target="_blank"
-        rel="noreferrer"
-        class={buttonVariants()}
-      >
-        Example link
-      </a>
-    </div>
-    <!-- KEEP ALL FORMS client:load !! DO NOT USE client:visible AS THIS CAUSES HYDRATION ISSUES!!-->
-    <ContactForm client:load />
   </section>
 </BaseLayout>
