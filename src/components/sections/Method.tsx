@@ -1,9 +1,8 @@
 import React from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { 
-  Compass, 
   Lightbulb, 
-  GitBranch, 
+  Network, 
   RefreshCw, 
   Users, 
   Settings, 
@@ -20,7 +19,7 @@ const Method = () => {
     },
     {
       id: "systems",
-      icon: <GitBranch className="h-6 w-6" />,
+      icon: <Network className="h-6 w-6" />,
       title: "System Thinking",
       content: "Coaching works best when paired with practical tools and frameworks. We integrate powerful systems into your daily workflow.",
     },
@@ -51,13 +50,14 @@ const Method = () => {
   ];
 
   return (
-    <section id="method" className="relative py-20 bg-gradient-to-b from-mountain-green/40 to-blue-mell/30">
-      <div className="absolute inset-0 z-0 opacity-30 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
-      <div className="absolute inset-0 z-0 opacity-25 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
+    <section id="method" className="relative py-20 bg-gradient-to-b from-dark-slate/60 to-blue-mell/50">
+      <div className="absolute inset-0 z-0 opacity-40 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-bottom"></div>
+      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/compass-bg.svg')] bg-no-repeat bg-right-top bg-contain"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-dark-slate/70 to-blue-mell/60"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block p-3 bg-mountain-green/40 rounded-full mb-4 shadow-md">
-            <Compass className="h-8 w-8 text-dark-slate" />
+            <img src="/assets/climbcoachfavicon_no_bg_nw_b15ea69e.png" alt="Climb.coach Logo" className="h-8 w-8" />
           </div>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
             The Climb Method
@@ -70,12 +70,12 @@ const Method = () => {
 
         <Tabs defaultValue="insights" className="w-full max-w-4xl mx-auto">
           <div className="flex justify-center mb-10">
-            <TabsList className="bg-mountain-green/40 p-1.5 rounded-lg shadow-md">
+            <TabsList className="bg-dark-slate/50 p-2 rounded-lg shadow-md">
               {methodPillars.map((pillar) => (
                 <TabsTrigger 
                   key={pillar.id}
                   value={pillar.id}
-                  className="data-[state=active]:bg-white data-[state=active]:text-charcoal data-[state=active]:shadow-md font-medium py-3"
+                  className="data-[state=active]:bg-white data-[state=active]:text-charcoal data-[state=active]:shadow-md font-medium text-white py-3 px-4 text-base"
                 >
                   <span className="hidden md:inline-flex items-center gap-2">
                     {React.cloneElement(pillar.icon, { className: 'h-5 w-5' })}

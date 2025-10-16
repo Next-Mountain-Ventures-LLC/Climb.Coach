@@ -8,7 +8,7 @@ const About = () => {
     <section id="about" className="relative py-24 bg-gradient-to-b from-cambridge-blue/30 to-mountain-green/50">
       <div className="absolute inset-0 z-0 opacity-30 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
       <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-mountain-green/50 to-transparent z-0"></div>
-      <div className="absolute inset-0 z-0 opacity-10 bg-[url('/mountain-path.jpg')] bg-no-repeat bg-cover bg-center"></div>
+      <div className="absolute inset-0 z-0 opacity-40 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-cover bg-center"></div>
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/70 to-mountain-green/70"></div>
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
@@ -120,7 +120,7 @@ const About = () => {
               
               <div>
                 <h3 className="text-2xl font-heading font-bold text-charcoal mb-3">
-                  About Tyson Ruer
+                  About Tyson Reuer
                 </h3>
                 <p className="text-dark-slate/90 mb-4">
                   Tyson is an entrepreneur who has founded multiple companies across tech and service sectors. 
