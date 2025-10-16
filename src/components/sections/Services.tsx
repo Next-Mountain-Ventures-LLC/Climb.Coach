@@ -47,7 +47,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="relative py-20 bg-gradient-to-b from-blue-mell/25 to-mountain-green/30">
+    <section id="services-section" className="relative py-20 bg-gradient-to-b from-blue-mell/25 to-mountain-green/30">
       <div className="absolute inset-0 z-0 opacity-25 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
