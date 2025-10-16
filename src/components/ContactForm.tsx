@@ -18,12 +18,14 @@ export default function ContactForm() {
     setSubmitStatus(null);
 
     try {
+      const formDataObj = new FormData();
+      Object.entries(formData).forEach(([key, value]) => {
+        formDataObj.append(key, value);
+      });
+      
       const response = await fetch("https://api.new.website/api/submit-form/", {
         method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        body: JSON.stringify(formData),
+        body: formDataObj,
       });
 
       if (response.ok) {

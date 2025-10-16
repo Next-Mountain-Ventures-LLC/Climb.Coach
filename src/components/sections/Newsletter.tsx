@@ -1,8 +1,41 @@
-import React from 'react';
-import { Send } from 'lucide-react';
+import React, { useState } from 'react';
+import { Send, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Newsletter = () => {
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      const formData = new FormData();
+      formData.append('email', email);
+      formData.append('form_name', 'Newsletter Signup');
+      
+      const response = await fetch('https://api.new.website/api/submit-form/', {
+        method: 'POST',
+        body: formData,
+      });
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setEmail('');
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   return (
     <section className="py-16 bg-gradient-to-b from-dark-slate/5 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,7 +50,7 @@ const Newsletter = () => {
               </p>
               <form 
                 className="space-y-4"
-                data-form-type="utility"
+                onSubmit={handleSubmit}
               >
                 <div>
                   <input 
@@ -26,13 +59,36 @@ const Newsletter = () => {
                     placeholder="Your email address"
                     aria-label="Email address"
                     className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/60 focus:outline-none focus:ring-2 focus:ring-white/30"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full bg-white hover:bg-mountain-green hover:text-charcoal text-dark-slate font-medium">
-                  <Send className="mr-2 h-4 w-4" />
-                  Subscribe
+                <Button 
+                  type="submit" 
+                  className="w-full bg-white hover:bg-mountain-green hover:text-charcoal text-dark-slate font-medium"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    'Subscribing...'
+                  ) : submitStatus === 'success' ? (
+                    <>
+                      <CheckCircle className="mr-2 h-4 w-4" />
+                      Subscribed!
+                    </>
+                  ) : (
+                    <>
+                      <Send className="mr-2 h-4 w-4" />
+                      Subscribe
+                    </>
+                  )}
                 </Button>
+                
+                {submitStatus === 'error' && (
+                  <div className="p-2 bg-red-700/80 rounded text-white text-sm text-center">
+                    Subscription failed. Please try again.
+                  </div>
+                )}
                 <p className="text-xs text-white/60 text-center">
                   We respect your privacy. Unsubscribe at any time.
                 </p>
