@@ -14,9 +14,6 @@ const About = () => {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-mell/20 rounded-full mb-4 shadow-lg">
-            <User className="h-7 w-7 text-dark-slate" />
-          </div>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
             The Entrepreneur's Performance Coach
           </h2>

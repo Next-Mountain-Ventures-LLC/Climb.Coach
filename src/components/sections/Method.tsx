@@ -57,7 +57,7 @@ const Method = () => {
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <div className="inline-block p-3 bg-mountain-green/40 rounded-full mb-4 shadow-md">
-            <img src="/assets/climbcoachfavicon_no_bg_nw_b15ea69e.png" alt="Climb.coach Logo" className="h-8 w-8" />
+            <img src="/climbcoachfavicon_no_bg_nw_b15ea69e.png" alt="Climb.coach Logo" className="h-8 w-8" />
           </div>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-4">
             The Climb Method
