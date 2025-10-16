@@ -64,7 +64,7 @@ const Services = () => {
           {services.map((service, index) => (
             <div key={index} className={`relative ${service.primary ? 'md:-mt-4 md:mb-4' : ''}`}>
               {service.primary && (
-                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-charcoal text-white px-4 py-1 rounded-full text-sm font-medium">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-charcoal text-white px-4 py-1 rounded-full text-sm font-medium z-10">
                   Most Popular
                 </div>
               )}

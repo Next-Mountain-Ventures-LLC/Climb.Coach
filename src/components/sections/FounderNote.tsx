@@ -25,7 +25,7 @@ const FounderNote = () => {
             <div className="absolute inset-0 -z-5 bg-gradient-to-r from-blue-mell/5 to-mountain-green/5 rounded-xl"></div>
             
             <div className="prose prose-lg max-w-none text-dark-slate/90">
-              <div className="bg-gradient-to-r from-charcoal/20 to-blue-mell/20 rounded-lg p-5 text-center mb-8 border border-charcoal/10 shadow-md transform hover:scale-[1.01] transition-all duration-300 cursor-pointer">
+              <div className="bg-gradient-to-r from-charcoal/20 to-blue-mell/20 rounded-lg p-4 text-center mb-6 border border-charcoal/10 shadow-md transform hover:scale-[1.01] transition-all duration-300 cursor-pointer">
                 <p className="text-xl font-heading font-bold text-charcoal">
                   The average entrepreneur loses 26 hours of productivity every week
                 </p>
@@ -35,7 +35,7 @@ const FounderNote = () => {
                 <div className="w-full bg-charcoal/10 h-1.5 rounded-full mt-4">
                   <div className="bg-blue-mell h-1.5 rounded-full w-[26%]"></div>
                 </div>
-                <p className="text-xs text-dark-slate/70 mt-2 text-right">26 hours lost / 100 hour work week</p>
+                <p className="text-xs text-dark-slate/70 mt-2 text-right"></p>
               </div>
               
               <p className="mb-4">
