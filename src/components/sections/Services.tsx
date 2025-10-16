@@ -38,7 +38,7 @@ const Services = () => {
       features: [
         '45-minute focused session',
         'Targeted problem solving',
-        'Access to ClimbOS for 1 month',
+        '',
         'Follow-up email support',
       ],
       icon: <Compass className="h-12 w-12 text-blue-mell" />,
