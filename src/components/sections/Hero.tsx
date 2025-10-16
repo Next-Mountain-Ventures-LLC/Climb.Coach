@@ -4,10 +4,16 @@ import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-mountain-green/70 to-cambridge-blue/60 py-20">
-      {/* Mountain silhouette background */}
-      <div className="absolute inset-0 z-0 opacity-35 bg-[url('/mountain-bg.svg')] bg-no-repeat bg-center bg-cover"></div>
-      {/* Compass overlay removed as requested */}
+    <section className="relative overflow-hidden py-20">
+      {/* Geometric background with clean lines */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-mountain-green/90 via-cambridge-blue/80 to-blue-mell/70"></div>
+      {/* Diagonal lines overlay for depth */}
+      <div className="absolute inset-0 z-0 opacity-10" 
+           style={{
+             backgroundImage: `repeating-linear-gradient(45deg, #ffffff, #ffffff 1px, transparent 1px, transparent 20px)`,
+             backgroundSize: '30px 30px'
+           }}
+      ></div>
       
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
