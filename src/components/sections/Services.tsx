@@ -86,7 +86,7 @@ const Services = () => {
                       </li>
                     ))}
                   </ul>
-                  <Button className={`w-full mt-8 ${service.primary ? 'bg-charcoal hover:bg-dark-slate' : 'bg-dark-slate hover:bg-charcoal'} text-white`}>
+                  <Button className="w-full mt-8" style={{ backgroundColor: service.primary ? '#364958' : '#3B6064', color: 'white' }}>
                     {service.primary ? 'Start Climbing' : 'Get Started'}
                   </Button>
                   {service.primary && (
@@ -109,7 +109,7 @@ const Services = () => {
                 <p className="text-dark-slate/80">Let's find your next summit together, no commitment required.</p>
               </div>
             </div>
-            <Button size="lg" className="whitespace-nowrap bg-charcoal hover:bg-dark-slate text-white">
+            <Button size="lg" className="whitespace-nowrap" style={{ backgroundColor: '#364958', color: 'white' }}>
               Book Your Free Sessions
             </Button>
           </div>

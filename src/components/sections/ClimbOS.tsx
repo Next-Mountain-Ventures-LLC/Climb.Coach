@@ -81,7 +81,7 @@ const ClimbOS = () => {
                   Most coaching sessions end with insights that quickly fade. ClimbOS ensures your 
                   insights become lasting change by embedding them into your daily workflow.
                 </p>
-                <Button className="mt-2 bg-charcoal hover:bg-dark-slate text-white group">
+                <Button className="mt-2 group" style={{ backgroundColor: '#364958', color: 'white' }}>
                   See ClimbOS in Action
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
@@ -138,7 +138,7 @@ const ClimbOS = () => {
                     <div className="text-xs text-charcoal/70 uppercase font-medium mb-2">Next Summit Meeting</div>
                     <div className="flex items-center justify-between">
                       <div className="text-sm font-medium text-charcoal">Thursday, 10:00 AM</div>
-                      <Button variant="outline" size="sm" className="text-xs border-dark-slate text-dark-slate h-7">
+                      <Button variant="outline" size="sm" className="text-xs h-7" style={{ borderColor: '#3B6064', color: '#3B6064' }}>
                         Prepare
                       </Button>
                     </div>

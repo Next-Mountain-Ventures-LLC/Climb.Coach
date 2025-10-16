@@ -21,13 +21,13 @@ const Hero = () => {
               Stop trying to get more stuff done and start getting the right things done.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-charcoal hover:bg-dark-slate text-white group transition-all duration-300 font-heading">
+              <Button size="lg" className="group transition-all duration-300 font-heading" style={{ backgroundColor: '#364958', color: 'white' }}>
                 Start Climbing
                 <span className="ml-2 group-hover:translate-x-1 transition-transform">
                   <ArrowRight size={18} />
                 </span>
               </Button>
-              <Button size="lg" variant="outline" className="border-dark-slate text-dark-slate hover:bg-dark-slate hover:text-white font-heading">
+              <Button size="lg" variant="outline" className="font-heading" style={{ borderColor: '#3B6064', color: '#3B6064', ':hover': { backgroundColor: '#3B6064', color: 'white' } }}>
                 Talk with a Coach
               </Button>
             </div>
