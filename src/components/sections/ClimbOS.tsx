@@ -91,62 +91,30 @@ const ClimbOS = () => {
             </div>
           </div>
           
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative">
+          <div className="lg:col-span-5 flex flex-col items-center space-y-4 justify-center">
+            {/* Main ClimbOS screenshot with glow effect */}
+            <div className="relative max-w-md w-full">
               <div className="absolute -inset-4 bg-gradient-to-br from-mountain-green/50 to-blue-mell/50 rounded-xl blur-md opacity-70"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm rounded-lg border border-mountain-green/40 shadow-xl overflow-hidden">
-                <div className="bg-dark-slate p-4 flex items-center space-x-2">
-                  <div className="flex space-x-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  </div>
-                  <div className="text-xs text-white/90 font-medium">ClimbOS Dashboard</div>
-                </div>
-                
-                <div className="p-5">
-                  <div className="grid grid-cols-3 gap-3 mb-4">
-                    <div className="bg-mountain-green/20 rounded p-3 text-center">
-                      <div className="text-sm font-medium text-charcoal">Weekly Tasks</div>
-                      <div className="text-xl font-bold text-dark-slate mt-1">12/15</div>
-                    </div>
-                    <div className="bg-cambridge-blue/20 rounded p-3 text-center">
-                      <div className="text-sm font-medium text-charcoal">Habits</div>
-                      <div className="text-xl font-bold text-dark-slate mt-1">8/10</div>
-                    </div>
-                    <div className="bg-blue-mell/20 rounded p-3 text-center">
-                      <div className="text-sm font-medium text-charcoal">Focus Score</div>
-                      <div className="text-xl font-bold text-dark-slate mt-1">87%</div>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-3 mb-4">
-                    <div className="bg-gray-100 rounded p-3">
-                      <div className="text-xs text-charcoal/70 uppercase font-medium mb-1">Current Goal</div>
-                      <div className="text-sm font-medium text-charcoal">Launch new product feature by Nov 15</div>
-                      <div className="w-full bg-gray-200 h-2 rounded mt-2">
-                        <div className="bg-dark-slate h-2 rounded" style={{ width: '65%' }}></div>
-                      </div>
-                      <div className="text-xs text-right mt-1 text-charcoal/70">65% complete</div>
-                    </div>
-                    
-                    <div className="bg-gray-100 rounded p-3">
-                      <div className="text-xs text-charcoal/70 uppercase font-medium mb-1">Weekly Focus</div>
-                      <div className="text-sm font-medium text-charcoal">Complete user testing and gather feedback</div>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-mountain-green/10 rounded p-3">
-                    <div className="text-xs text-charcoal/70 uppercase font-medium mb-2">Next Summit Meeting</div>
-                    <div className="flex items-center justify-between">
-                      <div className="text-sm font-medium text-charcoal">Thursday, 10:00 AM</div>
-                      <Button variant="outline" size="sm" className="text-xs h-7" style={{ borderColor: '#3B6064', color: '#3B6064' }}>
-                        Prepare
-                      </Button>
-                    </div>
-                  </div>
-                </div>
+              <div className="relative rounded-lg border border-mountain-green/40 shadow-xl overflow-hidden">
+                <img 
+                  src="/climbos-full_nw_b5c1a3a3.jpeg" 
+                  alt="ClimbOS task management interface" 
+                  className="w-full h-auto rounded-lg shadow-md"
+                />
               </div>
+              <div className="text-xs text-center text-dark-slate/70 mt-2">ClimbOS task management interface</div>
+            </div>
+            
+            {/* Mobile view screenshot */}
+            <div className="max-w-[200px] w-full mt-6">
+              <div className="rounded-lg border border-mountain-green/30 shadow-lg overflow-hidden">
+                <img 
+                  src="/climbos-mobile_nw_5a3f1499.jpeg" 
+                  alt="ClimbOS mobile view" 
+                  className="w-full h-auto rounded-lg"
+                />
+              </div>
+              <div className="text-xs text-center text-dark-slate/70 mt-2">Mobile-friendly interface</div>
             </div>
           </div>
         </div>
