@@ -41,7 +41,7 @@ const ClimbOS = () => {
       <div className="absolute inset-0 z-0 bg-[url('/compass-bg.svg')] bg-no-repeat bg-left bg-contain opacity-20"></div>
       <div className="absolute inset-0 z-0 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/50"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-7">
             <div className="max-w-xl">
               <div className="inline-flex items-center bg-mountain-green/40 rounded-full py-1.5 px-4 mb-6 shadow-md">
@@ -91,9 +91,9 @@ const ClimbOS = () => {
             </div>
           </div>
           
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
+          <div className="lg:col-span-5 flex flex-col items-center lg:pt-20 hidden lg:flex">
             {/* ClimbOS mobile screenshot with glow effect */}
-            <div className="relative max-w-sm w-full">
+            <div className="relative max-w-[280px] w-full">
               <div className="absolute -inset-4 bg-gradient-to-br from-mountain-green/50 to-blue-mell/50 rounded-xl blur-md opacity-70"></div>
               <div className="relative rounded-lg border border-mountain-green/40 shadow-xl overflow-hidden">
                 <img 
