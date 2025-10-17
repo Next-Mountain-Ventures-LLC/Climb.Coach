@@ -91,30 +91,18 @@ const ClimbOS = () => {
             </div>
           </div>
           
-          <div className="lg:col-span-5 flex flex-col items-center space-y-4 justify-center">
-            {/* Main ClimbOS screenshot with glow effect */}
-            <div className="relative max-w-md w-full">
+          <div className="lg:col-span-5 flex flex-col items-center justify-center">
+            {/* ClimbOS mobile screenshot with glow effect */}
+            <div className="relative max-w-sm w-full">
               <div className="absolute -inset-4 bg-gradient-to-br from-mountain-green/50 to-blue-mell/50 rounded-xl blur-md opacity-70"></div>
               <div className="relative rounded-lg border border-mountain-green/40 shadow-xl overflow-hidden">
                 <img 
-                  src="/climbos-full_nw_b5c1a3a3.jpeg" 
-                  alt="ClimbOS task management interface" 
+                  src="/climbos-mobile_nw_5a3f1499.jpeg" 
+                  alt="ClimbOS mobile interface" 
                   className="w-full h-auto rounded-lg shadow-md"
                 />
               </div>
-              <div className="text-xs text-center text-dark-slate/70 mt-2">ClimbOS task management interface</div>
-            </div>
-            
-            {/* Mobile view screenshot */}
-            <div className="max-w-[200px] w-full mt-6">
-              <div className="rounded-lg border border-mountain-green/30 shadow-lg overflow-hidden">
-                <img 
-                  src="/climbos-mobile_nw_5a3f1499.jpeg" 
-                  alt="ClimbOS mobile view" 
-                  className="w-full h-auto rounded-lg"
-                />
-              </div>
-              <div className="text-xs text-center text-dark-slate/70 mt-2">Mobile-friendly interface</div>
+              <div className="text-sm text-center text-dark-slate/80 mt-3 font-medium">ClimbOS task management interface</div>
             </div>
           </div>
         </div>
