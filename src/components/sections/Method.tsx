@@ -19,7 +19,7 @@ const Method = () => {
     {
       id: "systems",
       icon: <Network className="h-6 w-6" />,
-      title: "System Thinking",
+      title: "Systems Thinking",
       content: "Coaching works best when paired with practical tools and frameworks. We integrate powerful systems into your daily workflow.",
     },
     {
