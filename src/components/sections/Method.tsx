@@ -25,7 +25,7 @@ const Method = () => {
     {
       id: "identity",
       icon: <RefreshCw className="h-6 w-6" />,
-      title: "Identity-Based Design",
+      title: "Identity-Based  Design",
       content: "When you know who you are, you know what to do. We help you align your actions with your core values and aspirations.",
     },
     {
