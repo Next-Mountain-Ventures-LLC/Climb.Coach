@@ -14,7 +14,7 @@ const Method = () => {
       id: "insights",
       icon: <Lightbulb className="h-6 w-6" />,
       title: "Integrated Insights",
-      content: "Today's insights become tomorrow's advantage. We help you capture and apply learnings systematically, creating a compounding effect over time.",
+      content: "Today's insights become tomorrow's advantage. We help you capture insights and turn them into action.",
     },
     {
       id: "systems",
