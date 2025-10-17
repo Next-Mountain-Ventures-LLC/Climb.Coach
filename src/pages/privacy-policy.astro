@@ -1,0 +1,135 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { Shield, Info } from 'lucide-react';
+---
+
+<BaseLayout
+  title="Privacy Policy | Climb.Coach"
+  description="Learn how Climb.Coach collects, uses, and protects your personal information."
+>
+  <section class="relative py-16 md:py-24 bg-gradient-to-b from-mountain-green/10 to-cambridge-blue/10">
+    <div class="absolute inset-0 z-0 opacity-15 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
+    <div class="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto">
+        <div class="inline-flex items-center bg-mountain-green/40 rounded-full py-1.5 px-4 mb-6 shadow-md">
+          <Shield className="h-4 w-4 text-blue-mell mr-2" />
+          <span class="text-xs font-medium text-dark-slate">OUR COMMITMENT TO YOU</span>
+        </div>
+
+        <h1 class="text-3xl md:text-5xl font-heading font-bold text-charcoal mb-4">
+          Privacy Policy
+        </h1>
+        
+        <div class="flex items-center mb-8 text-dark-slate/80 text-sm md:text-base">
+          <span class="flex items-center">
+            <Info className="h-4 w-4 mr-1.5" />
+            Effective Date: October 17, 2025
+          </span>
+          <span class="mx-3">•</span>
+          <span>Last Updated: October 17, 2025</span>
+        </div>
+
+        <div class="prose prose-lg max-w-none text-dark-slate/90">
+          <p class="lead">
+            At Climb.Coach, your privacy matters. We're committed to protecting your personal information and maintaining transparency about how it's used. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website, participate in coaching programs, or engage with our materials and systems.
+          </p>
+
+          <hr class="my-10 border-mountain-green/30" />
+
+          <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-md border border-mountain-green/30 mb-10">
+            <h2 class="text-2xl font-heading font-bold text-charcoal mb-4">1. Information We Collect</h2>
+            <p>We collect both personal and non-personal information to help us deliver a quality coaching experience.</p>
+            
+            <h3 class="text-xl font-heading font-semibold text-charcoal mt-6 mb-3">Information You Provide</h3>
+            <ul>
+              <li>When you register for coaching, programs, or digital resources</li>
+              <li>When you fill out forms, reflections, or assessments</li>
+              <li>When you make purchases or access private materials</li>
+            </ul>
+            
+            <p class="mt-3">Examples include:</p>
+            <ul>
+              <li>Name, general contact details, and demographic information</li>
+              <li>Payment data (processed securely via third-party systems)</li>
+              <li>Coaching-related responses or notes you voluntarily provide</li>
+            </ul>
+
+            <h3 class="text-xl font-heading font-semibold text-charcoal mt-6 mb-3">Information Collected Automatically</h3>
+            <p>We may collect non-personal data such as:</p>
+            <ul>
+              <li>Browser type, device, and operating system</li>
+              <li>Website usage, pages visited, and time spent on site</li>
+              <li>Cookies and analytics data for performance improvement</li>
+            </ul>
+          </div>
+
+          <hr class="my-10 border-mountain-green/30" />
+
+          <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-md border border-mountain-green/30 mb-10">
+            <h2 class="text-2xl font-heading font-bold text-charcoal mb-4">2. How We Use Information</h2>
+            <p>Your information is used to:</p>
+            <ul>
+              <li>Deliver coaching sessions, digital content, and resources</li>
+              <li>Process payments and manage your account access</li>
+              <li>Improve the quality and relevance of our materials</li>
+              <li>Analyze engagement trends to refine the Climb.Coach experience</li>
+              <li>Ensure secure and reliable service delivery</li>
+            </ul>
+            
+            <p class="mt-4 font-medium">We do not sell or rent your personal information.</p>
+          </div>
+
+          <hr class="my-10 border-mountain-green/30" />
+
+          <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-md border border-mountain-green/30 mb-10">
+            <h2 class="text-2xl font-heading font-bold text-charcoal mb-4">3. Use of Coaching Data</h2>
+            <p>All information shared within coaching sessions, onboarding forms, reflection exercises, or program materials is treated as confidential.</p>
+            <ul>
+              <li><span class="font-semibold">Confidentiality:</span> Notes, insights, and reflections you share are used solely to support your personal growth and coaching outcomes.</li>
+              <li><span class="font-semibold">Storage:</span> Coaching data is securely stored within our internal workspace hosted on Notion, a trusted platform used for program organization and documentation.</li>
+              <li><span class="font-semibold">Access:</span> Only authorized Climb.Coach team members involved in delivering or supporting your coaching experience have access to this information.</li>
+              <li><span class="font-semibold">Automation:</span> Limited data may pass through Zapier to automate scheduling, reminders, or workflow tasks. These automations do not analyze or share the content of coaching notes.</li>
+              <li><span class="font-semibold">Anonymized Use:</span> In some cases, de-identified, aggregated insights may be used for program improvement or research purposes — never in a way that personally identifies you.</li>
+            </ul>
+            
+            <p class="mt-4">We uphold strict ethical standards and ensure that your coaching information remains private, secure, and used only for its intended purpose.</p>
+          </div>
+
+          <hr class="my-10 border-mountain-green/30" />
+
+          <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-md border border-mountain-green/30 mb-10">
+            <h2 class="text-2xl font-heading font-bold text-charcoal mb-4">4. Data Protection</h2>
+            <p>We implement reasonable administrative, technical, and physical safeguards to protect your information. This includes SSL encryption, secure platform integrations, and limited data access based on role.</p>
+            <p class="mt-4">No online system can guarantee complete security, but we maintain best practices to minimize risk.</p>
+          </div>
+
+          <hr class="my-10 border-mountain-green/30" />
+
+          <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-md border border-mountain-green/30 mb-10">
+            <h2 class="text-2xl font-heading font-bold text-charcoal mb-4">5. Cookies and Analytics</h2>
+            <p>Cookies and analytics tools help us understand how visitors use our site and improve your experience.</p>
+            <p class="mt-2">They may be used to:</p>
+            <ul>
+              <li>Remember preferences and optimize navigation</li>
+              <li>Track anonymous usage data and performance metrics</li>
+            </ul>
+            <p class="mt-4">You may disable cookies through your browser settings, though certain features may not function as intended.</p>
+          </div>
+
+          <hr class="my-10 border-mountain-green/30" />
+
+          <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-md border border-mountain-green/30 mb-10">
+            <h2 class="text-2xl font-heading font-bold text-charcoal mb-4">6. Third-Party Services</h2>
+            <p>We partner with trusted third-party providers to support our services:</p>
+            <ul>
+              <li><span class="font-semibold">Stripe</span> — for secure payment processing</li>
+              <li><span class="font-semibold">Notion</span> — for organization, content delivery, and confidential coaching documentation</li>
+              <li><span class="font-semibold">Zapier</span> — for automated workflows and integrations between tools</li>
+            </ul>
+            <p class="mt-4">Each provider maintains its own privacy practices and complies with relevant data protection standards.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
