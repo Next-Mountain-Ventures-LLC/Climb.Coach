@@ -43,7 +43,7 @@ const FounderNote = () => {
               </p>
               
               <p className="mb-4">
-                What scares me about the stat above is that even if you claw back those 26 lost hours, if you make the wrong calls on where to spend them—on things misaligned with your values or strategic goals—then all of your time, attention, and energy for the week may still be wasted.
+                Even if you claw back those 26 lost hours, if you make the wrong calls on where to spend them—on things misaligned with your values or strategic goals—then all of your time, attention, and energy for the week may still be wasted.
               </p>
               
               <p className="mb-4">
