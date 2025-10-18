@@ -82,20 +82,30 @@ export default function MobileMenu() {
       {/* Mobile menu - full page with simple top-down layout */}
       <div 
         id="mobile-menu" 
-        className={`md:hidden fixed inset-0 z-50 bg-white transform transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`md:hidden fixed inset-0 z-50 bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur transform transition-opacity duration-200 ease-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         style={{ 
           height: '100vh',
           width: '100vw',
-          overflowY: 'auto' // Allow scrolling if needed
+          overflowY: 'auto', // Allow scrolling if needed
         }}
       >
         <div className="min-h-screen flex flex-col">
-          {/* Header */}
-          <div className="py-6 px-6 border-b border-mountain-green/20 flex justify-between items-center">
-            <img src={logo.src} alt="Climb.Coach" width={180} height={40} className="h-10 w-auto" />
+          {/* Header - Exactly matching main header dimensions */}
+          <div 
+            className="h-16 border-b border-mountain-green/30 flex justify-between items-center px-4 sm:px-6"
+            style={{
+              position: 'sticky',
+              top: 0,
+              backgroundColor: 'rgba(255, 255, 255, 0.95)',
+              backdropFilter: 'blur(8px)'
+            }}
+          >
+            <div className="flex items-center space-x-2">
+              <img src={logo.src} alt="Climb.Coach" width={180} height={40} className="h-10 w-auto" />
+            </div>
             <button
               onClick={toggleMenu}
-              className="p-2 text-charcoal hover:bg-mountain-green/20 rounded-full transition-colors"
+              className="p-2 text-charcoal hover:bg-mountain-green/20 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mountain-green"
               aria-label="Close menu"
             >
               <svg 
