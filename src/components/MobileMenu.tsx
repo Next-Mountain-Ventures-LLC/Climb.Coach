@@ -129,58 +129,61 @@ export default function MobileMenu() {
             </button>
           </div>
           
-          {/* Main nav menu - centered on screen with fixed spacing */}
-          <div className="flex flex-col items-center justify-center flex-1">
-            <nav className="w-full max-w-md px-6">
-              <div className="space-y-8">
-                <a
-                  href="#about"
-                  className="block py-3 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
-                  onClick={toggleMenu}
-                >
-                  About
-                </a>
-                <a
-                  href="#method"
-                  className="block py-3 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
-                  onClick={toggleMenu}
-                >
-                  The Climb Method
-                </a>
-                <a
-                  href="#services"
-                  className="block py-3 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
-                  onClick={toggleMenu}
-                >
-                  Pricing
-                </a>
-                <a
-                  href="#climbos"
-                  className="block py-3 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
-                  onClick={toggleMenu}
-                >
-                  ClimbOS
-                </a>
-              </div>
-            </nav>
-          </div>
-          
-          <div className="p-6 border-t border-mountain-green/20">
-            <a
-              href="#services"
-              className="w-full flex items-center justify-center rounded-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-16 px-6 py-2 text-xl"
-              style={{ 
-                backgroundColor: '#364958',
-                boxShadow: '0 4px 6px rgba(54, 73, 88, 0.25)' 
-              }}
-              onClick={toggleMenu}
-            >
-              Start Free Trial
-            </a>
+          {/* Main nav menu and CTA in a non-scrollable container */}
+          <div className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex flex-col items-center justify-center py-4 flex-1">
+              <nav className="w-full max-w-md px-6">
+                <div className="space-y-7">
+                  <a
+                    href="#about"
+                    className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
+                    onClick={toggleMenu}
+                  >
+                    About
+                  </a>
+                  <a
+                    href="#method"
+                    className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
+                    onClick={toggleMenu}
+                  >
+                    The Climb Method
+                  </a>
+                  <a
+                    href="#services"
+                    className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
+                    onClick={toggleMenu}
+                  >
+                    Pricing
+                  </a>
+                  <a
+                    href="#climbos"
+                    className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
+                    onClick={toggleMenu}
+                  >
+                    ClimbOS
+                  </a>
+                </div>
+              </nav>
+            </div>
             
-            <p className="text-sm text-center mt-4 text-charcoal/70 font-medium">
-              First month free - No credit card required
-            </p>
+            {/* CTA Button - Always visible at bottom */}
+            <div className="p-6 border-t border-mountain-green/20 flex-shrink-0">
+              <a
+                href="https://buy.stripe.com/4gM00kgix9gKfyU9Cogfu02"
+                className="w-full flex items-center justify-center rounded-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-16 px-6 py-2 text-xl"
+                style={{ 
+                  backgroundColor: '#364958',
+                  boxShadow: '0 4px 6px rgba(54, 73, 88, 0.25)' 
+                }}
+                onClick={toggleMenu}
+              >
+                Start Free Trial
+              </a>
+              
+              <p className="text-sm text-center mt-4 text-charcoal/70 font-medium">
+                First month free - No credit card required
+              </p>
+            </div>
           </div>
         </div>
       </div>
