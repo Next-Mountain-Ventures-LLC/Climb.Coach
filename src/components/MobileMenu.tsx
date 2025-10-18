@@ -79,42 +79,65 @@ export default function MobileMenu() {
         </svg>
       </button>
 
-      {/* Mobile menu - slide out panel */}
+      {/* Mobile menu - full page */}
       <div 
         id="mobile-menu" 
-        className={`md:hidden fixed top-0 right-0 bottom-0 z-50 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out ${isOpen ? '' : 'translate-x-full hidden'} border-l border-mountain-green/30`}
+        className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 w-full h-full bg-white transform transition-transform duration-300 ease-in-out ${isOpen ? '' : 'translate-y-full hidden'}`}
       >
-        <div className="flex flex-col h-full">
-          <div className="py-6 px-4 border-b border-mountain-green/20">
-            <img src={logo.src} alt="Climb.Coach" width={120} height={30} className="h-8 w-auto mx-auto" />
+        <div className="flex flex-col h-full max-w-screen-lg mx-auto">
+          <div className="py-6 px-6 border-b border-mountain-green/20 flex justify-between items-center">
+            <img src={logo.src} alt="Climb.Coach" width={180} height={40} className="h-10 w-auto" />
+            {/* Close button in header */}
+            <button
+              onClick={toggleMenu}
+              className="p-2 text-charcoal hover:bg-mountain-green/20 rounded-full transition-colors"
+              aria-label="Close menu"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="24" 
+                height="24" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                className="h-6 w-6" 
+                aria-hidden="true"
+              >
+                <path d="M18 6 6 18" />
+                <path d="m6 6 12 12" />
+              </svg>
+            </button>
           </div>
           
-          <nav className="flex flex-col flex-1 px-4 py-6 overflow-y-auto">
-            <div className="space-y-6">
+          <nav className="flex flex-col flex-1 px-6 py-12 overflow-y-auto">
+            <div className="space-y-10">
               <a
                 href="#about"
-                className="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
+                className="block py-3 text-xl font-medium text-charcoal hover:text-blue-mell transition-colors"
                 onClick={toggleMenu}
               >
                 About
               </a>
               <a
                 href="#method"
-                className="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
+                className="block py-3 text-xl font-medium text-charcoal hover:text-blue-mell transition-colors"
                 onClick={toggleMenu}
               >
                 The Climb Method
               </a>
               <a
                 href="#services"
-                className="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
+                className="block py-3 text-xl font-medium text-charcoal hover:text-blue-mell transition-colors"
                 onClick={toggleMenu}
               >
                 Pricing
               </a>
               <a
                 href="#climbos"
-                className="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
+                className="block py-3 text-xl font-medium text-charcoal hover:text-blue-mell transition-colors"
                 onClick={toggleMenu}
               >
                 ClimbOS
@@ -122,10 +145,10 @@ export default function MobileMenu() {
             </div>
           </nav>
           
-          <div className="p-4 border-t border-mountain-green/20">
+          <div className="p-6 border-t border-mountain-green/20">
             <a
               href="#services"
-              className="w-full flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-10 px-6 py-2"
+              className="w-full flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-14 px-6 py-2 text-lg"
               style={{ backgroundColor: '#364958' }}
               onClick={toggleMenu}
             >
@@ -139,12 +162,7 @@ export default function MobileMenu() {
         </div>
       </div>
 
-      {/* Backdrop overlay */}
-      <div 
-        id="mobile-menu-backdrop" 
-        className={`md:hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm transition-opacity duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 hidden'}`}
-        onClick={toggleMenu}
-      />
+      {/* We don't need a separate backdrop for a full-page menu */}
     </>
   );
 }
