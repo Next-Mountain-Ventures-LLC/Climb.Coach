@@ -9,48 +9,88 @@ import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
   document.addEventListener('DOMContentLoaded', () => {
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
     const menuIcon = mobileMenuToggle?.querySelector('svg:first-child');
     const closeIcon = mobileMenuToggle?.querySelector('svg:last-child');
     const body = document.body;
     
-    if (mobileMenuToggle && mobileMenu && menuIcon && closeIcon) {
-      mobileMenuToggle.addEventListener('click', () => {
-        const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
-        const newExpanded = !expanded;
+    if (mobileMenuToggle && mobileMenu && mobileMenuBackdrop && menuIcon && closeIcon) {
+      const openMenu = () => {
+        // Set aria-expanded to true
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
         
-        // Toggle aria-expanded attribute
-        mobileMenuToggle.setAttribute('aria-expanded', newExpanded.toString());
+        // Show backdrop
+        mobileMenuBackdrop.classList.remove('hidden');
+        setTimeout(() => {
+          mobileMenuBackdrop.classList.add('opacity-100');
+          mobileMenuBackdrop.classList.remove('opacity-0');
+        }, 10);
         
-        // Toggle menu visibility
-        mobileMenu.classList.toggle('hidden', !newExpanded);
-        mobileMenu.classList.toggle('flex', newExpanded);
+        // Show menu
+        mobileMenu.classList.remove('hidden');
+        setTimeout(() => {
+          mobileMenu.classList.remove('translate-x-full');
+        }, 10);
         
-        // Toggle body scroll
-        body.classList.toggle('overflow-hidden', newExpanded);
+        // Prevent body scroll
+        body.classList.add('overflow-hidden');
         
         // Toggle icons
-        menuIcon.classList.toggle('hidden', newExpanded);
-        menuIcon.classList.toggle('block', !newExpanded);
-        closeIcon.classList.toggle('hidden', !newExpanded);
-        closeIcon.classList.toggle('block', newExpanded);
+        menuIcon.classList.add('hidden');
+        menuIcon.classList.remove('block');
+        closeIcon.classList.remove('hidden');
+        closeIcon.classList.add('block');
+      };
+      
+      const closeMenu = () => {
+        // Set aria-expanded to false
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        
+        // Hide menu with animation
+        mobileMenu.classList.add('translate-x-full');
+        
+        // Hide backdrop with animation
+        mobileMenuBackdrop.classList.add('opacity-0');
+        mobileMenuBackdrop.classList.remove('opacity-100');
+        
+        // After animation completes
+        setTimeout(() => {
+          mobileMenu.classList.add('hidden');
+          mobileMenuBackdrop.classList.add('hidden');
+          body.classList.remove('overflow-hidden');
+        }, 300);
+        
+        // Toggle icons
+        menuIcon.classList.remove('hidden');
+        menuIcon.classList.add('block');
+        closeIcon.classList.add('hidden');
+        closeIcon.classList.remove('block');
+      };
+      
+      // Toggle menu
+      mobileMenuToggle.addEventListener('click', () => {
+        const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
       });
+      
+      // Close menu when clicking on backdrop
+      mobileMenuBackdrop.addEventListener('click', closeMenu);
       
       // Close menu when clicking on a link
       const mobileLinks = mobileMenu.querySelectorAll('a');
       mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          // Set menu to closed state
-          mobileMenuToggle.setAttribute('aria-expanded', 'false');
-          mobileMenu.classList.add('hidden');
-          mobileMenu.classList.remove('flex');
-          body.classList.remove('overflow-hidden');
-          
-          // Show menu icon, hide close icon
-          menuIcon.classList.remove('hidden');
-          menuIcon.classList.add('block');
-          closeIcon.classList.add('hidden');
-          closeIcon.classList.remove('block');
-        });
+        link.addEventListener('click', closeMenu);
+      });
+      
+      // Close menu when pressing escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && mobileMenuToggle.getAttribute('aria-expanded') === 'true') {
+          closeMenu();
+        }
       });
     }
   });
@@ -67,7 +107,7 @@ import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
         <Image src={logo} alt="Climb.Coach" width={180} height={40} class="h-10 w-auto" />
       </a>
     </div>
-    <div class="flex flex-1 items-center justify-end space-x-4">
+    <div class="flex flex-1 items-center justify-end">
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-6 font-medium text-charcoal">
         <a
@@ -99,13 +139,22 @@ import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
       <!-- Desktop CTA -->
       <a
         href="#services"
-        class="hidden md:inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-9 px-4 py-2"
+        class="hidden md:inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-9 px-4 py-2 ml-6 whitespace-nowrap"
         style="background-color: #364958;"
       >
         Start Free Trial
       </a>
       
-      <!-- Mobile Menu Button -->
+      <!-- Mobile CTA - smaller and more compact -->
+      <a
+        href="#services"
+        class="md:hidden inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-8 px-3 py-1 text-xs mr-2 whitespace-nowrap"
+        style="background-color: #364958;"
+      >
+        Start Trial
+      </a>
+      
+      <!-- Mobile Menu Button - positioned at far right -->
       <button
         id="mobile-menu-toggle"
         type="button"
@@ -126,47 +175,46 @@ import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
           <path d="m6 6 12 12" />
         </svg>
       </button>
-      
-      <!-- Mobile CTA - smaller and more compact -->
-      <a
-        href="#services"
-        class="md:hidden inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-8 px-3 py-1 text-xs"
-        style="background-color: #364958;"
-      >
-        Start Trial
-      </a>
     </div>
   </div>
   
-  <!-- Mobile menu, show/hide based on menu state -->
-  <div id="mobile-menu" class="md:hidden hidden fixed inset-0 z-50 bg-background/95 backdrop-blur-sm flex-col justify-start pt-16 px-4 pb-8 overflow-y-auto">
-    <nav class="flex flex-col items-center space-y-8 font-medium text-lg text-charcoal mt-10">
-      <a
-        href="#about"
-        class="w-full text-center py-2 hover:text-blue-mell transition-colors"
-      >
-        About
-      </a>
-      <a
-        href="#method"
-        class="w-full text-center py-2 hover:text-blue-mell transition-colors"
-      >
-        The Climb Method
-      </a>
-      <a
-        href="#services"
-        class="w-full text-center py-2 hover:text-blue-mell transition-colors"
-      >
-        Pricing
-      </a>
-      <a
-        href="#climbos"
-        class="w-full text-center py-2 hover:text-blue-mell transition-colors"
-      >
-        ClimbOS
-      </a>
+  <!-- Mobile menu - slide out from right -->
+  <div id="mobile-menu" class="md:hidden hidden fixed top-0 right-0 bottom-0 z-50 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out translate-x-full border-l border-mountain-green/30">
+    <div class="flex flex-col h-full">
+      <div class="py-6 px-4 border-b border-mountain-green/20">
+        <Image src={logo} alt="Climb.Coach" width={120} height={30} class="h-8 w-auto mx-auto" />
+      </div>
       
-      <div class="w-full pt-6 mt-6 border-t border-mountain-green/30">
+      <nav class="flex flex-col flex-1 px-4 py-6 overflow-y-auto">
+        <div class="space-y-6">
+          <a
+            href="#about"
+            class="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
+          >
+            About
+          </a>
+          <a
+            href="#method"
+            class="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
+          >
+            The Climb Method
+          </a>
+          <a
+            href="#services"
+            class="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
+          >
+            Pricing
+          </a>
+          <a
+            href="#climbos"
+            class="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
+          >
+            ClimbOS
+          </a>
+        </div>
+      </nav>
+      
+      <div class="p-4 border-t border-mountain-green/20">
         <a
           href="#services"
           class="w-full flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-10 px-6 py-2"
@@ -179,6 +227,9 @@ import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
           First month free - No credit card required
         </p>
       </div>
-    </nav>
+    </div>
   </div>
+  
+  <!-- Backdrop overlay for mobile menu -->
+  <div id="mobile-menu-backdrop" class="md:hidden hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm transition-opacity duration-300 ease-in-out opacity-0"></div>
 </header>
