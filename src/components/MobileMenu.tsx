@@ -82,9 +82,26 @@ export default function MobileMenu() {
       {/* Mobile menu - full page */}
       <div 
         id="mobile-menu" 
-        className={`md:hidden fixed top-0 left-0 right-0 bottom-0 z-50 w-full h-full bg-white transform transition-transform duration-300 ease-in-out ${isOpen ? '' : 'translate-y-full hidden'}`}
+        className={`md:hidden fixed inset-0 z-50 bg-white transform transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        style={{ 
+          height: '100vh',
+          width: '100vw',
+          display: 'flex',
+          flexDirection: 'column',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
+        }}
       >
-        <div className="flex flex-col h-full max-w-screen-lg mx-auto">
+        {/* Solid background to prevent content bleeding through */}
+        <div 
+          className="absolute inset-0 bg-white" 
+          style={{ zIndex: -1 }}
+        />
+        
+        <div className="flex flex-col h-full w-full">
           <div className="py-6 px-6 border-b border-mountain-green/20 flex justify-between items-center">
             <img src={logo.src} alt="Climb.Coach" width={180} height={40} className="h-10 w-auto" />
             {/* Close button in header */}
@@ -112,38 +129,41 @@ export default function MobileMenu() {
             </button>
           </div>
           
-          <nav className="flex flex-col flex-1 px-6 py-12 overflow-y-auto">
-            <div className="space-y-10">
-              <a
-                href="#about"
-                className="block py-3 text-xl font-medium text-charcoal hover:text-blue-mell transition-colors"
-                onClick={toggleMenu}
-              >
-                About
-              </a>
-              <a
-                href="#method"
-                className="block py-3 text-xl font-medium text-charcoal hover:text-blue-mell transition-colors"
-                onClick={toggleMenu}
-              >
-                The Climb Method
-              </a>
-              <a
-                href="#services"
-                className="block py-3 text-xl font-medium text-charcoal hover:text-blue-mell transition-colors"
-                onClick={toggleMenu}
-              >
-                Pricing
-              </a>
-              <a
-                href="#climbos"
-                className="block py-3 text-xl font-medium text-charcoal hover:text-blue-mell transition-colors"
-                onClick={toggleMenu}
-              >
-                ClimbOS
-              </a>
-            </div>
-          </nav>
+          {/* Main nav menu - centered on screen with fixed spacing */}
+          <div className="flex flex-col items-center justify-center flex-1">
+            <nav className="w-full max-w-md px-6">
+              <div className="space-y-8">
+                <a
+                  href="#about"
+                  className="block py-3 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
+                  onClick={toggleMenu}
+                >
+                  About
+                </a>
+                <a
+                  href="#method"
+                  className="block py-3 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
+                  onClick={toggleMenu}
+                >
+                  The Climb Method
+                </a>
+                <a
+                  href="#services"
+                  className="block py-3 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
+                  onClick={toggleMenu}
+                >
+                  Pricing
+                </a>
+                <a
+                  href="#climbos"
+                  className="block py-3 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
+                  onClick={toggleMenu}
+                >
+                  ClimbOS
+                </a>
+              </div>
+            </nav>
+          </div>
           
           <div className="p-6 border-t border-mountain-green/20">
             <a
