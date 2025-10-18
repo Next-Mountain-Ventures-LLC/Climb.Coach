@@ -2,22 +2,10 @@
 import { buttonVariants } from "@/components/ui/button";
 import { Image } from "astro:assets";
 import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
+import MobileMenu from "./MobileMenu";
 ---
 
-<!-- Handling mobile menu with inline JS handlers for maximum compatibility -->
-<script is:inline>
-  // Only add this one event listener for the Escape key
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-      
-      if (mobileMenu && !mobileMenu.classList.contains('hidden') && mobileMenuToggle) {
-        mobileMenuToggle.click();
-      }
-    }
-  });
-</script>
+<!-- Using React component for mobile menu -->
 
 <header
   class="bg-background/95 supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b border-mountain-green/30 backdrop-blur"
@@ -77,135 +65,9 @@ import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
         Start Trial
       </a>
       
-      <!-- Mobile Menu Button - positioned at far right -->
-      <button
-        id="mobile-menu-toggle"
-        type="button" 
-        class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-charcoal hover:bg-mountain-green/20 hover:text-charcoal focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mountain-green transition-colors"
-        aria-controls="mobile-menu"
-        aria-expanded="false"
-        onclick="
-          console.log('Direct inline click handler');
-          var menu = document.getElementById('mobile-menu');
-          var backdrop = document.getElementById('mobile-menu-backdrop');
-          var menuIcon = this.querySelector('svg:first-child');
-          var closeIcon = this.querySelector('svg:last-child');
-          var isOpen = this.getAttribute('aria-expanded') === 'true';
-          
-          if (isOpen) {
-            // Close menu
-            this.setAttribute('aria-expanded', 'false');
-            menu.classList.add('translate-x-full');
-            backdrop.classList.add('opacity-0');
-            backdrop.classList.remove('opacity-100');
-            
-            menuIcon.classList.remove('hidden');
-            menuIcon.classList.add('block');
-            closeIcon.classList.add('hidden');
-            closeIcon.classList.remove('block');
-            
-            setTimeout(function() {
-              menu.classList.add('hidden');
-              backdrop.classList.add('hidden');
-              document.body.classList.remove('overflow-hidden');
-            }, 300);
-          } else {
-            // Open menu
-            this.setAttribute('aria-expanded', 'true');
-            menu.classList.remove('hidden');
-            backdrop.classList.remove('hidden');
-            
-            menuIcon.classList.add('hidden');
-            menuIcon.classList.remove('block');
-            closeIcon.classList.remove('hidden');
-            closeIcon.classList.add('block');
-            
-            setTimeout(function() {
-              menu.classList.remove('translate-x-full');
-              backdrop.classList.add('opacity-100');
-              backdrop.classList.remove('opacity-0');
-              document.body.classList.add('overflow-hidden');
-            }, 10);
-          }
-        "
-      >
-        <span class="sr-only">Open main menu</span>
-        <!-- Menu icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block h-6 w-6" aria-hidden="true">
-          <line x1="4" x2="20" y1="12" y2="12" />
-          <line x1="4" x2="20" y1="6" y2="6" />
-          <line x1="4" x2="20" y1="18" y2="18" />
-        </svg>
-        <!-- Close icon -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden h-6 w-6" aria-hidden="true">
-          <path d="M18 6 6 18" />
-          <path d="m6 6 12 12" />
-        </svg>
-      </button>
+      <!-- Mobile Menu (React Component) -->
+      <MobileMenu client:load />
     </div>
   </div>
-  
-  <!-- Mobile menu - slide out from right -->
-  <div id="mobile-menu" class="md:hidden hidden fixed top-0 right-0 bottom-0 z-50 w-64 bg-white shadow-xl transform transition-transform duration-300 ease-in-out translate-x-full border-l border-mountain-green/30">
-    <div class="flex flex-col h-full">
-      <div class="py-6 px-4 border-b border-mountain-green/20">
-        <Image src={logo} alt="Climb.Coach" width={120} height={30} class="h-8 w-auto mx-auto" />
-      </div>
-      
-      <nav class="flex flex-col flex-1 px-4 py-6 overflow-y-auto">
-        <div class="space-y-6">
-          <a
-            href="#about"
-            class="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
-            onclick="document.getElementById('mobile-menu-toggle').click()"
-          >
-            About
-          </a>
-          <a
-            href="#method"
-            class="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
-            onclick="document.getElementById('mobile-menu-toggle').click()"
-          >
-            The Climb Method
-          </a>
-          <a
-            href="#services"
-            class="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
-            onclick="document.getElementById('mobile-menu-toggle').click()"
-          >
-            Pricing
-          </a>
-          <a
-            href="#climbos"
-            class="block py-2 font-medium text-charcoal hover:text-blue-mell transition-colors"
-            onclick="document.getElementById('mobile-menu-toggle').click()"
-          >
-            ClimbOS
-          </a>
-        </div>
-      </nav>
-      
-      <div class="p-4 border-t border-mountain-green/20">
-        <a
-          href="#services"
-          class="w-full flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-10 px-6 py-2"
-          style="background-color: #364958;"
-          onclick="document.getElementById('mobile-menu-toggle').click()"
-        >
-          Start Free Trial
-        </a>
-        
-        <p class="text-sm text-center mt-4 text-charcoal/70">
-          First month free - No credit card required
-        </p>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Backdrop overlay for mobile menu -->
-  <div 
-    id="mobile-menu-backdrop" 
-    class="md:hidden hidden fixed inset-0 z-40 bg-black/20 backdrop-blur-sm transition-opacity duration-300 ease-in-out opacity-0"
-    onclick="document.getElementById('mobile-menu-toggle').click()"
-  ></div>
+  <!-- Mobile menu is now handled by the React component -->
 </header>
