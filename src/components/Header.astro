@@ -4,9 +4,11 @@ import { Image } from "astro:assets";
 import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
 ---
 
-<script>
-  // Mobile menu toggle functionality
-  document.addEventListener('DOMContentLoaded', () => {
+<script is:inline client:load>
+  // Mobile menu toggle functionality - setup as global functions
+  let mobileMenuInitialized = false;
+  
+  function toggleMobileMenu() {
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
@@ -14,86 +16,101 @@ import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
     const closeIcon = mobileMenuToggle?.querySelector('svg:last-child');
     const body = document.body;
     
-    if (mobileMenuToggle && mobileMenu && mobileMenuBackdrop && menuIcon && closeIcon) {
-      const openMenu = () => {
-        // Set aria-expanded to true
-        mobileMenuToggle.setAttribute('aria-expanded', 'true');
-        
-        // Show backdrop
-        mobileMenuBackdrop.classList.remove('hidden');
-        setTimeout(() => {
-          mobileMenuBackdrop.classList.add('opacity-100');
-          mobileMenuBackdrop.classList.remove('opacity-0');
-        }, 10);
-        
-        // Show menu
-        mobileMenu.classList.remove('hidden');
-        setTimeout(() => {
-          mobileMenu.classList.remove('translate-x-full');
-        }, 10);
-        
-        // Prevent body scroll
-        body.classList.add('overflow-hidden');
-        
-        // Toggle icons
-        menuIcon.classList.add('hidden');
-        menuIcon.classList.remove('block');
-        closeIcon.classList.remove('hidden');
-        closeIcon.classList.add('block');
-      };
-      
-      const closeMenu = () => {
-        // Set aria-expanded to false
-        mobileMenuToggle.setAttribute('aria-expanded', 'false');
-        
-        // Hide menu with animation
-        mobileMenu.classList.add('translate-x-full');
-        
-        // Hide backdrop with animation
-        mobileMenuBackdrop.classList.add('opacity-0');
-        mobileMenuBackdrop.classList.remove('opacity-100');
-        
-        // After animation completes
-        setTimeout(() => {
-          mobileMenu.classList.add('hidden');
-          mobileMenuBackdrop.classList.add('hidden');
-          body.classList.remove('overflow-hidden');
-        }, 300);
-        
-        // Toggle icons
-        menuIcon.classList.remove('hidden');
-        menuIcon.classList.add('block');
-        closeIcon.classList.add('hidden');
-        closeIcon.classList.remove('block');
-      };
-      
-      // Toggle menu
-      mobileMenuToggle.addEventListener('click', () => {
-        const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
-        if (expanded) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      });
-      
-      // Close menu when clicking on backdrop
-      mobileMenuBackdrop.addEventListener('click', closeMenu);
-      
-      // Close menu when clicking on a link
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
-      });
-      
-      // Close menu when pressing escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && mobileMenuToggle.getAttribute('aria-expanded') === 'true') {
-          closeMenu();
-        }
-      });
+    if (!mobileMenuToggle || !mobileMenu || !mobileMenuBackdrop || !menuIcon || !closeIcon) {
+      return;
     }
-  });
+    
+    const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+    
+    if (expanded) {
+      // Close menu
+      // Set aria-expanded to false
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      
+      // Hide menu with animation
+      mobileMenu.classList.add('translate-x-full');
+      
+      // Hide backdrop with animation
+      mobileMenuBackdrop.classList.add('opacity-0');
+      mobileMenuBackdrop.classList.remove('opacity-100');
+      
+      // After animation completes
+      setTimeout(() => {
+        mobileMenu.classList.add('hidden');
+        mobileMenuBackdrop.classList.add('hidden');
+        body.classList.remove('overflow-hidden');
+      }, 300);
+      
+      // Toggle icons
+      menuIcon.classList.remove('hidden');
+      menuIcon.classList.add('block');
+      closeIcon.classList.add('hidden');
+      closeIcon.classList.remove('block');
+    } else {
+      // Open menu
+      // Set aria-expanded to true
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      
+      // Show backdrop
+      mobileMenuBackdrop.classList.remove('hidden');
+      setTimeout(() => {
+        mobileMenuBackdrop.classList.add('opacity-100');
+        mobileMenuBackdrop.classList.remove('opacity-0');
+      }, 10);
+      
+      // Show menu
+      mobileMenu.classList.remove('hidden');
+      setTimeout(() => {
+        mobileMenu.classList.remove('translate-x-full');
+      }, 10);
+      
+      // Prevent body scroll
+      body.classList.add('overflow-hidden');
+      
+      // Toggle icons
+      menuIcon.classList.add('hidden');
+      menuIcon.classList.remove('block');
+      closeIcon.classList.remove('hidden');
+      closeIcon.classList.add('block');
+    }
+  }
+  
+  function initMobileMenu() {
+    if (mobileMenuInitialized) return;
+    
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuBackdrop = document.getElementById('mobile-menu-backdrop');
+    
+    if (!mobileMenuToggle || !mobileMenu || !mobileMenuBackdrop) {
+      return;
+    }
+    
+    // Close menu when clicking on backdrop
+    mobileMenuBackdrop.addEventListener('click', toggleMobileMenu);
+    
+    // Close menu when clicking on a link
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', toggleMobileMenu);
+    });
+    
+    // Close menu when pressing escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenuToggle.getAttribute('aria-expanded') === 'true') {
+        toggleMobileMenu();
+      }
+    });
+    
+    mobileMenuInitialized = true;
+  }
+  
+  document.addEventListener('DOMContentLoaded', initMobileMenu);
+  
+  // Backup in case DOMContentLoaded already fired
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    setTimeout(initMobileMenu, 0);
+  }
 </script>
 
 <header
@@ -161,6 +178,7 @@ import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
         class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-charcoal hover:bg-mountain-green/20 hover:text-charcoal focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mountain-green transition-colors"
         aria-controls="mobile-menu"
         aria-expanded="false"
+        onclick="toggleMobileMenu()"
       >
         <span class="sr-only">Open main menu</span>
         <!-- Menu icon -->
