@@ -79,56 +79,56 @@ export default function MobileMenu() {
         </svg>
       </button>
 
-      {/* Mobile menu - full page with simple top-down layout */}
+      {/* Mobile menu - full page with solid white background */}
       <div 
         id="mobile-menu" 
-        className={`md:hidden fixed inset-0 z-50 bg-background/95 supports-[backdrop-filter]:bg-background/60 backdrop-blur transform transition-opacity duration-200 ease-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+        className={`md:hidden fixed inset-0 z-50 bg-white transform transition-opacity duration-200 ease-out ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
         style={{ 
           height: '100vh',
           width: '100vw',
           overflowY: 'auto', // Allow scrolling if needed
         }}
       >
+        {/* Solid white background to absolutely prevent content bleeding through */}
+        <div 
+          className="absolute inset-0 bg-white" 
+          style={{ zIndex: -1 }}
+        ></div>
+        
         <div className="min-h-screen flex flex-col">
-          {/* Header - Exactly matching main header dimensions */}
-          <div 
-            className="h-16 border-b border-mountain-green/30 flex justify-between items-center px-4 sm:px-6"
-            style={{
-              position: 'sticky',
-              top: 0,
-              backgroundColor: 'rgba(255, 255, 255, 0.95)',
-              backdropFilter: 'blur(8px)'
-            }}
-          >
-            <div className="flex items-center space-x-2">
-              <img src={logo.src} alt="Climb.Coach" width={180} height={40} className="h-10 w-auto" />
-            </div>
-            <button
-              onClick={toggleMenu}
-              className="p-2 text-charcoal hover:bg-mountain-green/20 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mountain-green"
-              aria-label="Close menu"
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="24" 
-                height="24" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2" 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                className="h-6 w-6" 
-                aria-hidden="true"
+          {/* Header - Exactly matching main header dimensions and container */}
+          <div className="bg-white border-b border-mountain-green/30 w-full">
+            <div className="container flex h-16 items-center justify-between">
+              <div className="flex items-center">
+                <img src={logo.src} alt="Climb.Coach" width={180} height={40} className="h-10 w-auto" />
+              </div>
+              <button
+                onClick={toggleMenu}
+                className="p-2 text-charcoal hover:bg-mountain-green/20 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-inset focus:ring-mountain-green"
+                aria-label="Close menu"
               >
-                <path d="M18 6 6 18" />
-                <path d="m6 6 12 12" />
-              </svg>
-            </button>
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  width="24" 
+                  height="24" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  strokeWidth="2" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  className="h-6 w-6" 
+                  aria-hidden="true"
+                >
+                  <path d="M18 6 6 18" />
+                  <path d="m6 6 12 12" />
+                </svg>
+              </button>
+            </div>
           </div>
           
           {/* Navigation with CTA button directly below */}
-          <nav className="w-full px-6 py-10">
+          <nav className="container py-10">
             <ul className="space-y-6">
               <li>
                 <a
