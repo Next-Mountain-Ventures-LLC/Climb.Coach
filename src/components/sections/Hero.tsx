@@ -59,7 +59,7 @@ const Hero = () => {
               </Button>
             </div>
             <p className="mt-4 text-sm text-charcoal/70 font-medium">
-              Your first two sessions are free
+              First month free - No credit card required
             </p>
           </div>
           <div className="lg:col-span-5 flex justify-center lg:justify-end">

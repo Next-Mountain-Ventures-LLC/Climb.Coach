@@ -96,7 +96,7 @@ const Services = () => {
                   </Button>
                   {service.primary && (
                     <p className="mt-2 text-xs text-center text-dark-slate/70">
-                      First two sessions free
+                      First month free - No credit card required
                     </p>
                   )}
                 </CardContent>
@@ -110,8 +110,8 @@ const Services = () => {
             <div className="flex items-center">
               <Flag className="h-10 w-10 text-blue-mell mr-4" />
               <div>
-                <h3 className="text-xl font-heading font-bold text-charcoal">First Two Sessions Free</h3>
-                <p className="text-dark-slate/80">Let's find your next summit together, no commitment required.</p>
+                <h3 className="text-xl font-heading font-bold text-charcoal">First Month Free</h3>
+                <p className="text-dark-slate/80">Let's find your next summit together, no credit card required.</p>
               </div>
             </div>
             <Button 
@@ -120,7 +120,7 @@ const Services = () => {
               style={{ backgroundColor: '#364958', color: 'white' }}
               onClick={() => window.location.href = 'https://buy.stripe.com/4gM00kgix9gKfyU9Cogfu02'}
             >
-              Book Your Free Sessions
+              Start Your Free Trial
             </Button>
           </div>
         </div>
