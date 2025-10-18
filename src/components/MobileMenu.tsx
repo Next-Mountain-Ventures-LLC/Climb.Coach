@@ -168,14 +168,17 @@ export default function MobileMenu() {
           <div className="p-6 border-t border-mountain-green/20">
             <a
               href="#services"
-              className="w-full flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-14 px-6 py-2 text-lg"
-              style={{ backgroundColor: '#364958' }}
+              className="w-full flex items-center justify-center rounded-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-16 px-6 py-2 text-xl"
+              style={{ 
+                backgroundColor: '#364958',
+                boxShadow: '0 4px 6px rgba(54, 73, 88, 0.25)' 
+              }}
               onClick={toggleMenu}
             >
               Start Free Trial
             </a>
             
-            <p className="text-sm text-center mt-4 text-charcoal/70">
+            <p className="text-sm text-center mt-4 text-charcoal/70 font-medium">
               First month free - No credit card required
             </p>
           </div>

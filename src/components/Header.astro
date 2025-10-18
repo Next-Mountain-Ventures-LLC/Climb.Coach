@@ -15,7 +15,7 @@ import MobileMenu from "./MobileMenu";
   >
     <div class="flex gap-6 md:gap-10">
       <a href="/" class="flex items-center space-x-2">
-        <Image src={logo} alt="Climb.Coach" width={180} height={40} class="h-10 w-auto" />
+        <img src={logo.src} alt="Climb.Coach" width={180} height={40} class="h-10 w-auto" />
       </a>
     </div>
     <div class="flex flex-1 items-center justify-end">
@@ -56,14 +56,7 @@ import MobileMenu from "./MobileMenu";
         Start Free Trial
       </a>
       
-      <!-- Mobile CTA - smaller and more compact -->
-      <a
-        href="#services"
-        class="md:hidden inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-8 px-3 py-1 text-xs mr-2 whitespace-nowrap"
-        style="background-color: #364958;"
-      >
-        Start Trial
-      </a>
+      <!-- Mobile CTA hidden as requested - now only in mobile menu -->
       
       <!-- Mobile Menu (React Component) -->
       <MobileMenu client:load />
