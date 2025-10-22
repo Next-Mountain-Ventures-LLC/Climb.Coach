@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getClimbCoachPosts } from '../../lib/wordpress-api';
+import BlogCard from '../../components/blog/BlogCard';
+
+// Fetch blog posts at build time
+const posts = await getClimbCoachPosts(20);
+
+// Define metadata for the page
+const title = "Blog | Climb.Coach";
+const description = "Insights, tips and strategies for improving your climbing performance, mental strength, and achieving your goals.";
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="py-12 md:py-16 lg:py-24 bg-gradient-to-b from-white to-cambridge-blue/5">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold text-charcoal mb-4">
+          Climb.Coach Blog
+        </h1>
+        <p class="text-lg text-dark-slate/80">
+          Insights, tips, and strategies to help you become a better climber.
+        </p>
+      </div>
+
+      <!-- Blog post grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {posts.map(post => (
+          <div>
+            <BlogCard post={post} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty state -->
+      {posts.length === 0 && (
+        <div class="text-center py-16 border-2 border-dashed border-mountain-green/20 rounded-lg">
+          <p class="text-dark-slate/60 font-medium">
+            No articles found. Check back soon for new content!
+          </p>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+---
