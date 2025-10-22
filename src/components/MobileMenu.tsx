@@ -170,7 +170,7 @@ export default function MobileMenu() {
               {/* CTA Button integrated into the navigation list */}
               <li className="pt-8">
                 <a
-                  href="https://buy.stripe.com/4gM00kgix9gKfyU9Cogfu02"
+                  href="#services"
                   className="block w-full text-center rounded-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-16 px-6 py-2 text-xl"
                   style={{ 
                     backgroundColor: '#364958',
