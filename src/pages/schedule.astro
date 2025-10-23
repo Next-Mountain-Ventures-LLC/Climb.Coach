@@ -31,24 +31,37 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
           </div>
           
           <p class="text-dark-slate/90 mb-8">
-            Click the button below to access our scheduling system where you can select the perfect time for your coaching session.
+            Use our scheduling system below to select the perfect time for your coaching session.
           </p>
           
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-            <a 
-              href="https://calendly.com/climb-coach" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              class="inline-flex items-center justify-center bg-blue-mell hover:bg-blue-mell/90 text-white font-medium py-3 px-6 rounded-lg transition-colors shadow-md"
-            >
-              Schedule Now
-              <ArrowRight className="h-4 w-4 ml-2" />
-            </a>
+          <div class="mb-6">
+            <!-- Setmore Scheduling Widget -->
+            <div id="setmore-embed" class="w-full max-w-xl mx-auto overflow-hidden rounded-lg shadow-lg">
+              <iframe 
+                id="setmore-frame"
+                src="https://climbcoach.setmore.com/services/38ebbc66-2899-4cf4-9ec4-26d6c1e5c4a3" 
+                scrolling="no" 
+                width="100%" 
+                height="600px" 
+                frameborder="0"
+                class="rounded-lg"
+              ></iframe>
+            </div>
           </div>
           
-          <div class="text-sm text-dark-slate/70 italic">
-            The scheduling link will open in a new tab
+          <div class="text-sm text-dark-slate/70 italic mb-4">
+            Select a time that works best for your schedule
           </div>
+          
+          <a 
+            href="https://climbcoach.setmore.com/services/38ebbc66-2899-4cf4-9ec4-26d6c1e5c4a3" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center bg-blue-mell hover:bg-blue-mell/90 text-white font-medium py-2 px-4 rounded-lg transition-colors shadow-md text-sm"
+          >
+            Open in New Tab
+            <ArrowRight className="h-3 w-3 ml-2" />
+          </a>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
@@ -85,7 +98,7 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
 
         <div class="mt-12 p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-mountain-green/30">
           <h2 class="text-xl font-heading font-bold text-charcoal mb-4">What to Expect Next</h2>
-          <ul class="text-left text-dark-slate/90 space-y-2">
+          <ul class="text-left text-dark-slate/90 space-y-3">
             <li class="flex items-start">
               <ArrowRight className="h-4 w-4 text-blue-mell mt-1 mr-2 flex-shrink-0" />
               <span>After scheduling, you'll receive a welcome email with pre-session materials</span>
