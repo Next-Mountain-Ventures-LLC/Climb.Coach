@@ -35,6 +35,8 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
   // Adjust visible posts based on screen size
   useEffect(() => {
     const handleResize = () => {
+      if (typeof window === 'undefined') return;
+      
       if (window.innerWidth < 640) {
         setVisiblePosts(1);
       } else if (window.innerWidth < 1024) {
@@ -48,11 +50,15 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
     handleResize();
     
     // Add event listener for window resize
-    window.addEventListener('resize', handleResize);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', handleResize);
+    }
     
     // Clean up
     return () => {
-      window.removeEventListener('resize', handleResize);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', handleResize);
+      }
     };
   }, []);
 
@@ -114,7 +120,7 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
           {/* Carousel Content */}
           <div 
             ref={carouselRef}
-            className="flex gap-6 overflow-hidden transition-transform duration-500 ease-in-out px-4 md:px-0"
+            className="flex gap-6 overflow-hidden transition-transform duration-500 ease-in-out px-4 md:px-0 w-full"
             style={{ 
               transform: `translateX(-${currentSlide * (100 / visiblePosts)}%)`,
             }}
@@ -122,7 +128,12 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
             {posts.map((post) => (
               <div
                 key={post.id}
-                className="min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(33.333%-16px)] flex-grow-0 flex-shrink-0"
+                style={{
+                  width: `calc(${100 / visiblePosts}% - ${visiblePosts > 1 ? '1.5rem' : '0rem'})`,
+                  flexShrink: 0,
+                  flexGrow: 0,
+                }}
+                className="flex-shrink-0 flex-grow-0"
               >
                 <BlogCard 
                   post={post} 
