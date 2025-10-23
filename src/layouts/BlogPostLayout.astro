@@ -98,10 +98,14 @@ const description = post.excerpt.rendered
           <div set:html={post.content.rendered} />
         </div>
 
-        <!-- Author Bio and Social Share -->
+        <!-- Social Share and Author Bio -->
         <div class="border-t border-b border-gray-200 py-6 my-8">
+          <div class="mb-6">
+            <SocialShare url={canonicalUrl.toString()} title={post.title.rendered} client:load />
+          </div>
+          
           {author && (
-            <div class="flex items-start gap-4 mb-6">
+            <div class="flex items-start gap-4 pt-4 border-t border-gray-100">
               {author.avatar_urls && author.avatar_urls['96'] && (
                 <img 
                   src={author.avatar_urls['96']} 
@@ -111,26 +115,12 @@ const description = post.excerpt.rendered
               )}
               <div>
                 <h3 class="text-lg font-heading font-bold text-charcoal mb-1">About {author.name}</h3>
-                <p class="text-dark-slate/90 text-sm mb-2">
+                <p class="text-dark-slate/90 text-sm">
                   {author.description || `${author.name} is a contributor at Climb.Coach.`}
                 </p>
-                {author.url && (
-                  <a 
-                    href={author.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    class="inline-flex items-center text-sm font-medium text-blue-mell hover:text-dark-slate transition-colors"
-                  >
-                    View Profile
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                  </a>
-                )}
               </div>
             </div>
           )}
-          <SocialShare url={canonicalUrl.toString()} title={post.title.rendered} client:load />
         </div>
 
         <!-- Related Posts -->
