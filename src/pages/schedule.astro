@@ -9,8 +9,8 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
 >
   <section class="relative py-16 md:py-24 bg-gradient-to-b from-cambridge-blue/10 to-white">
     <div class="absolute inset-0 z-0 opacity-15 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
-    <div class="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center">
+    <div class="container relative z-10 mx-auto px-2 sm:px-4 lg:px-6">
+      <div class="max-w-4xl mx-auto text-center">
         <div class="inline-flex items-center bg-mountain-green/30 rounded-full py-1.5 px-4 mb-6 shadow-md">
           <CheckCircle className="h-4 w-4 text-blue-mell mr-2" />
           <span class="text-xs font-medium text-dark-slate">PAYMENT SUCCESSFUL</span>
@@ -24,7 +24,7 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
           Your investment in your growth journey is confirmed. The next step is to schedule your first coaching session (Basecamp) at a time that works best for you.
         </p>
 
-        <div class="bg-white rounded-xl p-8 shadow-lg border border-mountain-green/30 mb-10">
+        <div class="bg-white rounded-xl p-4 sm:p-6 md:p-8 shadow-lg border border-mountain-green/30 mb-10">
           <div class="flex items-center justify-center mb-6">
             <Calendar className="h-10 w-10 text-blue-mell mr-3" />
             <h2 class="text-2xl font-heading font-bold text-charcoal">Schedule Your Basecamp Session</h2>
@@ -34,9 +34,9 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
             Use our scheduling system below to select the perfect time for your initial Basecamp coaching session.
           </p>
           
-          <div class="mb-6">
+          <div class="mb-6 -mx-4 sm:mx-0">
             <!-- Setmore Scheduling Widget -->
-            <div id="setmore-embed" class="w-full max-w-xl mx-auto overflow-hidden rounded-lg shadow-lg">
+            <div id="setmore-embed" class="w-full mx-auto overflow-hidden rounded-lg shadow-lg">
               <iframe 
                 id="setmore-frame"
                 src="https://climbcoach.setmore.com/services/38ebbc66-2899-4cf4-9ec4-26d6c1e5c4a3" 
@@ -45,7 +45,7 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
                 height="750px" 
                 frameborder="0"
                 class="rounded-lg"
-                style="min-height:750px; overflow:auto;"
+                style="min-height:750px; overflow:visible; -webkit-overflow-scrolling: touch;"
               ></iframe>
             </div>
           </div>
@@ -85,7 +85,7 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
         </div>
 
         <div class="mt-12 p-6 bg-white/80 backdrop-blur-sm rounded-xl shadow-md border border-mountain-green/30">
-          <h2 class="text-xl font-heading font-bold text-charcoal mb-4">What to Expect Next</h2>
+          <h2 class="text-xl font-heading font-bold text-charcoal mb-4 mt-2">What to Expect Next</h2>
           <ul class="text-left text-dark-slate/90 space-y-3">
             <li class="flex items-start">
               <ArrowRight className="h-4 w-4 text-blue-mell mt-1 mr-2 flex-shrink-0" />
