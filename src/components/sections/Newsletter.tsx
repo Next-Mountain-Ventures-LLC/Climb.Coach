@@ -67,11 +67,11 @@ const Newsletter = () => {
   };
 
   return (
-    <section className="relative py-16 bg-gradient-to-b from-cambridge-blue/30 to-mountain-green/20">
+    <section className="relative py-16 bg-gradient-to-b from-cambridge-blue/40 to-mountain-green/30">
       <div className="absolute inset-0 z-0 opacity-30 bg-[url('/topography-pattern.svg')] bg-repeat"></div>
       <div className="absolute inset-0 z-0 opacity-40 bg-[url('/mountain-silhouette.svg')] bg-no-repeat bg-left bg-contain transform scale-x-[-1]"></div>
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto bg-white rounded-xl overflow-hidden shadow-lg">
+        <div className="max-w-2xl mx-auto bg-white rounded-xl overflow-hidden shadow-lg border border-mountain-green/50">
           <div className="p-8">
             <div className="flex flex-col justify-center">
               <h2 className="text-2xl md:text-3xl font-heading font-bold text-charcoal mb-4 text-center">
@@ -101,7 +101,7 @@ const Newsletter = () => {
                     />
                     <button 
                       type="submit" 
-                      className="py-3 px-6 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center"
+                      className="py-3 px-6 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center relative z-10 shadow-sm"
                     >
                       Next
                       <ArrowRight className="ml-2 h-5 w-5" />
@@ -160,14 +160,14 @@ const Newsletter = () => {
                     <div className="flex justify-between mt-4 gap-4">
                       <button 
                         type="button" 
-                        className="py-3 px-6 border border-dark-slate/30 bg-white text-dark-slate font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                        className="py-3 px-6 border-2 border-dark-slate bg-white text-dark-slate font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200 relative z-10 shadow-sm"
                         onClick={() => setStep('email')}
                       >
                         Back
                       </button>
                       <button 
                         type="submit" 
-                        className="py-3 px-6 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center"
+                        className="py-3 px-6 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center relative z-10 shadow-sm"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
