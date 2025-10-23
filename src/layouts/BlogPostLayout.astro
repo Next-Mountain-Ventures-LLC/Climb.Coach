@@ -1,0 +1,139 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SocialShare from '@/components/blog/SocialShare';
+import Newsletter from '@/components/sections/Newsletter';
+import { getAllCategories, getCategoriesForPost, formatDate } from '@/lib/blog';
+import type { WordPressPost, WordPressCategory } from '@/lib/blog';
+import { CalendarDays } from 'lucide-react';
+
+interface Props {
+  post: WordPressPost;
+  relatedPosts?: WordPressPost[];
+}
+
+const { post, relatedPosts = [] } = Astro.props;
+
+// Format the date
+const formattedDate = formatDate(post.date);
+
+// Get categories for this post
+const postCategories = await getCategoriesForPost(post.categories);
+
+// Get all categories for the sidebar
+const allCategories = await getAllCategories();
+
+// Construct the canonical URL
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+// Prepare SEO metadata
+const title = `${post.title.rendered} | Climb.Coach`;
+const description = post.excerpt.rendered
+  .replace(/<\/?[^>]+(>|$)/g, '')  // Remove HTML tags
+  .replace(/&hellip;/g, '...')     // Replace HTML entity codes
+  .substring(0, 160);               // Limit to 160 characters
+---
+
+<BaseLayout 
+  title={title}
+  description={description}
+  image={post.jetpack_featured_media_url}
+  canonicalUrl={canonicalUrl.toString()}
+  article={{
+    publishedTime: post.date,
+    modifiedTime: post.modified,
+    tags: postCategories.map(cat => cat.name)
+  }}
+>
+  <main class="pt-8 pb-16">
+    <div class="container px-4 sm:px-6 lg:px-8 mx-auto">
+      <div class="max-w-4xl mx-auto">
+        <!-- Post Header -->
+        <header class="mb-8">
+          {postCategories.length > 0 && (
+            <div class="mb-4 flex flex-wrap gap-2">
+              {postCategories.map(category => (
+                <a
+                  href={`/blog/category/${category.slug}`}
+                  class="text-sm font-medium px-3 py-1 rounded-md bg-cambridge-blue/20 text-dark-slate hover:bg-cambridge-blue/30 transition-colors"
+                >
+                  {category.name}
+                </a>
+              ))}
+            </div>
+          )}
+
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal mb-4">
+            {post.title.rendered}
+          </h1>
+
+          <div class="flex items-center gap-2 text-dark-slate/70 mb-6">
+            <CalendarDays className="h-4 w-4" />
+            <span>{formattedDate}</span>
+          </div>
+        </header>
+
+        {post.jetpack_featured_media_url && (
+          <div class="mb-8 rounded-xl overflow-hidden shadow-md">
+            <img
+              src={post.jetpack_featured_media_url}
+              alt={post.title.rendered}
+              class="w-full max-h-[500px] object-cover"
+            />
+          </div>
+        )}
+
+        <!-- Post Content -->
+        <div class="prose prose-lg max-w-none mb-10 prose-headings:font-heading prose-headings:font-bold prose-headings:text-charcoal prose-p:text-dark-slate prose-a:text-blue-mell prose-a:decoration-blue-mell/30">
+          <div set:html={post.content.rendered} />
+        </div>
+
+        <!-- Social Share -->
+        <div class="border-t border-b border-gray-200 py-6 my-8">
+          <SocialShare url={canonicalUrl.toString()} title={post.title.rendered} client:load />
+        </div>
+
+        <!-- Related Posts -->
+        {relatedPosts.length > 0 && (
+          <div class="mt-12">
+            <h2 class="text-2xl font-heading font-bold text-charcoal mb-6">Related Articles</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {relatedPosts.map(relatedPost => (
+                <div class="bg-white rounded-lg overflow-hidden border border-mountain-green/20 shadow-sm hover:shadow-md transition-all duration-300">
+                  {relatedPost.jetpack_featured_media_url && (
+                    <a href={`/blog/${relatedPost.slug}`} class="block">
+                      <img 
+                        src={relatedPost.jetpack_featured_media_url}
+                        alt={relatedPost.title.rendered}
+                        class="w-full h-40 object-cover"
+                      />
+                    </a>
+                  )}
+                  <div class="p-4">
+                    <h3 class="text-lg font-heading font-bold text-charcoal mb-2 hover:text-blue-mell transition-colors">
+                      <a href={`/blog/${relatedPost.slug}`}>{relatedPost.title.rendered}</a>
+                    </h3>
+                    <div class="flex items-center gap-1 text-xs text-dark-slate/70 mb-2">
+                      <CalendarDays className="h-3 w-3" />
+                      <span>{formatDate(relatedPost.date)}</span>
+                    </div>
+                    <a 
+                      href={`/blog/${relatedPost.slug}`}
+                      class="inline-flex items-center text-sm font-medium text-blue-mell hover:text-dark-slate transition-colors"
+                    >
+                      Read More
+                      <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </main>
+  
+  <Newsletter />
+</BaseLayout>

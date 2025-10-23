@@ -1,0 +1,61 @@
+---
+import BlogPostLayout from '@/layouts/BlogPostLayout.astro';
+import { getClimbCoachPosts, getPostBySlug } from '@/lib/blog';
+import type { GetStaticPathsResult } from 'astro';
+
+// Define the params type
+interface Props {
+  post: any;
+  relatedPosts: any[];
+}
+
+// Get static paths for all posts
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  // Get all posts
+  const { posts } = await getClimbCoachPosts(1);
+  
+  // Determine the total pages
+  const totalPages = Math.ceil(posts.length / 10);
+  
+  // Fetch all posts across all pages
+  const allPosts = [];
+  
+  // First page is already fetched
+  allPosts.push(...posts);
+  
+  // Fetch remaining pages
+  for (let i = 2; i <= totalPages; i++) {
+    const { posts: pagePosts } = await getClimbCoachPosts(i);
+    allPosts.push(...pagePosts);
+  }
+  
+  // Generate static paths
+  return allPosts.map(post => {
+    // Get related posts (excluding current post)
+    const relatedPosts = allPosts
+      .filter(p => p.id !== post.id)
+      // Only include posts with at least one matching category
+      .filter(p => p.categories.some(cat => post.categories.includes(cat)))
+      // Sort by date (newest first)
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      // Limit to 3 related posts
+      .slice(0, 3);
+    
+    return {
+      params: { slug: post.slug },
+      props: { post, relatedPosts }
+    };
+  });
+}
+
+// Get props from getStaticPaths
+const { post, relatedPosts } = Astro.props;
+
+// If post wasn't found in getStaticPaths (unlikely), redirect to blog index
+if (!post) {
+  return Astro.redirect('/blog');
+}
+---
+
+<BlogPostLayout post={post} relatedPosts={relatedPosts} />
+---

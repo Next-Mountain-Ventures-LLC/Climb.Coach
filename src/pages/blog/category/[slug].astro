@@ -1,0 +1,98 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import BlogCard from '@/components/blog/BlogCard';
+import Pagination from '@/components/blog/Pagination';
+import { getClimbCoachPosts, getAllCategories, getCategoriesForPost } from '@/lib/blog';
+import type { GetStaticPathsResult } from 'astro';
+
+// Define the params type
+interface Props {
+  category: {
+    id: number;
+    name: string;
+    slug: string;
+    description: string;
+  };
+}
+
+// Get static paths for all categories
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  const categories = await getAllCategories();
+
+  return categories.map(category => ({
+    params: { slug: category.slug },
+    props: { category }
+  }));
+}
+
+// Get props from getStaticPaths
+const { category } = Astro.props;
+
+// Get page number from URL query param
+const currentPage = Astro.url.searchParams.get('page') 
+  ? parseInt(Astro.url.searchParams.get('page') as string)
+  : 1;
+
+// Fetch posts from WordPress API
+const { posts, totalPages } = await getClimbCoachPosts(currentPage);
+
+// Filter posts to only include those in the current category
+const filteredPosts = posts.filter(post => 
+  post.categories.includes(category.id)
+);
+
+// Fetch categories for each post
+const postsWithCategories = await Promise.all(
+  filteredPosts.map(async (post) => {
+    const categories = await getCategoriesForPost(post.categories);
+    return { post, categories };
+  })
+);
+
+// SEO metadata
+const title = `${category.name} | Blog | Climb.Coach`;
+const description = category.description || 
+  `Read the latest articles about ${category.name} from Climb.Coach.`;
+---
+
+<BlogLayout 
+  title={title} 
+  description={description}
+  currentCategory={category.slug}
+>
+  <div class="mb-8">
+    <h1 class="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-3">
+      {category.name}
+    </h1>
+    {category.description && (
+      <p class="text-dark-slate/90">{category.description}</p>
+    )}
+  </div>
+
+  <!-- Blog posts grid -->
+  {postsWithCategories.length > 0 ? (
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      {postsWithCategories.map(({ post, categories }) => (
+        <BlogCard post={post} categories={categories} client:visible />
+      ))}
+    </div>
+  ) : (
+    <div class="bg-white rounded-lg p-8 text-center border border-mountain-green/20 shadow-sm mb-10">
+      <h2 class="text-xl font-heading font-medium text-dark-slate mb-2">
+        No articles found
+      </h2>
+      <p class="text-dark-slate/70">
+        We couldn't find any blog posts in this category.
+      </p>
+    </div>
+  )}
+
+  <!-- Pagination -->
+  <Pagination 
+    currentPage={currentPage} 
+    totalPages={totalPages} 
+    baseUrl={`/blog/category/${category.slug}`} 
+    client:visible 
+  />
+</BlogLayout>
+---

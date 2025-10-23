@@ -8,6 +8,14 @@ import Method from '@/components/sections/Method';
 import ClimbOS from '@/components/sections/ClimbOS';
 import FounderNote from '@/components/sections/FounderNote';
 import Newsletter from '@/components/sections/Newsletter';
+import BlogCarousel from '@/components/blog/BlogCarousel';
+import { getClimbCoachPosts } from '@/lib/blog';
+
+// Fetch the latest blog posts for the carousel
+const { posts } = await getClimbCoachPosts(1);
+
+// Limit to the 6 most recent posts
+const latestPosts = posts.slice(0, 6);
 ---
 
 <BaseLayout
@@ -20,5 +28,6 @@ import Newsletter from '@/components/sections/Newsletter';
   <Services client:load />
   <ClimbOS client:load />
   <FounderNote client:load />
+  <BlogCarousel posts={latestPosts} client:load />
   <Newsletter client:load />
 </BaseLayout>

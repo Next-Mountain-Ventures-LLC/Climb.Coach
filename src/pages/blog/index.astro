@@ -1,0 +1,59 @@
+---
+import BlogLayout from '@/layouts/BlogLayout.astro';
+import BlogCard from '@/components/blog/BlogCard';
+import Pagination from '@/components/blog/Pagination';
+import { getClimbCoachPosts, getCategoriesForPost } from '@/lib/blog';
+
+// Get page number from URL query param
+const currentPage = Astro.url.searchParams.get('page') 
+  ? parseInt(Astro.url.searchParams.get('page') as string)
+  : 1;
+
+// Fetch posts for the current page
+const { posts, totalPages } = await getClimbCoachPosts(currentPage);
+
+// Fetch categories for each post
+const postWithCategories = await Promise.all(
+  posts.map(async (post) => {
+    const categories = await getCategoriesForPost(post.categories);
+    return { post, categories };
+  })
+);
+
+// SEO metadata
+const title = "Blog | Climb.Coach";
+const description = "Read the latest articles on entrepreneurship, productivity, and performance coaching from Climb.Coach.";
+---
+
+<BlogLayout title={title} description={description}>
+  <div class="mb-8">
+    <h1 class="text-3xl md:text-4xl font-heading font-bold text-charcoal mb-3">
+      The Climb.Coach Blog
+    </h1>
+    <p class="text-dark-slate/90">
+      Insights, tools, and strategies to help entrepreneurs like you perform at your best.
+    </p>
+  </div>
+
+  <!-- Blog posts grid -->
+  {postWithCategories.length > 0 ? (
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      {postWithCategories.map(({ post, categories }) => (
+        <BlogCard post={post} categories={categories} client:visible />
+      ))}
+    </div>
+  ) : (
+    <div class="bg-white rounded-lg p-8 text-center border border-mountain-green/20 shadow-sm mb-10">
+      <h2 class="text-xl font-heading font-medium text-dark-slate mb-2">
+        No articles found
+      </h2>
+      <p class="text-dark-slate/70">
+        We couldn't find any blog posts matching your criteria.
+      </p>
+    </div>
+  )}
+
+  <!-- Pagination -->
+  <Pagination currentPage={currentPage} totalPages={totalPages} baseUrl="/blog" client:visible />
+</BlogLayout>
+---
