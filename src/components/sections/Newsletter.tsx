@@ -102,10 +102,10 @@ const Newsletter = () => {
                     <button 
                       type="submit" 
                       name="next_button"
-                      className="py-3 px-6 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center relative z-10 shadow-sm"
+                      className="py-3 px-6 bg-dark-slate hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center relative z-10 shadow-md border border-dark-slate rounded-lg"
                     >
-                      Next
-                      <ArrowRight className="ml-2 h-5 w-5" />
+                      <span className="text-white font-bold">Next</span>
+                      <ArrowRight className="ml-2 h-5 w-5 text-white" />
                     </button>
                   </div>
                 ) : (
@@ -162,28 +162,28 @@ const Newsletter = () => {
                       <button 
                         type="button"
                         name="back_button"
-                        className="py-3 px-6 border-2 border-dark-slate bg-white text-dark-slate font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200 relative z-10 shadow-sm"
+                        className="py-3 px-6 border-2 border-dark-slate bg-white hover:bg-gray-100 transition-colors duration-200 relative z-10 shadow-md rounded-lg"
                         onClick={() => setStep('email')}
                       >
-                        Back
+                        <span className="text-dark-slate font-bold">Back</span>
                       </button>
                       <button 
                         type="submit"
                         name="submit_button"
-                        className="py-3 px-6 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center relative z-10 shadow-sm"
+                        className="py-3 px-6 bg-dark-slate hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center relative z-10 shadow-md border border-dark-slate rounded-lg"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
-                          'Subscribing...'
+                          <span className="text-white font-bold">Subscribing...</span>
                         ) : submitStatus === 'success' ? (
                           <>
-                            <CheckCircle className="mr-2 h-5 w-5" />
-                            Subscribed!
+                            <CheckCircle className="mr-2 h-5 w-5 text-white" />
+                            <span className="text-white font-bold">Subscribed!</span>
                           </>
                         ) : (
                           <>
-                            <Send className="mr-2 h-5 w-5" />
-                            Subscribe
+                            <Send className="mr-2 h-5 w-5 text-white" />
+                            <span className="text-white font-bold">Subscribe</span>
                           </>
                         )}
                       </button>
