@@ -2,9 +2,9 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import SocialShare from '@/components/blog/SocialShare';
 import Newsletter from '@/components/sections/Newsletter';
-import { getAllCategories, getCategoriesForPost, formatDate } from '@/lib/blog';
-import type { WordPressPost, WordPressCategory } from '@/lib/blog';
-import { CalendarDays } from 'lucide-react';
+import { getAllCategories, getCategoriesForPost, formatDate, getAuthorById } from '@/lib/blog';
+import type { WordPressPost, WordPressCategory, WordPressAuthor } from '@/lib/blog';
+import { CalendarDays, User } from 'lucide-react';
 
 interface Props {
   post: WordPressPost;
@@ -21,6 +21,9 @@ const postCategories = await getCategoriesForPost(post.categories);
 
 // Get all categories for the sidebar
 const allCategories = await getAllCategories();
+
+// Get author information
+const author = await getAuthorById(post.author);
 
 // Construct the canonical URL
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
@@ -66,9 +69,17 @@ const description = post.excerpt.rendered
             {post.title.rendered}
           </h1>
 
-          <div class="flex items-center gap-2 text-dark-slate/70 mb-6">
-            <CalendarDays className="h-4 w-4" />
-            <span>{formattedDate}</span>
+          <div class="flex flex-wrap items-center gap-4 text-dark-slate/70 mb-6">
+            <div class="flex items-center gap-2">
+              <CalendarDays className="h-4 w-4" />
+              <span>{formattedDate}</span>
+            </div>
+            {author && (
+              <div class="flex items-center gap-2">
+                <User className="h-4 w-4" />
+                <span>By {author.name}</span>
+              </div>
+            )}
           </div>
         </header>
 
@@ -87,8 +98,38 @@ const description = post.excerpt.rendered
           <div set:html={post.content.rendered} />
         </div>
 
-        <!-- Social Share -->
+        <!-- Author Bio and Social Share -->
         <div class="border-t border-b border-gray-200 py-6 my-8">
+          {author && (
+            <div class="flex items-start gap-4 mb-6">
+              {author.avatar_urls && author.avatar_urls['96'] && (
+                <img 
+                  src={author.avatar_urls['96']} 
+                  alt={author.name} 
+                  class="w-16 h-16 rounded-full object-cover"
+                />
+              )}
+              <div>
+                <h3 class="text-lg font-heading font-bold text-charcoal mb-1">About {author.name}</h3>
+                <p class="text-dark-slate/90 text-sm mb-2">
+                  {author.description || `${author.name} is a contributor at Climb.Coach.`}
+                </p>
+                {author.url && (
+                  <a 
+                    href={author.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center text-sm font-medium text-blue-mell hover:text-dark-slate transition-colors"
+                  >
+                    View Profile
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                )}
+              </div>
+            </div>
+          )}
           <SocialShare url={canonicalUrl.toString()} title={post.title.rendered} client:load />
         </div>
 

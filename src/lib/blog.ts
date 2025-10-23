@@ -54,6 +54,7 @@ export interface WordPressAuthor {
   id: number;
   name: string;
   url: string;
+  description?: string;
   avatar_urls: {
     [key: string]: string;
   };

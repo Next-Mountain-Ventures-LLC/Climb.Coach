@@ -34,40 +34,6 @@ const categories = await getAllCategories();
               <CategoryFilter categories={categories} currentCategory={currentCategory} client:load />
             </div>
             
-            <!-- Newsletter Subscribe -->
-            <div class="bg-white rounded-xl p-6 border border-mountain-green/20 shadow-sm">
-              <div class="mb-4">
-                <h3 class="font-heading font-bold text-lg text-dark-slate mb-2">Get Monthly Updates</h3>
-                <p class="text-sm text-dark-slate/80">Subscribe to our newsletter and never miss out on our latest insights.</p>
-              </div>
-              <!-- We'll use a simplified newsletter form here -->
-              <form 
-                action="https://api.new.website/api/submit-form/"
-                method="POST"
-                enctype="multipart/form-data"
-                class="space-y-3"
-              >
-                <input type="hidden" name="form_name" value="Newsletter Signup" />
-                <input type="hidden" name="form_type" value="newsletter" />
-                <div>
-                  <label for="sidebar-email" class="sr-only">Email address</label>
-                  <input 
-                    type="email" 
-                    name="email"
-                    id="sidebar-email"
-                    placeholder="Your email address"
-                    class="w-full px-4 py-3 rounded-lg border border-mountain-green/30 text-dark-slate placeholder:text-dark-slate/60 focus:outline-none focus:ring-2 focus:ring-blue-mell"
-                    required
-                  />
-                </div>
-                <button 
-                  type="submit"
-                  class="w-full py-3 px-4 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center"
-                >
-                  Subscribe
-                </button>
-              </form>
-            </div>
           </div>
         </aside>
       </div>
