@@ -111,14 +111,14 @@ const Newsletter = () => {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
-                    <Button 
+                    <button 
                       type="submit" 
                       name="next_step"
-                      className="bg-dark-slate hover:bg-blue-mell text-white font-medium flex-shrink-0"
+                      className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors bg-dark-slate hover:bg-blue-mell text-white px-4 py-2 h-9 shadow-sm relative z-10 flex-shrink-0"
                     >
-                      <ArrowRight className="mr-2 h-4 w-4" />
+                      <ArrowRight className="mr-2 h-4 w-4 text-white" />
                       Next
-                    </Button>
+                    </button>
                   </div>
                 ) : (
                   <>
@@ -174,35 +174,34 @@ const Newsletter = () => {
                       Helps us deliver insights straight to your phone
                     </p>
                     <div className="flex justify-between gap-3 mt-4 w-full">
-                      <Button 
+                      <button 
                         type="button" 
                         name="back"
-                        variant="outline"
-                        className="border-dark-slate/30 text-dark-slate hover:bg-dark-slate/10 flex-shrink-0"
+                        className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors border border-dark-slate/30 bg-white text-dark-slate hover:bg-dark-slate/10 px-4 py-2 h-9 shadow-sm relative z-10 flex-shrink-0"
                         onClick={() => setStep('email')}
                       >
                         Back
-                      </Button>
-                      <Button 
+                      </button>
+                      <button 
                         type="submit" 
                         name="submit"
-                        className="bg-dark-slate hover:bg-blue-mell text-white font-medium flex-shrink-0"
+                        className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium transition-colors bg-dark-slate hover:bg-blue-mell text-white px-4 py-2 h-9 shadow-sm relative z-10 flex-shrink-0"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
                           'Subscribing...'
                         ) : submitStatus === 'success' ? (
                           <>
-                            <CheckCircle className="mr-2 h-4 w-4" />
+                            <CheckCircle className="mr-2 h-4 w-4 text-white" />
                             Subscribed!
                           </>
                         ) : (
                           <>
-                            <Send className="mr-2 h-4 w-4" />
+                            <Send className="mr-2 h-4 w-4 text-white" />
                             Subscribe
                           </>
                         )}
-                      </Button>
+                      </button>
                     </div>
                   </div>
                   </>
