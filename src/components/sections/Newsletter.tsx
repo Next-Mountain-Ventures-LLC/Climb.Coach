@@ -27,17 +27,14 @@ const Newsletter = () => {
       const form = e.target as HTMLFormElement;
       const formData = new FormData(form);
       
-      // Ensure email is included
-      if (!formData.get('email')) {
-        formData.set('email', email);
-      }
+      // Ensure all required fields are included
+      formData.set('email', email);
+      formData.set('first_name', firstName);
+      formData.set('last_name', lastName);
+      formData.set('form_name', 'Newsletter Signup');
+      if (phone) formData.set('phone', phone);
       
-      // Ensure form_name is set
-      if (!formData.get('form_name')) {
-        formData.set('form_name', 'Newsletter Signup');
-      }
-      
-      console.log('Submitting form with fields:', [...formData.entries()].map(entry => entry[0]));
+      console.log('Submitting form with fields:', [...formData.entries()].map(entry => entry[0] + ': ' + entry[1]));
       
       const response = await fetch('https://api.new.website/api/submit-form/', {
         method: 'POST',
@@ -84,6 +81,9 @@ const Newsletter = () => {
               <form 
                 className="space-y-4"
                 onSubmit={step === 'email' ? handleNext : handleSubmit}
+                method="post"
+                encType="multipart/form-data"
+                action="https://api.new.website/api/submit-form/"
               >
                 <input type="hidden" name="form_name" value="Newsletter Signup" />
                 
@@ -101,6 +101,7 @@ const Newsletter = () => {
                     />
                     <button 
                       type="submit" 
+                      name="next_button"
                       className="py-3 px-6 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center relative z-10 shadow-sm"
                     >
                       Next
@@ -159,14 +160,16 @@ const Newsletter = () => {
                     
                     <div className="flex justify-between mt-4 gap-4">
                       <button 
-                        type="button" 
+                        type="button"
+                        name="back_button"
                         className="py-3 px-6 border-2 border-dark-slate bg-white text-dark-slate font-medium rounded-lg hover:bg-gray-100 transition-colors duration-200 relative z-10 shadow-sm"
                         onClick={() => setStep('email')}
                       >
                         Back
                       </button>
                       <button 
-                        type="submit" 
+                        type="submit"
+                        name="submit_button"
                         className="py-3 px-6 bg-dark-slate text-white font-medium rounded-lg hover:bg-blue-mell transition-colors duration-200 flex items-center justify-center relative z-10 shadow-sm"
                         disabled={isSubmitting}
                       >
