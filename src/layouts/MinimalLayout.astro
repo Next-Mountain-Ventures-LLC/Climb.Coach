@@ -1,0 +1,61 @@
+---
+import HeadSEO from "@/components/HeadSEO.astro";
+
+interface Props {
+  title?: string | undefined;
+  description?: string | undefined;
+  ogImage?: URL | undefined;
+  image?: string | undefined;
+  canonicalUrl?: string | undefined;
+  article?: {
+    publishedTime: string;
+    modifiedTime: string;
+    tags: string[];
+  };
+}
+
+const { title, description, ogImage, image, canonicalUrl, article } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <HeadSEO 
+      title={title} 
+      description={description} 
+      ogImage={ogImage}
+      image={image}
+      canonicalUrl={canonicalUrl}
+      article={article}
+    />
+  </head>
+  <body class="bg-background min-h-screen font-sans antialiased">
+    <div class="relative flex min-h-screen flex-col">
+      <!-- No header navigation -->
+      <main class="flex-auto">
+        <slot />
+      </main>
+      
+      <!-- Minimal footer -->
+      <footer class="border-t border-mountain-green/30 py-8 bg-gradient-to-b from-white to-mountain-green/10">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-6 mb-4 md:mb-0">
+              <a href="/privacy-policy" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Privacy Policy</a>
+            </div>
+            <div class="flex flex-col md:flex-row items-center md:space-x-4">
+              <p class="text-dark-slate/70 text-sm mb-2 md:mb-0">
+                &copy; {new Date().getFullYear()} Climb.Coach. All rights reserved.
+              </p>
+              <div class="text-dark-slate/70 text-sm">
+                Site Design by <a href="https://www.astrobot.design" target="_blank" rel="noopener noreferrer" class="text-blue-mell hover:underline transition-colors">Astrobot.Design</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      <!-- DO NOT REMOVE - Necessary for making visual edits via new.website! -->
+      <script src="https://api.new.website/static/new-website.js"></script>
+    </div>
+  </body>
+</html>
