@@ -14,6 +14,7 @@ const Newsletter = () => {
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
+    console.log('Moving to details step with email:', email);
     setStep('details');
   };
   
@@ -44,11 +45,12 @@ const Newsletter = () => {
       const form = e.target as HTMLFormElement;
       const formData = new FormData(form);
       
-      // Ensure all required fields are included
+      // Ensure all required fields are included with correct names
       formData.set('email', email);
       formData.set('first_name', firstName);
       formData.set('last_name', lastName);
       formData.set('form_name', 'Newsletter Signup');
+      formData.set('form_type', 'newsletter');
       
       // Format phone with +1 if provided
       if (phone) {
@@ -102,13 +104,16 @@ const Newsletter = () => {
               </p>
               
               <form 
+                id="newsletter-form"
                 className="space-y-4"
                 onSubmit={step === 'email' ? handleNext : handleSubmit}
                 method="post"
                 encType="multipart/form-data"
                 action="https://api.new.website/api/submit-form/"
+                name="newsletter-signup"
               >
                 <input type="hidden" name="form_name" value="Newsletter Signup" />
+                <input type="hidden" name="form_type" value="newsletter" />
                 
                 {step === 'email' ? (
                   <div className="flex flex-col sm:flex-row gap-3">
