@@ -9,6 +9,7 @@ const Newsletter = () => {
   const [step, setStep] = useState<'email' | 'details'>('email');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
   const handleNext = (e: React.FormEvent) => {
     e.preventDefault();
@@ -16,12 +17,28 @@ const Newsletter = () => {
     setStep('details');
   };
   
+  // Format phone number to ensure it has +1 prefix
+  const formatPhoneWithCountryCode = (phoneNumber: string): string => {
+    if (!phoneNumber) return '';
+    
+    // Remove all non-digit characters
+    const digitsOnly = phoneNumber.replace(/\D/g, '');
+    
+    // Check if it already has country code
+    if (digitsOnly.startsWith('1')) {
+      return `+${digitsOnly}`;
+    } else {
+      return `+1${digitsOnly}`;
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !firstName || !lastName) return;
     
     setIsSubmitting(true);
     setSubmitStatus(null);
+    setShowSuccessMessage(false);
     
     try {
       const form = e.target as HTMLFormElement;
@@ -32,7 +49,12 @@ const Newsletter = () => {
       formData.set('first_name', firstName);
       formData.set('last_name', lastName);
       formData.set('form_name', 'Newsletter Signup');
-      if (phone) formData.set('phone', phone);
+      
+      // Format phone with +1 if provided
+      if (phone) {
+        const formattedPhone = formatPhoneWithCountryCode(phone);
+        formData.set('phone', formattedPhone);
+      }
       
       console.log('Submitting form with fields:', [...formData.entries()].map(entry => entry[0] + ': ' + entry[1]));
       
@@ -43,6 +65,7 @@ const Newsletter = () => {
       
       if (response.ok) {
         setSubmitStatus('success');
+        setShowSuccessMessage(true);
         setEmail('');
         setFirstName('');
         setLastName('');
@@ -148,7 +171,7 @@ const Newsletter = () => {
                         type="tel" 
                         name="phone" 
                         id="phone"
-                        placeholder="Phone number (optional)"
+                        placeholder="Phone number (optional, +1 will be added)"
                         className="w-full pl-10 pr-4 py-3 rounded-lg border border-mountain-green/50 text-dark-slate focus:outline-none focus:ring-2 focus:ring-blue-mell"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
@@ -197,6 +220,13 @@ const Newsletter = () => {
                 {submitStatus === 'error' && (
                   <div className="p-3 bg-red-600 text-white text-sm text-center rounded-lg">
                     Subscription failed. Please try again.
+                  </div>
+                )}
+                
+                {showSuccessMessage && (
+                  <div className="p-4 bg-cambridge-blue/40 border border-cambridge-blue text-dark-slate text-center rounded-lg mt-4 shadow-sm">
+                    <CheckCircle className="inline-block mr-2 h-5 w-5 text-dark-slate" />
+                    <span className="font-medium">Thank you for subscribing! You'll receive our first newsletter soon.</span>
                   </div>
                 )}
                 
