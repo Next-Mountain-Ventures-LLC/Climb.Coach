@@ -52,19 +52,6 @@ const description = post.excerpt.rendered
       <div class="max-w-4xl mx-auto">
         <!-- Post Header -->
         <header class="mb-8">
-          {postCategories.length > 0 && (
-            <div class="mb-4 flex flex-wrap gap-2">
-              {postCategories.map(category => (
-                <a
-                  href={`/blog/category/${category.slug}`}
-                  class="text-sm font-medium px-3 py-1 rounded-md bg-cambridge-blue/20 text-dark-slate hover:bg-cambridge-blue/30 transition-colors"
-                >
-                  {category.name}
-                </a>
-              ))}
-            </div>
-          )}
-
           <h1 class="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-charcoal mb-4">
             {post.title.rendered}
           </h1>
