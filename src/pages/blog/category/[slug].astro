@@ -2,7 +2,7 @@
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import BlogCard from '@/components/blog/BlogCard';
 import Pagination from '@/components/blog/Pagination';
-import { getClimbCoachPosts, getAllCategories, getCategoriesForPost } from '@/lib/blog';
+import { getClimbCoachPosts, getClimbCoachCategories, getCategoriesForPost } from '@/lib/blog';
 import type { GetStaticPathsResult } from 'astro';
 
 // Define the params type
@@ -15,9 +15,9 @@ interface Props {
   };
 }
 
-// Get static paths for all categories
+// Get static paths for all categories used in Climb.Coach posts
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
-  const categories = await getAllCategories();
+  const categories = await getClimbCoachCategories();
 
   return categories.map(category => ({
     params: { slug: category.slug },

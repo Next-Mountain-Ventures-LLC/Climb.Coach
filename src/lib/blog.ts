@@ -66,14 +66,14 @@ const CLIMB_COACH_CATEGORY_ID = 8;
 const PER_PAGE = 10;
 
 // Fetches posts for the Climb.Coach category
-export async function getClimbCoachPosts(page = 1): Promise<{
+export async function getClimbCoachPosts(page = 1, perPage = PER_PAGE): Promise<{
   posts: WordPressPost[];
   totalPages: number;
 }> {
   try {
     // Fetch posts with the Climb.Coach category
     const response = await fetch(
-      `${WP_API_URL}/posts?categories=${CLIMB_COACH_CATEGORY_ID}&page=${page}&per_page=${PER_PAGE}&_embed`,
+      `${WP_API_URL}/posts?categories=${CLIMB_COACH_CATEGORY_ID}&page=${page}&per_page=${perPage}&_embed`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -149,6 +149,49 @@ export async function getAllCategories(): Promise<WordPressCategory[]> {
     return categories.filter(category => category.id !== CLIMB_COACH_CATEGORY_ID);
   } catch (error) {
     console.error("Error fetching categories:", error);
+    return [];
+  }
+}
+
+// Gets only categories that have been used in Climb.Coach posts
+export async function getClimbCoachCategories(): Promise<WordPressCategory[]> {
+  try {
+    // First, get all posts from the Climb.Coach category
+    const { posts } = await getClimbCoachPosts(1, 100); // Get up to 100 posts to analyze categories
+    
+    // Extract all unique category IDs from these posts, excluding the Climb.Coach category itself
+    const categoryIds = new Set<number>();
+    posts.forEach(post => {
+      post.categories.forEach(categoryId => {
+        if (categoryId !== CLIMB_COACH_CATEGORY_ID) {
+          categoryIds.add(categoryId);
+        }
+      });
+    });
+    
+    // If no categories found, return empty array
+    if (categoryIds.size === 0) {
+      return [];
+    }
+    
+    // Fetch details for all these category IDs
+    const response = await fetch(
+      `${WP_API_URL}/categories?include=${Array.from(categoryIds).join(",")}&per_page=${categoryIds.size}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`Error fetching categories: ${response.status}`);
+    }
+
+    const categories = await response.json() as WordPressCategory[];
+    return categories;
+  } catch (error) {
+    console.error("Error fetching Climb.Coach categories:", error);
     return [];
   }
 }

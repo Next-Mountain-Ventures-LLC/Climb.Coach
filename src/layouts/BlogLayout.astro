@@ -2,7 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import CategoryFilter from '@/components/blog/CategoryFilter';
 import Newsletter from '@/components/sections/Newsletter';
-import { getAllCategories } from '@/lib/blog';
+import { getClimbCoachCategories } from '@/lib/blog';
 
 interface Props {
   title: string;
@@ -13,8 +13,8 @@ interface Props {
 
 const { title, description, image, currentCategory } = Astro.props;
 
-// Fetch all categories for the sidebar
-const categories = await getAllCategories();
+// Fetch only categories used in Climb.Coach posts for the sidebar
+const categories = await getClimbCoachCategories();
 ---
 
 <BaseLayout title={title} description={description} image={image}>

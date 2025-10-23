@@ -32,20 +32,24 @@ const CategoryFilter: React.FC<CategoryFilterProps> = ({ categories, currentCate
           All Posts
         </a>
         
-        {sortedCategories.map((category) => (
-          <a
-            key={category.id}
-            href={`/blog/category/${category.slug}`}
-            className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-              currentCategory === category.slug
-                ? 'bg-blue-mell text-white hover:bg-dark-slate'
-                : 'bg-gray-100 text-dark-slate hover:bg-gray-200'
-            }`}
-          >
-            {category.name} 
-            <span className="ml-1 text-xs opacity-70">({category.count})</span>
-          </a>
-        ))}
+        {sortedCategories.length > 0 ? (
+          sortedCategories.map((category) => (
+            <a
+              key={category.id}
+              href={`/blog/category/${category.slug}`}
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                currentCategory === category.slug
+                  ? 'bg-blue-mell text-white hover:bg-dark-slate'
+                  : 'bg-gray-100 text-dark-slate hover:bg-gray-200'
+              }`}
+            >
+              {category.name} 
+              <span className="ml-1 text-xs opacity-70">({category.count})</span>
+            </a>
+          ))
+        ) : (
+          <span className="text-sm text-dark-slate/70">No additional categories found</span>
+        )}
       </div>
     </div>
   );
