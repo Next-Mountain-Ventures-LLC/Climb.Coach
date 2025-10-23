@@ -25,12 +25,22 @@ const Newsletter = () => {
     setSubmitStatus(null);
     
     try {
-      const formData = new FormData();
-      formData.append('email', email);
-      formData.append('first_name', firstName);
-      formData.append('last_name', lastName);
-      if (phone) formData.append('phone', phone);
-      formData.append('form_name', 'Newsletter Signup');
+      // Create FormData object from the form element
+      const form = e.target as HTMLFormElement;
+      const formData = new FormData(form);
+      
+      // Ensure email is included (in case it's a hidden field)
+      if (!formData.get('email')) {
+        formData.set('email', email);
+      }
+      
+      // Ensure form_name is set
+      if (!formData.get('form_name')) {
+        formData.set('form_name', 'Newsletter Signup');
+      }
+      
+      // Log the form data keys to help with debugging
+      console.log('Submitting form with fields:', [...formData.entries()].map(entry => entry[0]));
       
       const response = await fetch('https://api.new.website/api/submit-form/', {
         method: 'POST',
@@ -44,10 +54,15 @@ const Newsletter = () => {
         setLastName('');
         setPhone('');
         setStep('email');
+        console.log('Form submitted successfully');
       } else {
+        console.error('Form submission failed with status:', response.status);
+        const errorText = await response.text();
+        console.error('Error details:', errorText);
         setSubmitStatus('error');
       }
     } catch (error) {
+      console.error('Exception during form submission:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -71,6 +86,10 @@ const Newsletter = () => {
               <form 
                 className="space-y-4"
                 onSubmit={step === 'email' ? handleNext : handleSubmit}
+                encType="multipart/form-data"
+                method="post"
+                action="https://api.new.website/api/submit-form/"
+                data-netlify="false"
               >
                 <input 
                   type="hidden" 
@@ -78,6 +97,7 @@ const Newsletter = () => {
                   value="Newsletter Signup" 
                 />
                 
+                {/* Always include email field (hidden if on second step) */}
                 {step === 'email' ? (
                   <div className="flex gap-3">
                     <input 
@@ -93,6 +113,7 @@ const Newsletter = () => {
                     />
                     <Button 
                       type="submit" 
+                      name="next_step"
                       className="bg-dark-slate hover:bg-blue-mell text-white font-medium"
                     >
                       <ArrowRight className="mr-2 h-4 w-4" />
@@ -100,6 +121,14 @@ const Newsletter = () => {
                     </Button>
                   </div>
                 ) : (
+                  <>
+                    {/* Hidden email field for when we're on second step */}
+                    <input 
+                      type="hidden" 
+                      name="email" 
+                      value={email}
+                    />
+                
                   <div className="space-y-3">
                     <div className="grid grid-cols-2 gap-3">
                       <div className="relative">
@@ -147,6 +176,7 @@ const Newsletter = () => {
                     <div className="flex justify-between mt-4">
                       <Button 
                         type="button" 
+                        name="back"
                         variant="outline"
                         className="border-dark-slate/30 text-dark-slate hover:bg-dark-slate/10"
                         onClick={() => setStep('email')}
@@ -155,6 +185,7 @@ const Newsletter = () => {
                       </Button>
                       <Button 
                         type="submit" 
+                        name="submit"
                         className="bg-dark-slate hover:bg-blue-mell text-white font-medium"
                         disabled={isSubmitting}
                       >
@@ -174,6 +205,7 @@ const Newsletter = () => {
                       </Button>
                     </div>
                   </div>
+                  </>
                 )}
                 
                 {submitStatus === 'error' && (
