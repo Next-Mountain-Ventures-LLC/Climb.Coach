@@ -2,7 +2,7 @@
 import BlogLayout from '@/layouts/BlogLayout.astro';
 import BlogCard from '@/components/blog/BlogCard';
 import Pagination from '@/components/blog/Pagination';
-import { getClimbCoachPosts, getClimbCoachCategories, getCategoriesForPost } from '@/lib/blog';
+import { getClimbCoachPosts, getClimbCoachCategories, getCategoriesForPost, getAuthorsForPosts } from '@/lib/blog';
 import type { GetStaticPathsResult } from 'astro';
 
 // Define the params type
@@ -41,11 +41,15 @@ const filteredPosts = posts.filter(post =>
   post.categories.includes(category.id)
 );
 
+// Fetch authors for all posts in one batch
+const authorMap = await getAuthorsForPosts(filteredPosts);
+
 // Fetch categories for each post
 const postsWithCategories = await Promise.all(
   filteredPosts.map(async (post) => {
     const categories = await getCategoriesForPost(post.categories);
-    return { post, categories };
+    const author = authorMap.get(post.author) || null;
+    return { post, categories, author };
   })
 );
 
@@ -72,8 +76,8 @@ const description = category.description ||
   <!-- Blog posts grid -->
   {postsWithCategories.length > 0 ? (
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-      {postsWithCategories.map(({ post, categories }) => (
-        <BlogCard post={post} categories={categories} client:visible />
+      {postsWithCategories.map(({ post, categories, author }) => (
+        <BlogCard post={post} categories={categories} author={author} client:visible />
       ))}
     </div>
   ) : (

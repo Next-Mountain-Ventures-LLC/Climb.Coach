@@ -1,15 +1,16 @@
 import React from 'react';
-import type { WordPressPost, WordPressCategory } from '@/lib/blog';
+import type { WordPressPost, WordPressCategory, WordPressAuthor } from '@/lib/blog';
 import { formatDate, getExcerpt } from '@/lib/blog';
-import { CalendarDays } from 'lucide-react';
+import { CalendarDays, User, Tag } from 'lucide-react';
 
 interface BlogCardProps {
   post: WordPressPost;
   categories: WordPressCategory[];
   isFeature?: boolean;
+  author?: WordPressAuthor | null;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ post, categories, isFeature = false }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ post, categories, isFeature = false, author }) => {
   const excerpt = getExcerpt(post);
   const formattedDate = formatDate(post.date);
   
@@ -30,14 +31,17 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, categories, isFeature = false
       <div className="p-5 flex flex-col flex-grow">
         {/* Categories */}
         {categories.length > 0 && (
-          <div className="mb-2 flex flex-wrap gap-2">
+          <div className="mb-2 flex flex-wrap gap-1.5">
             {categories.map(category => (
               <a 
                 key={category.id} 
                 href={`/blog/category/${category.slug}`} 
-                className="text-xs font-medium px-2 py-1 rounded-md bg-cambridge-blue/20 text-dark-slate hover:bg-cambridge-blue/30 transition-colors"
+                className="inline-flex items-center text-xs font-medium px-2 py-1 rounded-full border border-blue-mell/20 bg-blue-mell/10 text-blue-mell hover:bg-blue-mell/20 transition-colors"
               >
-                {category.name}
+                <span className="flex items-center">
+                  <Tag className="h-3 w-3 mr-1" />
+                  {category.name}
+                </span>
               </a>
             ))}
           </div>
@@ -50,10 +54,18 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, categories, isFeature = false
           </a>
         </h3>
         
-        {/* Date */}
-        <div className="flex items-center gap-1 text-xs text-dark-slate/70 mb-3">
-          <CalendarDays className="h-3 w-3" />
-          <span>{formattedDate}</span>
+        {/* Date and Author */}
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-dark-slate/70 mb-3">
+          <div className="flex items-center gap-1">
+            <CalendarDays className="h-3 w-3" />
+            <span>{formattedDate}</span>
+          </div>
+          {author && (
+            <div className="flex items-center gap-1">
+              <User className="h-3 w-3" />
+              <span>By {author.name}</span>
+            </div>
+          )}
         </div>
         
         {/* Excerpt */}

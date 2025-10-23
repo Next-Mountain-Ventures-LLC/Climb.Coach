@@ -314,3 +314,25 @@ export function getExcerpt(post: WordPressPost, maxLength = 150): string {
   
   return excerpt;
 }
+
+// Helper function to get author for multiple posts in parallel
+export async function getAuthorsForPosts(posts: WordPressPost[]): Promise<Map<number, WordPressAuthor>> {
+  const authorMap = new Map<number, WordPressAuthor>();
+  
+  // Extract all unique author IDs
+  const authorIds = Array.from(new Set(posts.map(post => post.author)));
+  
+  // Fetch authors in parallel
+  const authors = await Promise.all(
+    authorIds.map(id => getAuthorById(id))
+  );
+  
+  // Create a map of author ID to author data
+  authors.forEach(author => {
+    if (author) {
+      authorMap.set(author.id, author);
+    }
+  });
+  
+  return authorMap;
+}

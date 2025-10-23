@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import type { WordPressPost, WordPressCategory } from '@/lib/blog';
-import { getCategoriesForPost } from '@/lib/blog';
+import type { WordPressPost, WordPressCategory, WordPressAuthor } from '@/lib/blog';
+import { getCategoriesForPost, getAuthorsForPosts } from '@/lib/blog';
 import BlogCard from './BlogCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -12,23 +12,27 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visiblePosts, setVisiblePosts] = useState(3);
   const [postCategories, setPostCategories] = useState<Map<number, WordPressCategory[]>>(new Map());
+  const [postAuthors, setPostAuthors] = useState<Map<number, WordPressAuthor>>(new Map());
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Fetch categories for each post
+  // Fetch categories and authors for each post
   useEffect(() => {
-    const fetchCategories = async () => {
+    const fetchData = async () => {
+      // Fetch categories
       const categoriesMap = new Map<number, WordPressCategory[]>();
-      
       for (const post of posts) {
         const categories = await getCategoriesForPost(post.categories);
         categoriesMap.set(post.id, categories);
       }
-      
       setPostCategories(categoriesMap);
+      
+      // Fetch authors in one batch
+      const authorsMap = await getAuthorsForPosts(posts);
+      setPostAuthors(authorsMap);
     };
     
     if (posts.length > 0) {
-      fetchCategories();
+      fetchData();
     }
   }, [posts]);
 
@@ -138,6 +142,7 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
                 <BlogCard 
                   post={post} 
                   categories={postCategories.get(post.id) || []} 
+                  author={postAuthors.get(post.author) || null}
                 />
               </div>
             ))}
