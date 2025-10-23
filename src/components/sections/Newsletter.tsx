@@ -102,11 +102,11 @@ const Newsletter = () => {
                     <button 
                       type="submit" 
                       name="next_button"
-                      className="py-3 px-6 bg-charcoal hover:bg-dark-slate transition-colors duration-200 flex items-center justify-center relative z-10 shadow-md border-2 border-charcoal rounded-lg"
-                      style={{ color: '#ffffff' }}
+                      className="py-3 px-6 bg-white hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center relative z-10 shadow-md border-2 border-charcoal rounded-lg"
+                      style={{ color: '#364958' }}
                     >
-                      <span style={{ color: '#ffffff' }} className="font-bold">Next</span>
-                      <ArrowRight className="ml-2 h-5 w-5" style={{ color: '#ffffff' }} />
+                      <span style={{ color: '#364958' }} className="font-bold">Next</span>
+                      <ArrowRight className="ml-2 h-5 w-5" style={{ color: '#364958' }} />
                     </button>
                   </div>
                 ) : (
@@ -172,21 +172,21 @@ const Newsletter = () => {
                       <button 
                         type="submit"
                         name="submit_button"
-                        className="py-3 px-6 bg-charcoal hover:bg-dark-slate transition-colors duration-200 flex items-center justify-center relative z-10 shadow-md border-2 border-charcoal rounded-lg"
+                        className="py-3 px-6 bg-white hover:bg-gray-100 transition-colors duration-200 flex items-center justify-center relative z-10 shadow-md border-2 border-charcoal rounded-lg"
                         disabled={isSubmitting}
-                        style={{ color: '#ffffff' }}
+                        style={{ color: '#364958' }}
                       >
                         {isSubmitting ? (
-                          <span style={{ color: '#ffffff' }} className="font-bold">Subscribing...</span>
+                          <span style={{ color: '#364958' }} className="font-bold">Subscribing...</span>
                         ) : submitStatus === 'success' ? (
                           <>
-                            <CheckCircle className="mr-2 h-5 w-5" style={{ color: '#ffffff' }} />
-                            <span style={{ color: '#ffffff' }} className="font-bold">Subscribed!</span>
+                            <CheckCircle className="mr-2 h-5 w-5" style={{ color: '#364958' }} />
+                            <span style={{ color: '#364958' }} className="font-bold">Subscribed!</span>
                           </>
                         ) : (
                           <>
-                            <Send className="mr-2 h-5 w-5" style={{ color: '#ffffff' }} />
-                            <span style={{ color: '#ffffff' }} className="font-bold">Subscribe</span>
+                            <Send className="mr-2 h-5 w-5" style={{ color: '#364958' }} />
+                            <span style={{ color: '#364958' }} className="font-bold">Subscribe</span>
                           </>
                         )}
                       </button>
