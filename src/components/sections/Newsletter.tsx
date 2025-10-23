@@ -99,7 +99,7 @@ const Newsletter = () => {
                 
                 {/* Always include email field (hidden if on second step) */}
                 {step === 'email' ? (
-                  <div className="flex gap-3">
+                  <div className="flex gap-3 w-full">
                     <input 
                       type="email" 
                       name="email" 
@@ -114,7 +114,7 @@ const Newsletter = () => {
                     <Button 
                       type="submit" 
                       name="next_step"
-                      className="bg-dark-slate hover:bg-blue-mell text-white font-medium"
+                      className="bg-dark-slate hover:bg-blue-mell text-white font-medium flex-shrink-0"
                     >
                       <ArrowRight className="mr-2 h-4 w-4" />
                       Next
@@ -173,12 +173,12 @@ const Newsletter = () => {
                     <p className="text-xs text-dark-slate/60 text-center mt-1">
                       Helps us deliver insights straight to your phone
                     </p>
-                    <div className="flex justify-between mt-4">
+                    <div className="flex justify-between gap-3 mt-4 w-full">
                       <Button 
                         type="button" 
                         name="back"
                         variant="outline"
-                        className="border-dark-slate/30 text-dark-slate hover:bg-dark-slate/10"
+                        className="border-dark-slate/30 text-dark-slate hover:bg-dark-slate/10 flex-shrink-0"
                         onClick={() => setStep('email')}
                       >
                         Back
@@ -186,7 +186,7 @@ const Newsletter = () => {
                       <Button 
                         type="submit" 
                         name="submit"
-                        className="bg-dark-slate hover:bg-blue-mell text-white font-medium"
+                        className="bg-dark-slate hover:bg-blue-mell text-white font-medium flex-shrink-0"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? (
