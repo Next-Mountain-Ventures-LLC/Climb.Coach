@@ -24,7 +24,7 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
           Your investment in your growth journey is confirmed. The next step is to schedule your first coaching session (Basecamp) at a time that works best for you.
         </p>
 
-        <div class="rounded-xl p-4 sm:p-6 md:p-8 mb-10" style="background-color: white;">
+        <div class="rounded-xl p-4 sm:p-6 md:p-8 mb-10 border border-mountain-green/20 shadow-md" style="background-color: #f4f7f9;">
           <div class="flex items-center justify-center mb-6">
             <Calendar className="h-10 w-10 text-blue-mell mr-3" />
             <h2 class="text-2xl font-heading font-bold text-charcoal">Schedule Your Basecamp Session</h2>
@@ -36,7 +36,7 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
           
           <div class="mb-6 -mx-0">
             <!-- Setmore Scheduling Widget -->
-            <div id="setmore-embed" class="w-full sm:w-full md:w-full mx-auto overflow-hidden">
+            <div id="setmore-embed" class="w-full sm:w-full md:w-full mx-auto overflow-hidden rounded">
               <iframe 
                 id="setmore-frame"
                 src="https://climbcoach.setmore.com/services/38ebbc66-2899-4cf4-9ec4-26d6c1e5c4a3" 
@@ -44,7 +44,8 @@ import { Calendar, CheckCircle, Clock, ArrowRight } from 'lucide-react';
                 width="100%" 
                 height="750px" 
                 frameborder="0"
-                style="min-height:750px; overflow:visible; -webkit-overflow-scrolling: touch; border: none; background-color: white;"
+                style="background-color: transparent;"
+                style="min-height:750px; overflow:visible; -webkit-overflow-scrolling: touch; border: none; background-color: #f4f7f9;"
               ></iframe>
             </div>
           </div>
