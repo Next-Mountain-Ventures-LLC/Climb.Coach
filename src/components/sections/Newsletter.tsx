@@ -71,9 +71,6 @@ const Newsletter = () => {
               <form 
                 className="space-y-4"
                 onSubmit={step === 'email' ? handleNext : handleSubmit}
-                method="post"
-                action="https://api.new.website/api/submit-form/"
-                encType="multipart/form-data"
               >
                 <input 
                   type="hidden" 
