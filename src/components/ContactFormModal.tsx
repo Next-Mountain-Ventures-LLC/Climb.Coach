@@ -8,7 +8,7 @@ interface ContactFormModalProps {
 }
 
 export default function ContactFormModal({ isOpen, onClose }: ContactFormModalProps) {
-  const defaultFormData = {name: "", email: "", message: "", form_name: "Coach Contact Form"};
+  const defaultFormData = {name: "", email: "", message: "", form_name: "Talk With A Coach"};
   const [formData, setFormData] = useState(defaultFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
