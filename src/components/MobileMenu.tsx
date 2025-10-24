@@ -2,6 +2,13 @@ import React, { useState, useEffect } from 'react';
 import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
 
 export default function MobileMenu() {
+  const [isOnBlogPage, setIsOnBlogPage] = useState(false);
+  
+  // Check if current page is a blog page
+  useEffect(() => {
+    const path = window.location.pathname;
+    setIsOnBlogPage(path.includes('/blog'));
+  }, []);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -132,7 +139,7 @@ export default function MobileMenu() {
             <ul className="space-y-6">
               <li>
                 <a
-                  href="#about"
+                  href={isOnBlogPage ? '/#about' : '#about'}
                   className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
                   onClick={toggleMenu}
                 >
@@ -141,7 +148,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <a
-                  href="#method"
+                  href={isOnBlogPage ? '/#method' : '#method'}
                   className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
                   onClick={toggleMenu}
                 >
@@ -150,7 +157,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <a
-                  href="#services"
+                  href={isOnBlogPage ? '/#services' : '#services'}
                   className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
                   onClick={toggleMenu}
                 >
@@ -159,7 +166,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <a
-                  href="#climbos"
+                  href={isOnBlogPage ? '/#climbos' : '#climbos'}
                   className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
                   onClick={toggleMenu}
                 >
@@ -170,7 +177,7 @@ export default function MobileMenu() {
               {/* CTA Button integrated into the navigation list */}
               <li className="pt-8">
                 <a
-                  href="#services"
+                  href={isOnBlogPage ? '/#services' : '#services'}
                   className="block w-full text-center rounded-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-16 px-6 py-2 text-xl"
                   style={{ 
                     backgroundColor: '#364958',
