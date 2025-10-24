@@ -61,7 +61,7 @@ const Services = () => {
                 <div className={`p-6 ${service.primary ? 'bg-gradient-to-br from-blue-mell/40 to-blue-mell/20' : 'bg-gradient-to-br from-mountain-green/25 to-cambridge-blue/10'}`}>
                   {service.popular && (
                     <div className="absolute top-0 right-0">
-                      <div className="bg-mountain-green text-white text-xs font-bold px-3 py-1 transform rotate-0 origin-top-right rounded-bl-lg shadow-md">
+                      <div className="bg-charcoal text-white text-xs font-bold px-3 py-1 transform rotate-0 origin-top-right rounded-bl-lg shadow-md">
                         MOST POPULAR
                       </div>
                     </div>
