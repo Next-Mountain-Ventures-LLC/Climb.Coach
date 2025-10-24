@@ -6,6 +6,22 @@ import { Button } from '@/components/ui/button';
 const Services = () => {
   const services = [
     {
+      title: 'Monthly Summit Meeting',
+      description: 'Monthly check-ins to keep you aligned with your goals.',
+      price: '$150/mo',
+      features: [
+        '60-minute monthly sessions',
+        'ClimbOS productivity system included',
+        'Monthly goal setting and review',
+        'Custom client portal included',
+        'Support through your portal',
+      ],
+      icon: <Route className="h-12 w-12 text-cambridge-blue" />,
+      primary: false,
+      link: 'https://buy.stripe.com/aFaeVegixcsW72o7uggfu01',
+      buttonText: 'Book Now'
+    },
+    {
       title: 'Weekly Summit Meeting',
       description: 'Your secret weapon for building an effective life, one week at a time.',
       price: '$299/mo',
@@ -21,22 +37,6 @@ const Services = () => {
       popular: true,
       link: 'https://buy.stripe.com/4gM00kgix9gKfyU9Cogfu02',
       buttonText: 'Start Climbing'
-    },
-    {
-      title: 'Monthly Summit Meeting',
-      description: 'Monthly check-ins to keep you aligned with your goals.',
-      price: '$150/mo',
-      features: [
-        '60-minute monthly sessions',
-        'ClimbOS productivity system included',
-        'Monthly goal setting and review',
-        'Custom client portal included',
-        'Support through your portal',
-      ],
-      icon: <Route className="h-12 w-12 text-cambridge-blue" />,
-      primary: false,
-      link: 'https://buy.stripe.com/aFaeVegixcsW72o7uggfu01',
-      buttonText: 'Book Now'
     },
   ];
 
@@ -61,7 +61,7 @@ const Services = () => {
                 <div className={`p-6 ${service.primary ? 'bg-gradient-to-br from-blue-mell/40 to-blue-mell/20' : 'bg-gradient-to-br from-mountain-green/25 to-cambridge-blue/10'}`}>
                   {service.popular && (
                     <div className="absolute top-0 right-0">
-                      <div className="bg-charcoal text-white text-xs font-bold px-3 py-1 transform rotate-0 origin-top-right rounded-bl-lg shadow-md">
+                      <div className="bg-blue-mell text-white text-xs font-bold px-3 py-1 transform rotate-0 origin-top-right rounded-bl-lg shadow-md">
                         MOST POPULAR
                       </div>
                     </div>
