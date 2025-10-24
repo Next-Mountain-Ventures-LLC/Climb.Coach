@@ -71,13 +71,21 @@ export async function getClimbCoachPosts(page = 1, perPage = PER_PAGE): Promise<
   totalPages: number;
 }> {
   try {
+    console.log("Fetching Climb.Coach posts at timestamp: ", new Date().toISOString());
+    
     // Fetch posts with the Climb.Coach category
+    // Add cache-busting parameter to avoid caching issues
+    const cacheBuster = Date.now();
     const response = await fetch(
-      `${WP_API_URL}/posts?categories=${CLIMB_COACH_CATEGORY_ID}&page=${page}&per_page=${perPage}&_embed`,
+      `${WP_API_URL}/posts?categories=${CLIMB_COACH_CATEGORY_ID}&page=${page}&per_page=${perPage}&_embed&cache_bust=${cacheBuster}`,
       {
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          "Pragma": "no-cache",
+          "Expires": "0",
         },
+        cache: "no-store", // Force fetch to bypass all caches
       }
     );
 
@@ -104,12 +112,20 @@ export async function getClimbCoachPosts(page = 1, perPage = PER_PAGE): Promise<
 // Fetches a single post by slug
 export async function getPostBySlug(slug: string): Promise<WordPressPost | null> {
   try {
+    console.log(`Fetching post with slug "${slug}" at timestamp: ${new Date().toISOString()}`);
+    
+    // Add cache-busting parameter to avoid caching issues
+    const cacheBuster = Date.now();
     const response = await fetch(
-      `${WP_API_URL}/posts?slug=${slug}&_embed`,
+      `${WP_API_URL}/posts?slug=${slug}&_embed&cache_bust=${cacheBuster}`,
       {
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          "Pragma": "no-cache",
+          "Expires": "0",
         },
+        cache: "no-store", // Force fetch to bypass all caches
       }
     );
 

@@ -11,11 +11,16 @@ interface Props {
 
 // Get static paths for all posts
 export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  console.log("Starting getStaticPaths for blog posts at: ", new Date().toISOString());
+  
   // Get all posts
   const { posts } = await getClimbCoachPosts(1);
   
+  console.log(`Found ${posts.length} posts on first page. Titles: ${posts.map(p => p.title.rendered).join(', ')}`);
+  
   // Determine the total pages
   const totalPages = Math.ceil(posts.length / 10);
+  console.log(`Total pages determined: ${totalPages}`);
   
   // Fetch all posts across all pages
   const allPosts = [];
@@ -25,8 +30,18 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
   
   // Fetch remaining pages
   for (let i = 2; i <= totalPages; i++) {
+    console.log(`Fetching page ${i} of ${totalPages}`);
     const { posts: pagePosts } = await getClimbCoachPosts(i);
+    console.log(`Found ${pagePosts.length} posts on page ${i}`);
     allPosts.push(...pagePosts);
+  }
+  
+  console.log(`Total posts to generate: ${allPosts.length}. Slugs: ${allPosts.map(p => p.slug).join(', ')}`);
+  
+  // Double-check for "does-this-work" slug
+  const doesThisWorkPost = allPosts.find(p => p.slug === "does-this-work");
+  if (doesThisWorkPost) {
+    console.warn("WARNING: The 'does-this-work' post is still present despite being deleted from WordPress!");
   }
   
   // Generate static paths

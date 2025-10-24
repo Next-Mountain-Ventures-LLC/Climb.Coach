@@ -9,5 +9,16 @@ export default defineConfig({
   integrations: [react()],
   vite: {
     plugins: [tailwindcss()],
+    build: {
+      // Disable caching
+      emptyOutDir: true,
+    },
+    server: {
+      fs: {
+        strict: false
+      }
+    },
+    // Clear cache on build
+    cacheDir: '.vite-temp-cache'
   },
 });
