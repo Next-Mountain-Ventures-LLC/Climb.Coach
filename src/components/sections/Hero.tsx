@@ -1,10 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import ContactFormModal from '@/components/ContactFormModal';
 
 const Hero = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  // Listen for custom event from footer
+  useEffect(() => {
+    const handleOpenContactModal = () => {
+      setIsContactModalOpen(true);
+    };
+    
+    document.addEventListener('openContactModal', handleOpenContactModal);
+    
+    // Cleanup listener on component unmount
+    return () => {
+      document.removeEventListener('openContactModal', handleOpenContactModal);
+    };
+  }, []);
   
   return (
     <section className="relative overflow-hidden py-20">

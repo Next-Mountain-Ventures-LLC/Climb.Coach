@@ -14,18 +14,15 @@
       <div class="md:col-span-1">
         <div class="flex flex-col space-y-3">
           <h3 class="text-lg font-heading font-bold text-charcoal mb-4">Connect</h3>
-          <a href="#" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Contact Us</a>
-          <a href="#" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Book a Session</a>
-          <a href="#" class="text-dark-slate/80 hover:text-blue-mell transition-colors">FAQ</a>
+          <button id="contactUsBtn" class="text-left text-dark-slate/80 hover:text-blue-mell transition-colors">Contact Us</button>
+          <a href="#services" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Book a Session</a>
         </div>
       </div>
       
       <div class="md:col-span-1">
         <div class="flex flex-col space-y-3">
           <h3 class="text-lg font-heading font-bold text-charcoal mb-4">Resources</h3>
-          <a href="#" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Blog</a>
-          <a href="#" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Productivity Tips</a>
-          <a href="#" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Newsletter Archive</a>
+          <a href="/blog" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Blog</a>
         </div>
       </div>
       
@@ -47,4 +44,16 @@
     </div>
     
   </div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactUsBtn = document.getElementById('contactUsBtn');
+      if (contactUsBtn) {
+        contactUsBtn.addEventListener('click', function() {
+          // Create and dispatch a custom event that Hero.tsx can listen for
+          const event = new CustomEvent('openContactModal');
+          document.dispatchEvent(event);
+        });
+      }
+    });
+  </script>
 </footer>
