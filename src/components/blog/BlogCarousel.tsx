@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { WordPressPost, WordPressCategory, WordPressAuthor } from '@/lib/blog';
-import { getCategoriesForPost, getAuthorsForPosts } from '@/lib/blog';
+import { getAuthorsForPosts } from '@/lib/blog';
 import BlogCard from './BlogCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -16,34 +16,15 @@ interface BlogCarouselProps {
 const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visiblePosts, setVisiblePosts] = useState(3);
-  const [postCategories, setPostCategories] = useState<Map<number, WordPressCategory[]>>(new Map());
   const [postAuthors, setPostAuthors] = useState<Map<number, WordPressAuthor>>(new Map());
   const carouselRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Set categories from pre-fetched posts
+  // Set initial values and fetch authors for posts
   useEffect(() => {
-    // Extract categories from the extended posts
-    const map = new Map<number, WordPressCategory[]>();
-    posts.forEach(post => {
-      if (post.fetchedCategories && post.fetchedCategories.length > 0) {
-        console.log(`BlogCarousel: Using pre-fetched categories for post ID ${post.id}:`, post.fetchedCategories.map(c => c.name));
-        map.set(post.id, post.fetchedCategories);
-      }
-    });
-    
-    // Update the state with pre-fetched categories
-    if (map.size > 0) {
-      setPostCategories(map);
-      console.log('BlogCarousel: Updated categories map with pre-fetched data');
-    }
-  }, [posts]);
-
-  // Fetch authors for each post
-  useEffect(() => {
+    // Fetch authors for each post
     const fetchData = async () => {
       console.log('BlogCarousel: Fetching authors for posts:', posts.map(p => p.title.rendered));
-      
-      // Fetch only authors, since categories should be pre-fetched
       const authorsMap = await getAuthorsForPosts(posts);
       setPostAuthors(authorsMap);
       console.log('BlogCarousel: Authors map updated');
@@ -52,14 +33,12 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
     if (posts.length > 0) {
       fetchData();
     }
-  }, [posts]);
 
-  // Adjust visible posts based on screen size
-  useEffect(() => {
+    // Update visible posts based on screen size
     const handleResize = () => {
       if (typeof window === 'undefined') return;
       
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < 768) {
         setVisiblePosts(1);
       } else if (window.innerWidth < 1024) {
         setVisiblePosts(2);
@@ -82,17 +61,30 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
         window.removeEventListener('resize', handleResize);
       }
     };
-  }, []);
+  }, [posts]);
 
   // Handle previous slide
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? Math.max(0, posts.length - visiblePosts) : prev - 1));
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1);
+    } else {
+      // Wrap around to the last slide
+      setCurrentSlide(Math.max(0, posts.length - 1));
+    }
   };
 
   // Handle next slide
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev >= posts.length - visiblePosts ? 0 : prev + 1));
+    if (currentSlide < posts.length - 1) {
+      setCurrentSlide(currentSlide + 1);
+    } else {
+      // Wrap around to the first slide
+      setCurrentSlide(0);
+    }
   };
+
+  // Calculate maximum slide index
+  const maxSlideIndex = Math.max(0, posts.length - visiblePosts);
 
   // Early return if no posts
   if (posts.length === 0) {
@@ -118,20 +110,20 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative">
+        <div ref={containerRef} className="relative overflow-hidden">
           {/* Navigation Buttons */}
           {posts.length > visiblePosts && (
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white rounded-full p-2 shadow-md border border-gray-200 hover:bg-gray-100 transition-colors md:-translate-x-5"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-0 sm:-translate-x-4 z-10 bg-white rounded-full p-2 shadow-md border border-gray-200 hover:bg-gray-100 transition-colors md:-translate-x-5"
                 aria-label="Previous slide"
               >
                 <ChevronLeft className="h-5 w-5 text-dark-slate" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white rounded-full p-2 shadow-md border border-gray-200 hover:bg-gray-100 transition-colors md:translate-x-5"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-0 sm:translate-x-4 z-10 bg-white rounded-full p-2 shadow-md border border-gray-200 hover:bg-gray-100 transition-colors md:translate-x-5"
                 aria-label="Next slide"
               >
                 <ChevronRight className="h-5 w-5 text-dark-slate" />
@@ -142,21 +134,19 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
           {/* Carousel Content */}
           <div 
             ref={carouselRef}
-            className="flex gap-6 overflow-hidden transition-transform duration-500 ease-in-out px-4 md:px-0 w-full"
+            className="flex gap-4 md:gap-6 transition-transform duration-300 ease-in-out px-2 md:px-0"
             style={{ 
               transform: `translateX(-${currentSlide * (100 / visiblePosts)}%)`,
+              width: `${posts.length * 100}%`,
             }}
           >
-            {console.log('Categories map in render:', postCategories)}
-            {posts.map((post) => (
+            {posts.map((post, index) => (
               <div
                 key={post.id}
-                style={{
-                  width: `calc(${100 / visiblePosts}% - ${visiblePosts > 1 ? '1.5rem' : '0rem'})`,
-                  flexShrink: 0,
-                  flexGrow: 0,
+                className="flex-shrink-0 flex-grow-0 px-2"
+                style={{ 
+                  width: `${100 / posts.length}%`,
                 }}
-                className="flex-shrink-0 flex-grow-0"
               >
                 <BlogCard 
                   post={post} 
@@ -170,13 +160,13 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
         </div>
 
         {/* Mobile Dots Navigation */}
-        {posts.length > visiblePosts && (
+        {posts.length > 1 && (
           <div className="flex justify-center gap-2 mt-6 md:hidden">
-            {Array.from({ length: posts.length - visiblePosts + 1 }).map((_, index) => (
+            {Array.from({ length: posts.length }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full ${
+                className={`w-3 h-3 rounded-full ${
                   currentSlide === index ? 'bg-blue-mell' : 'bg-gray-300'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
