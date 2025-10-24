@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { X } from "lucide-react";
+import logoSrc from "../assets/main_no_bg_nw_b5d07dc7.png";
 
 interface ContactFormModalProps {
   isOpen: boolean;
@@ -68,7 +69,12 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md relative overflow-hidden">
         <div className="bg-gradient-to-r from-mountain-green to-cambridge-blue p-6">
           <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-heading font-bold text-white">Talk With A Coach</h2>
+            <div>
+              <div className="flex justify-center mb-4">
+                <img src={logoSrc} alt="Climb.Coach" className="h-12 w-auto" />
+              </div>
+              <h2 className="text-2xl font-heading font-bold text-white">Talk With A Coach</h2>
+            </div>
             <button 
               onClick={onClose}
               className="text-white hover:bg-white/20 rounded-full p-1 transition-colors"
@@ -130,7 +136,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full"
+            className="w-full text-white font-medium"
             style={{ backgroundColor: '#3B6064' }}
           >
             {isSubmitting ? "Submitting..." : "Submit"}
