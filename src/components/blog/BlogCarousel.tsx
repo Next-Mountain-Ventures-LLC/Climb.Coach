@@ -59,7 +59,7 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
     const handleResize = () => {
       if (typeof window === 'undefined') return;
       
-      if (window.innerWidth < 640) {
+      if (window.innerWidth < 768) {
         setVisiblePosts(1);
       } else if (window.innerWidth < 1024) {
         setVisiblePosts(2);
@@ -86,12 +86,18 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
 
   // Handle previous slide
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? Math.max(0, posts.length - visiblePosts) : prev - 1));
+    setCurrentSlide((prev) => {
+      const lastSlideIndex = Math.max(0, posts.length - visiblePosts);
+      return prev === 0 ? lastSlideIndex : prev - 1;
+    });
   };
 
   // Handle next slide
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev >= posts.length - visiblePosts ? 0 : prev + 1));
+    setCurrentSlide((prev) => {
+      const lastSlideIndex = Math.max(0, posts.length - visiblePosts);
+      return prev >= lastSlideIndex ? 0 : prev + 1;
+    });
   };
 
   // Early return if no posts
@@ -145,6 +151,7 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
             className="flex gap-6 overflow-hidden transition-transform duration-500 ease-in-out px-4 md:px-0 w-full"
             style={{ 
               transform: `translateX(-${currentSlide * (100 / visiblePosts)}%)`,
+              width: `calc(${posts.length * 100 / visiblePosts}%)`,
             }}
           >
             {console.log('Categories map in render:', postCategories)}
@@ -152,7 +159,7 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
               <div
                 key={post.id}
                 style={{
-                  width: `calc(${100 / visiblePosts}% - ${visiblePosts > 1 ? '1.5rem' : '0rem'})`,
+                  width: `calc(${100 / visiblePosts}% - ${(visiblePosts > 1 ? 1.5 : 0) * (visiblePosts - 1) / visiblePosts}rem)`,
                   flexShrink: 0,
                   flexGrow: 0,
                 }}
@@ -172,11 +179,11 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
         {/* Mobile Dots Navigation */}
         {posts.length > visiblePosts && (
           <div className="flex justify-center gap-2 mt-6 md:hidden">
-            {Array.from({ length: posts.length - visiblePosts + 1 }).map((_, index) => (
+            {Array.from({ length: Math.min(posts.length, posts.length - visiblePosts + 1) }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full ${
+                className={`w-3 h-3 rounded-full ${
                   currentSlide === index ? 'bg-blue-mell' : 'bg-gray-300'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
