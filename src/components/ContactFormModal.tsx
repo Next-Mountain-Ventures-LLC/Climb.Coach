@@ -66,23 +66,22 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
       onClick={handleBackdropClick}
     >
       <div className="bg-white rounded-xl shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto relative overflow-hidden">
-        <div className="bg-gradient-to-r from-mountain-green to-cambridge-blue py-3 px-4 sm:p-5">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <img src="/main_no_bg_nw_b5d07dc7.png" alt="Climb.Coach" className="h-10 w-auto" />
-              <h2 className="text-xl sm:text-2xl font-heading font-bold text-white">Talk With A Coach</h2>
-            </div>
-            <button 
-              onClick={onClose}
-              className="text-white hover:bg-white/20 rounded-full p-1 transition-colors"
-            >
-              <X size={20} />
-            </button>
+        <div className="bg-gradient-to-r from-mountain-green to-cambridge-blue pt-3 pb-2 px-4 relative">
+          <button 
+            onClick={onClose}
+            className="text-white hover:bg-white/20 rounded-full p-1 transition-colors absolute top-2 right-2"
+          >
+            <X size={20} />
+          </button>
+          
+          <div className="flex flex-col items-center">
+            <img src="/main_no_bg_nw_b5d07dc7.png" alt="Climb.Coach" className="h-10 w-auto mb-1" />
+            <h2 className="text-xl sm:text-2xl font-heading font-bold text-white text-center">Talk With A Coach</h2>
+            <p className="text-white/90 text-sm mt-0.5 text-center">Fill out this form and a coach will get back to you shortly.</p>
           </div>
-          <p className="text-white/90 text-sm mt-1.5 ml-0.5">Fill out this form and a coach will get back to you shortly.</p>
         </div>
         
-        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3 sm:space-y-4">
+        <form onSubmit={handleSubmit} className="pt-4 px-4 pb-3 sm:p-5 space-y-3">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-0.5">
               Name
