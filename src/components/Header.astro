@@ -3,6 +3,11 @@ import { buttonVariants } from "@/components/ui/button";
 import { Image } from "astro:assets";
 import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
 import MobileMenu from "./MobileMenu";
+import { isCurrentPageBlog, getNavUrl } from '../utils/navigation';
+
+// Check if current page is a blog page
+const pathname = Astro.url.pathname;
+const isOnBlogPage = isCurrentPageBlog(pathname);
 ---
 
 <!-- Using React component for mobile menu -->
@@ -22,25 +27,25 @@ import MobileMenu from "./MobileMenu";
       <!-- Desktop Navigation -->
       <nav class="hidden md:flex items-center space-x-6 font-medium text-charcoal">
         <a
-          href="#about"
+          href={getNavUrl('#about', isOnBlogPage)}
           class="hover:text-blue-mell transition-colors"
         >
           About
         </a>
         <a
-          href="#method"
+          href={getNavUrl('#method', isOnBlogPage)}
           class="hover:text-blue-mell transition-colors"
         >
           The Climb Method
         </a>
         <a
-          href="#services"
+          href={getNavUrl('#services', isOnBlogPage)}
           class="hover:text-blue-mell transition-colors"
         >
           Pricing
         </a>
         <a
-          href="#climbos"
+          href={getNavUrl('#climbos', isOnBlogPage)}
           class="hover:text-blue-mell transition-colors"
         >
           ClimbOS
@@ -49,7 +54,7 @@ import MobileMenu from "./MobileMenu";
       
       <!-- Desktop CTA -->
       <a
-        href="#services"
+        href={getNavUrl('#services', isOnBlogPage)}
         class="hidden md:inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-9 px-4 py-2 ml-6 whitespace-nowrap"
         style="background-color: #364958;"
       >

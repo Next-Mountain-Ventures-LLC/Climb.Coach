@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
+import { isCurrentPageBlog, getNavUrl } from '../utils/navigation';
 
 export default function MobileMenu() {
   const [isOnBlogPage, setIsOnBlogPage] = useState(false);
@@ -7,7 +8,7 @@ export default function MobileMenu() {
   // Check if current page is a blog page
   useEffect(() => {
     const path = window.location.pathname;
-    setIsOnBlogPage(path.includes('/blog'));
+    setIsOnBlogPage(isCurrentPageBlog(path));
   }, []);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -139,7 +140,7 @@ export default function MobileMenu() {
             <ul className="space-y-6">
               <li>
                 <a
-                  href={isOnBlogPage ? '/#about' : '#about'}
+                  href={getNavUrl('#about', isOnBlogPage)}
                   className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
                   onClick={toggleMenu}
                 >
@@ -148,7 +149,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <a
-                  href={isOnBlogPage ? '/#method' : '#method'}
+                  href={getNavUrl('#method', isOnBlogPage)}
                   className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
                   onClick={toggleMenu}
                 >
@@ -157,7 +158,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <a
-                  href={isOnBlogPage ? '/#services' : '#services'}
+                  href={getNavUrl('#services', isOnBlogPage)}
                   className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
                   onClick={toggleMenu}
                 >
@@ -166,7 +167,7 @@ export default function MobileMenu() {
               </li>
               <li>
                 <a
-                  href={isOnBlogPage ? '/#climbos' : '#climbos'}
+                  href={getNavUrl('#climbos', isOnBlogPage)}
                   className="block py-2 text-2xl text-center font-medium text-charcoal hover:text-blue-mell transition-colors"
                   onClick={toggleMenu}
                 >
@@ -177,7 +178,7 @@ export default function MobileMenu() {
               {/* CTA Button integrated into the navigation list */}
               <li className="pt-8">
                 <a
-                  href={isOnBlogPage ? '/#services' : '#services'}
+                  href={getNavUrl('#services', isOnBlogPage)}
                   className="block w-full text-center rounded-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background text-white hover:bg-cambridge-blue/90 h-16 px-6 py-2 text-xl"
                   style={{ 
                     backgroundColor: '#364958',

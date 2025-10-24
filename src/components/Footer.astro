@@ -1,13 +1,21 @@
+---
+import { isCurrentPageBlog, getNavUrl } from '../utils/navigation';
+
+// Check if current page is a blog page
+const pathname = Astro.url.pathname;
+const isOnBlogPage = isCurrentPageBlog(pathname);
+---
+
 <footer class="border-t border-mountain-green/30 py-16 bg-gradient-to-b from-white to-mountain-green/10">
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div class="md:col-span-1">
         <div class="flex flex-col space-y-3">
           <h3 class="text-lg font-heading font-bold text-charcoal mb-4">Climb.Coach</h3>
-          <a href="#about" class="text-dark-slate/80 hover:text-blue-mell transition-colors">About</a>
-          <a href="#services" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Services</a>
-          <a href="#method" class="text-dark-slate/80 hover:text-blue-mell transition-colors">The Climb Method</a>
-          <a href="#climbos" class="text-dark-slate/80 hover:text-blue-mell transition-colors">ClimbOS</a>
+          <a href={getNavUrl('#about', isOnBlogPage)} class="text-dark-slate/80 hover:text-blue-mell transition-colors">About</a>
+          <a href={getNavUrl('#services', isOnBlogPage)} class="text-dark-slate/80 hover:text-blue-mell transition-colors">Services</a>
+          <a href={getNavUrl('#method', isOnBlogPage)} class="text-dark-slate/80 hover:text-blue-mell transition-colors">The Climb Method</a>
+          <a href={getNavUrl('#climbos', isOnBlogPage)} class="text-dark-slate/80 hover:text-blue-mell transition-colors">ClimbOS</a>
         </div>
       </div>
       
@@ -15,7 +23,7 @@
         <div class="flex flex-col space-y-3">
           <h3 class="text-lg font-heading font-bold text-charcoal mb-4">Connect</h3>
           <button id="contactUsBtn" class="text-left text-dark-slate/80 hover:text-blue-mell transition-colors">Contact Us</button>
-          <a href="#services" class="text-dark-slate/80 hover:text-blue-mell transition-colors">Book a Session</a>
+          <a href={getNavUrl('#services', isOnBlogPage)} class="text-dark-slate/80 hover:text-blue-mell transition-colors">Book a Session</a>
         </div>
       </div>
       
@@ -43,7 +51,7 @@
       </div>
     </div>
     
-  </div>
+  </div>}
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       const contactUsBtn = document.getElementById('contactUsBtn');
