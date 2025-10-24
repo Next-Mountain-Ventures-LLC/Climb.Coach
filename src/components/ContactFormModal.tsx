@@ -62,31 +62,29 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
 
   return (
     <div 
-      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4"
+      className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-3 sm:p-4"
       onClick={handleBackdropClick}
     >
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-md relative overflow-hidden">
-        <div className="bg-gradient-to-r from-mountain-green to-cambridge-blue p-6">
+      <div className="bg-white rounded-xl shadow-xl w-full max-w-md max-h-[90vh] overflow-y-auto relative overflow-hidden">
+        <div className="bg-gradient-to-r from-mountain-green to-cambridge-blue py-3 px-4 sm:p-5">
           <div className="flex justify-between items-center">
-            <div>
-              <div className="flex justify-center mb-4">
-                <img src="/main_no_bg_nw_b5d07dc7.png" alt="Climb.Coach" className="h-12 w-auto" />
-              </div>
-              <h2 className="text-2xl font-heading font-bold text-white">Talk With A Coach</h2>
+            <div className="flex items-center gap-3">
+              <img src="/main_no_bg_nw_b5d07dc7.png" alt="Climb.Coach" className="h-10 w-auto" />
+              <h2 className="text-xl sm:text-2xl font-heading font-bold text-white">Talk With A Coach</h2>
             </div>
             <button 
               onClick={onClose}
               className="text-white hover:bg-white/20 rounded-full p-1 transition-colors"
             >
-              <X size={24} />
+              <X size={20} />
             </button>
           </div>
-          <p className="text-white/90 mt-2">Fill out this form and a coach will get back to you shortly.</p>
+          <p className="text-white/90 text-sm mt-1.5 ml-0.5">Fill out this form and a coach will get back to you shortly.</p>
         </div>
         
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-3 sm:space-y-4">
           <div>
-            <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-1">
+            <label htmlFor="name" className="block text-sm font-medium text-charcoal mb-0.5">
               Name
             </label>
             <input
@@ -96,12 +94,12 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
               value={formData.name}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-mell focus:border-transparent"
+              className="w-full px-3 py-1.5 sm:py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-mell focus:border-transparent"
             />
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-1">
+            <label htmlFor="email" className="block text-sm font-medium text-charcoal mb-0.5">
               Email
             </label>
             <input
@@ -111,12 +109,12 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
               value={formData.email}
               onChange={handleInputChange}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-mell focus:border-transparent"
+              className="w-full px-3 py-1.5 sm:py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-mell focus:border-transparent"
             />
           </div>
 
           <div>
-            <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-1">
+            <label htmlFor="message" className="block text-sm font-medium text-charcoal mb-0.5">
               Message
             </label>
             <textarea
@@ -125,8 +123,8 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
               value={formData.message}
               onChange={handleInputChange}
               required
-              rows={4}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-mell focus:border-transparent"
+              rows={3}
+              className="w-full px-3 py-1.5 sm:py-2 text-sm sm:text-base border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-mell focus:border-transparent"
             />
           </div>
 
@@ -135,20 +133,20 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full text-white font-medium"
+            className="w-full text-white font-medium text-sm sm:text-base py-1.5 h-auto sm:py-2"
             style={{ backgroundColor: '#3B6064' }}
           >
             {isSubmitting ? "Submitting..." : "Submit"}
           </Button>
 
           {submitStatus === "success" && (
-            <div className="p-3 bg-green-100 border border-green-400 text-green-700 rounded">
+            <div className="p-2 sm:p-3 bg-green-100 border border-green-400 text-green-700 text-sm rounded">
               Form submitted successfully! We'll be in touch soon.
             </div>
           )}
 
           {submitStatus === "error" && (
-            <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            <div className="p-2 sm:p-3 bg-red-100 border border-red-400 text-red-700 text-sm rounded">
               There was an error submitting the form. Please try again.
             </div>
           )}
