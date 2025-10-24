@@ -81,9 +81,9 @@ const description = post.excerpt.rendered
         )}
 
         <!-- Post Content -->
-        <div class="prose prose-lg max-w-none mb-10 prose-headings:font-heading prose-headings:font-bold prose-headings:text-charcoal prose-p:text-dark-slate prose-a:text-blue-mell prose-a:decoration-blue-mell/30">
+        <article class="prose prose-lg max-w-none mb-10">
           <div set:html={post.content.rendered} />
-        </div>
+        </article>
 
         <!-- Social Share and Author Bio -->
         <div class="border-t border-b border-gray-200 py-6 my-8">

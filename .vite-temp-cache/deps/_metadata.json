@@ -1,55 +1,55 @@
 {
-  "hash": "a71916e0",
+  "hash": "b0ed9d02",
   "configHash": "d97b8bb3",
-  "lockfileHash": "dec7270b",
-  "browserHash": "dc706617",
+  "lockfileHash": "c430e359",
+  "browserHash": "f5de16fb",
   "optimized": {
     "@astrojs/react/client.js": {
       "src": "../../node_modules/@astrojs/react/client.js",
       "file": "@astrojs_react_client__js.js",
-      "fileHash": "c798132d",
+      "fileHash": "bdb29183",
       "needsInterop": false
     },
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "483fa06b",
+      "fileHash": "b8d5c25e",
       "needsInterop": true
     },
     "react-dom": {
       "src": "../../node_modules/react-dom/index.js",
       "file": "react-dom.js",
-      "fileHash": "705a400c",
+      "fileHash": "0e706bcc",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "26f0767e",
+      "fileHash": "4ef12150",
       "needsInterop": true
     },
     "react/jsx-runtime": {
       "src": "../../node_modules/react/jsx-runtime.js",
       "file": "react_jsx-runtime.js",
-      "fileHash": "d433c3c5",
+      "fileHash": "47474198",
       "needsInterop": true
     },
     "astro > cssesc": {
       "src": "../../node_modules/cssesc/cssesc.js",
       "file": "astro___cssesc.js",
-      "fileHash": "86304578",
+      "fileHash": "8ef5c294",
       "needsInterop": true
     },
     "astro > aria-query": {
       "src": "../../node_modules/aria-query/lib/index.js",
       "file": "astro___aria-query.js",
-      "fileHash": "64df9ead",
+      "fileHash": "1bfc154a",
       "needsInterop": true
     },
     "astro > axobject-query": {
       "src": "../../node_modules/axobject-query/lib/index.js",
       "file": "astro___axobject-query.js",
-      "fileHash": "a440b340",
+      "fileHash": "459f0b98",
       "needsInterop": true
     }
   },

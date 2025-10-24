@@ -1,0 +1,87 @@
+npm warn Unknown builtin config "globalignorefile". This will stop working in the next major version of npm.
+
+> @area44/astro-shadcn-ui-template@25.01.27 dev
+> astro dev
+
+23:43:32 [types] Generated 0ms
+23:43:32 [content] Syncing content
+23:43:32 [content] Synced content
+23:43:32 [vite] Re-optimizing dependencies because vite config has changed
+
+ astro  v5.5.4 ready in 664 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+▶ vite.server.fs.strict has been disabled!
+  Files on your machine are likely accessible on your network.
+
+23:43:32 watching for file changes...
+
+ update  ▶ New version of Astro available: 5.15.1
+  Run npx @astrojs/upgrade to update
+
+Starting getStaticPaths for blog posts at:  2025-10-24T23:43:42.795Z
+Fetching Climb.Coach posts at timestamp:  2025-10-24T23:43:42.796Z
+Found 3 posts on first page. Titles: Tiny Wins, Big Change: The Real Benefits of Habit Tracking, How To Build A Life, Why You Should Have a Performance Coach
+Total pages determined: 1
+Total posts to generate: 3. Slugs: tiny-wins-big-change-the-real-benefits-of-habit-tracking, how-to-build-a-life-2, why-you-should-have-a-performance-coach
+Fetching categories for post with categoryIds: 8, 14 at 2025-10-24T23:43:43.281Z
+After filtering out Climb.Coach category (8), remaining categoryIds: 14
+Fetching categories with URL: https://blog.nxtmt.ventures/wp-json/wp/v2/categories?include=14&cache_bust=1761349422795
+23:43:43 [200] /blog/why-you-should-have-a-performance-coach/ 221ms
+Retrieved 1 categories: Coaching
+Starting getStaticPaths for blog posts at:  2025-10-24T23:43:47.449Z
+Fetching Climb.Coach posts at timestamp:  2025-10-24T23:43:47.449Z
+Found 3 posts on first page. Titles: Tiny Wins, Big Change: The Real Benefits of Habit Tracking, How To Build A Life, Why You Should Have a Performance Coach
+Total pages determined: 1
+Total posts to generate: 3. Slugs: tiny-wins-big-change-the-real-benefits-of-habit-tracking, how-to-build-a-life-2, why-you-should-have-a-performance-coach
+Fetching categories for post with categoryIds: 8, 13 at 2025-10-24T23:43:47.466Z
+After filtering out Climb.Coach category (8), remaining categoryIds: 13
+Fetching categories with URL: https://blog.nxtmt.ventures/wp-json/wp/v2/categories?include=13&cache_bust=1761349422795
+23:43:47 [200] /blog/tiny-wins-big-change-the-real-benefits-of-habit-tracking/ 7ms
+Retrieved 1 categories: Habit Tracking
+23:43:53 [watch] .vercel/output/static/404.html
+23:43:53 [watch] .vercel/output/static/index.html
+23:43:53 [watch] .vercel/output/static/blog/index.html
+23:43:53 [watch] .vercel/output/static/blog/category/coaching/index.html
+23:43:53 [watch] .vercel/output/static/blog/category/weekly-planning/index.html
+23:43:53 [watch] .vercel/output/static/blog/category/habit-tracking/index.html
+23:43:53 [watch] .vercel/output/static/blog/how-to-build-a-life-2/index.html
+23:43:53 [watch] .vercel/output/static/blog/tiny-wins-big-change-the-real-benefits-of-habit-tracking/index.html
+23:43:53 [watch] .vercel/output/static/blog/why-you-should-have-a-performance-coach/index.html
+23:43:53 [watch] .vercel/output/static/privacy-policy/index.html
+23:43:53 [watch] .vercel/output/static/schedule/index.html
+23:44:01 [watch] .vercel/output/static/404.html
+23:44:01 [watch] .vercel/output/static/index.html
+23:44:01 [watch] .vercel/output/static/blog/index.html
+23:44:01 [watch] .vercel/output/static/privacy-policy/index.html
+23:44:01 [watch] .vercel/output/static/schedule/index.html
+23:44:01 [watch] .vercel/output/static/blog/how-to-build-a-life-2/index.html
+23:44:01 [watch] .vercel/output/static/blog/tiny-wins-big-change-the-real-benefits-of-habit-tracking/index.html
+23:44:01 [watch] .vercel/output/static/blog/why-you-should-have-a-performance-coach/index.html
+23:44:01 [watch] .vercel/output/static/blog/category/coaching/index.html
+23:44:01 [watch] .vercel/output/static/blog/category/habit-tracking/index.html
+23:44:01 [watch] .vercel/output/static/blog/category/weekly-planning/index.html
+23:44:13 [watch] .vercel/output/static/404.html
+23:44:13 [watch] .vercel/output/static/index.html
+23:44:13 [watch] .vercel/output/static/blog/index.html
+23:44:13 [watch] .vercel/output/static/blog/category/coaching/index.html
+23:44:13 [watch] .vercel/output/static/blog/category/habit-tracking/index.html
+23:44:13 [watch] .vercel/output/static/blog/category/weekly-planning/index.html
+23:44:13 [watch] .vercel/output/static/blog/how-to-build-a-life-2/index.html
+23:44:13 [watch] .vercel/output/static/blog/tiny-wins-big-change-the-real-benefits-of-habit-tracking/index.html
+23:44:13 [watch] .vercel/output/static/blog/why-you-should-have-a-performance-coach/index.html
+23:44:13 [watch] .vercel/output/static/privacy-policy/index.html
+23:44:13 [watch] .vercel/output/static/schedule/index.html
+23:44:21 [watch] .vercel/output/static/404.html
+23:44:21 [watch] .vercel/output/static/index.html
+23:44:21 [watch] .vercel/output/static/blog/index.html
+23:44:21 [watch] .vercel/output/static/privacy-policy/index.html
+23:44:21 [watch] .vercel/output/static/schedule/index.html
+23:44:21 [watch] .vercel/output/static/blog/how-to-build-a-life-2/index.html
+23:44:21 [watch] .vercel/output/static/blog/tiny-wins-big-change-the-real-benefits-of-habit-tracking/index.html
+23:44:21 [watch] .vercel/output/static/blog/why-you-should-have-a-performance-coach/index.html
+23:44:21 [watch] .vercel/output/static/blog/category/coaching/index.html
+23:44:21 [watch] .vercel/output/static/blog/category/habit-tracking/index.html
+23:44:21 [watch] .vercel/output/static/blog/category/weekly-planning/index.html
