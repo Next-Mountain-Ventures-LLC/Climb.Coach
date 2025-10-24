@@ -9,13 +9,31 @@ import ClimbOS from '@/components/sections/ClimbOS';
 import FounderNote from '@/components/sections/FounderNote';
 import Newsletter from '@/components/sections/Newsletter';
 import BlogCarousel from '@/components/blog/BlogCarousel';
-import { getClimbCoachPosts } from '@/lib/blog';
+import { getClimbCoachPosts, getCategoriesForPost, getAuthorsForPosts } from '@/lib/blog';
 
 // Fetch the latest blog posts for the carousel
 const { posts } = await getClimbCoachPosts(1);
 
 // Limit to the 6 most recent posts
 const latestPosts = posts.slice(0, 6);
+
+// Pre-fetch categories for each post
+const postsWithCategories = [];
+
+// Process each post and fetch its categories
+for (const post of latestPosts) {
+  const categories = await getCategoriesForPost(post.categories);
+  console.log(`Home page: Post "${post.title.rendered}" (ID: ${post.id}) has ${categories.length} categories:`, 
+    categories.map(c => c.name));
+  
+  // Add a custom property to each post object for the categories
+  postsWithCategories.push({
+    ...post,
+    fetchedCategories: categories
+  });
+}
+
+// Success - we've now enhanced each post with its categories directly in the post object
 ---
 
 <BaseLayout
@@ -28,6 +46,6 @@ const latestPosts = posts.slice(0, 6);
   <Services client:load />
   <ClimbOS client:load />
   <FounderNote client:load />
-  <BlogCarousel posts={latestPosts} client:load />
+  <BlogCarousel client:load posts={postsWithCategories} />
   <Newsletter client:load />
 </BaseLayout>

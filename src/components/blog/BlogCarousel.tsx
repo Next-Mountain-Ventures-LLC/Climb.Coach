@@ -4,8 +4,13 @@ import { getCategoriesForPost, getAuthorsForPosts } from '@/lib/blog';
 import BlogCard from './BlogCard';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
+// Extend the WordPressPost type to include categories
+interface ExtendedPost extends WordPressPost {
+  fetchedCategories?: WordPressCategory[];
+}
+
 interface BlogCarouselProps {
-  posts: WordPressPost[];
+  posts: ExtendedPost[];
 }
 
 const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
@@ -15,20 +20,33 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
   const [postAuthors, setPostAuthors] = useState<Map<number, WordPressAuthor>>(new Map());
   const carouselRef = useRef<HTMLDivElement>(null);
 
-  // Fetch categories and authors for each post
+  // Set categories from pre-fetched posts
+  useEffect(() => {
+    // Extract categories from the extended posts
+    const map = new Map<number, WordPressCategory[]>();
+    posts.forEach(post => {
+      if (post.fetchedCategories && post.fetchedCategories.length > 0) {
+        console.log(`BlogCarousel: Using pre-fetched categories for post ID ${post.id}:`, post.fetchedCategories.map(c => c.name));
+        map.set(post.id, post.fetchedCategories);
+      }
+    });
+    
+    // Update the state with pre-fetched categories
+    if (map.size > 0) {
+      setPostCategories(map);
+      console.log('BlogCarousel: Updated categories map with pre-fetched data');
+    }
+  }, [posts]);
+
+  // Fetch authors for each post
   useEffect(() => {
     const fetchData = async () => {
-      // Fetch categories
-      const categoriesMap = new Map<number, WordPressCategory[]>();
-      for (const post of posts) {
-        const categories = await getCategoriesForPost(post.categories);
-        categoriesMap.set(post.id, categories);
-      }
-      setPostCategories(categoriesMap);
+      console.log('BlogCarousel: Fetching authors for posts:', posts.map(p => p.title.rendered));
       
-      // Fetch authors in one batch
+      // Fetch only authors, since categories should be pre-fetched
       const authorsMap = await getAuthorsForPosts(posts);
       setPostAuthors(authorsMap);
+      console.log('BlogCarousel: Authors map updated');
     };
     
     if (posts.length > 0) {
@@ -129,6 +147,7 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
               transform: `translateX(-${currentSlide * (100 / visiblePosts)}%)`,
             }}
           >
+            {console.log('Categories map in render:', postCategories)}
             {posts.map((post) => (
               <div
                 key={post.id}
@@ -141,8 +160,9 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
               >
                 <BlogCard 
                   post={post} 
-                  categories={postCategories.get(post.id) || []} 
+                  categories={[]} 
                   author={postAuthors.get(post.author) || null}
+                  isCarousel={true}
                 />
               </div>
             ))}

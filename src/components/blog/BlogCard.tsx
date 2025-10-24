@@ -3,14 +3,27 @@ import type { WordPressPost, WordPressCategory, WordPressAuthor } from '@/lib/bl
 import { formatDate, getExcerpt } from '@/lib/blog';
 import { CalendarDays, User, Tag } from 'lucide-react';
 
+// Extend the WordPressPost type to include pre-fetched categories
+interface ExtendedPost extends WordPressPost {
+  fetchedCategories?: WordPressCategory[];
+}
+
 interface BlogCardProps {
-  post: WordPressPost;
+  post: ExtendedPost;
   categories: WordPressCategory[];
   isFeature?: boolean;
+  isCarousel?: boolean;
   author?: WordPressAuthor | null;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ post, categories, isFeature = false, author }) => {
+const BlogCard: React.FC<BlogCardProps> = ({ post, categories, isFeature = false, isCarousel = false, author }) => {
+  // Use pre-fetched categories if available, or fallback to provided categories
+  const displayCategories = post.fetchedCategories && post.fetchedCategories.length > 0 
+    ? post.fetchedCategories
+    : categories;
+  
+  console.log(`BlogCard for "${post.title.rendered}": ${displayCategories.length} categories:`, 
+    displayCategories.map(c => c.name));
   const excerpt = getExcerpt(post);
   const formattedDate = formatDate(post.date);
   
@@ -30,9 +43,9 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, categories, isFeature = false
       {/* Content */}
       <div className="p-5 flex flex-col flex-grow">
         {/* Categories */}
-        {categories.length > 0 && (
+        {displayCategories.length > 0 && (
           <div className="mb-2 flex flex-wrap gap-1.5">
-            {categories.map(category => (
+            {displayCategories.map(category => (
               <a 
                 key={category.id} 
                 href={`/blog/category/${category.slug}`} 
