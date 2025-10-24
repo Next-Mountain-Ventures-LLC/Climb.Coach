@@ -116,43 +116,15 @@ const Method = () => {
             <div className="relative bg-white/90 backdrop-blur-sm rounded-xl p-8 border border-mountain-green/50 shadow-lg">
               {methodPillars.map((pillar) => (
                 <div key={pillar.id} data-tab-content={pillar.id} className={pillar.id === methodPillars[0].id ? '' : 'hidden'}>
-                  <div className="grid md:grid-cols-5 gap-8 items-center">
+                  <div className="grid md:grid-cols-5 gap-8 items-center py-4">
                     <div className="md:col-span-2 flex justify-center">
-                      <div className="w-32 h-32 flex items-center justify-center bg-gradient-to-br from-mountain-green/20 to-blue-mell/20 rounded-full p-6">
-                        {React.cloneElement(pillar.icon, { className: 'h-16 w-16 text-dark-slate' })}
+                      <div className="w-40 h-40 flex items-center justify-center bg-gradient-to-br from-mountain-green/20 to-blue-mell/20 rounded-full p-6">
+                        {React.cloneElement(pillar.icon, { className: 'h-20 w-20 text-dark-slate' })}
                       </div>
                     </div>
                     <div className="md:col-span-3">
-                      <h3 className="text-2xl font-heading font-bold text-charcoal mb-4">{pillar.title}</h3>
-                      <p className="text-lg text-dark-slate/90">{pillar.content}</p>
-                      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div className="bg-mountain-green/10 rounded-lg p-4">
-                          <h4 className="font-heading font-medium text-charcoal mb-2">How it helps you</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-start">
-                              <div className="w-2 h-2 bg-blue-mell rounded-full mt-2 mr-2"></div>
-                              <span className="text-sm text-dark-slate/80">Transform insights into actionable steps</span>
-                            </li>
-                            <li className="flex items-start">
-                              <div className="w-2 h-2 bg-blue-mell rounded-full mt-2 mr-2"></div>
-                              <span className="text-sm text-dark-slate/80">Build momentum through consistent progress</span>
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="bg-blue-mell/10 rounded-lg p-4">
-                          <h4 className="font-heading font-medium text-charcoal mb-2">What makes it different</h4>
-                          <ul className="space-y-2">
-                            <li className="flex items-start">
-                              <div className="w-2 h-2 bg-cambridge-blue rounded-full mt-2 mr-2"></div>
-                              <span className="text-sm text-dark-slate/80">Practical systems, not just theory</span>
-                            </li>
-                            <li className="flex items-start">
-                              <div className="w-2 h-2 bg-cambridge-blue rounded-full mt-2 mr-2"></div>
-                              <span className="text-sm text-dark-slate/80">Self-accountability, not dependency</span>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
+                      <h3 className="text-2xl font-heading font-bold text-charcoal mb-5">{pillar.title}</h3>
+                      <p className="text-xl leading-relaxed text-dark-slate/90 pb-6">{pillar.content}</p>
                     </div>
                   </div>
                 </div>
