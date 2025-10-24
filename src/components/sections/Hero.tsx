@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight, Compass } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ContactFormModal from '@/components/ContactFormModal';
 
 const Hero = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  
   return (
     <section className="relative overflow-hidden py-20">
       {/* Base gradient background */}
@@ -54,8 +57,14 @@ const Hero = () => {
                   <ArrowRight size={18} />
                 </span>
               </Button>
-              <Button size="lg" variant="outline" className="font-heading" style={{ borderColor: '#3B6064', color: '#3B6064', ':hover': { backgroundColor: '#3B6064', color: 'white' } }}>
-                Talk with a Coach
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="font-heading" 
+                style={{ borderColor: '#3B6064', color: '#3B6064', ':hover': { backgroundColor: '#3B6064', color: 'white' } }}
+                onClick={() => setIsContactModalOpen(true)}
+              >
+                Talk With A Coach
               </Button>
             </div>
             <p className="mt-4 text-sm text-charcoal/70 font-medium">
@@ -89,6 +98,12 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      
+      {/* Contact Form Modal */}
+      <ContactFormModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)} 
+      />
     </section>
   );
 };
