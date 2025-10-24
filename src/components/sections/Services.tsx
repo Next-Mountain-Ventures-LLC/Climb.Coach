@@ -19,7 +19,7 @@ const Services = () => {
       icon: <Route className="h-12 w-12 text-cambridge-blue" />,
       primary: false,
       link: 'https://buy.stripe.com/aFaeVegixcsW72o7uggfu01',
-      buttonText: 'Book Now'
+      buttonText: 'Start Climbing'
     },
     {
       title: 'Weekly Summit Meeting',
