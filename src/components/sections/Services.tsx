@@ -13,10 +13,12 @@ const Services = () => {
         '45-minute focused weekly sessions',
         'ClimbOS productivity system included',
         'Personalized guidance and accountability',
-        'Unlimited support between sessions',
+        'Custom client portal included',
+        'Unlimited support through your portal',
       ],
       icon: <Calendar className="h-12 w-12 text-mountain-green" />,
       primary: true,
+      popular: true,
       link: 'https://buy.stripe.com/4gM00kgix9gKfyU9Cogfu02',
       buttonText: 'Start Climbing'
     },
@@ -25,29 +27,15 @@ const Services = () => {
       description: 'Monthly check-ins to keep you aligned with your goals.',
       price: '$150/mo',
       features: [
-        '45-minute monthly sessions',
+        '60-minute monthly sessions',
         'ClimbOS productivity system included',
         'Monthly goal setting and review',
-        'Email support between sessions',
+        'Custom client portal included',
+        'Support through your portal',
       ],
       icon: <Route className="h-12 w-12 text-cambridge-blue" />,
       primary: false,
       link: 'https://buy.stripe.com/aFaeVegixcsW72o7uggfu01',
-      buttonText: 'Book Now'
-    },
-    {
-      title: 'On-Demand Session',
-      description: 'One-time coaching for specific challenges.',
-      price: '$125/session',
-      features: [
-        '45-minute focused session',
-        'Targeted problem solving',
-        '',
-        'Follow-up email support',
-      ],
-      icon: <Compass className="h-12 w-12 text-blue-mell" />,
-      primary: false,
-      link: 'https://book.stripe.com/6oU9AU8Q578CaeA7uggfu00',
       buttonText: 'Book Now'
     },
   ];
@@ -66,11 +54,18 @@ const Services = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 max-w-4xl mx-auto">
           {services.map((service, index) => (
             <div key={index} className={`relative ${service.primary ? 'md:-mt-4 md:mb-4' : ''}`}>
               <Card className={`h-full border-2 ${service.primary ? 'border-blue-mell shadow-xl ring-4 ring-blue-mell/20' : 'border-mountain-green/60 shadow-md'} overflow-hidden hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1`}>
                 <div className={`p-6 ${service.primary ? 'bg-gradient-to-br from-blue-mell/40 to-blue-mell/20' : 'bg-gradient-to-br from-mountain-green/25 to-cambridge-blue/10'}`}>
+                  {service.popular && (
+                    <div className="absolute top-0 right-0">
+                      <div className="bg-mountain-green text-white text-xs font-bold px-3 py-1 transform rotate-0 origin-top-right rounded-bl-lg shadow-md">
+                        MOST POPULAR
+                      </div>
+                    </div>
+                  )}
                   <div className="mb-4">{service.icon}</div>
                   <CardTitle className="text-xl font-heading font-bold text-charcoal">{service.title}</CardTitle>
                   <div className="mt-2 mb-4 flex items-baseline">
