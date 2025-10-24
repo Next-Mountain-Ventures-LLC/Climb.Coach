@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { X } from "lucide-react";
-import logoSrc from "../assets/main_no_bg_nw_b5d07dc7.png";
 
 interface ContactFormModalProps {
   isOpen: boolean;
@@ -71,7 +70,7 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
           <div className="flex justify-between items-center">
             <div>
               <div className="flex justify-center mb-4">
-                <img src={logoSrc} alt="Climb.Coach" className="h-12 w-auto" />
+                <img src="/main_no_bg_nw_b5d07dc7.png" alt="Climb.Coach" className="h-12 w-auto" />
               </div>
               <h2 className="text-2xl font-heading font-bold text-white">Talk With A Coach</h2>
             </div>
