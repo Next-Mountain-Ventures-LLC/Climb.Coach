@@ -89,11 +89,9 @@ const Services = () => {
                   >
                     {service.buttonText}
                   </Button>
-                  {service.primary && (
-                    <p className="mt-2 text-xs text-center text-dark-slate/70">
-                      First month free - No credit card required
-                    </p>
-                  )}
+                  <p className="mt-2 text-xs text-center text-dark-slate/70">
+                    First month free - No credit card required
+                  </p>
                 </CardContent>
               </Card>
             </div>
