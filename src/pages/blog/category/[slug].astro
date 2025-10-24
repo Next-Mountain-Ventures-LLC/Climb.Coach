@@ -34,6 +34,7 @@ const currentPage = Astro.url.searchParams.get('page')
   : 1;
 
 // Fetch posts from WordPress API
+console.log(`Fetching posts for category ${category.name} (ID: ${category.id}) at ${new Date().toISOString()}`);
 const { posts, totalPages } = await getClimbCoachPosts(currentPage);
 
 // Filter posts to only include those in the current category

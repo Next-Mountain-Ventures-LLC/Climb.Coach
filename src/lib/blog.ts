@@ -65,6 +65,9 @@ const WP_API_URL = "https://blog.nxtmt.ventures/wp-json/wp/v2";
 const CLIMB_COACH_CATEGORY_ID = 8;
 const PER_PAGE = 10;
 
+// Force uncached version of all posts from WordPress
+const CACHE_BUSTER = Date.now();
+
 // Fetches posts for the Climb.Coach category
 export async function getClimbCoachPosts(page = 1, perPage = PER_PAGE): Promise<{
   posts: WordPressPost[];
@@ -75,9 +78,8 @@ export async function getClimbCoachPosts(page = 1, perPage = PER_PAGE): Promise<
     
     // Fetch posts with the Climb.Coach category
     // Add cache-busting parameter to avoid caching issues
-    const cacheBuster = Date.now();
     const response = await fetch(
-      `${WP_API_URL}/posts?categories=${CLIMB_COACH_CATEGORY_ID}&page=${page}&per_page=${perPage}&_embed&cache_bust=${cacheBuster}`,
+      `${WP_API_URL}/posts?categories=${CLIMB_COACH_CATEGORY_ID}&page=${page}&per_page=${perPage}&_embed&cache_bust=${CACHE_BUSTER}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -115,9 +117,8 @@ export async function getPostBySlug(slug: string): Promise<WordPressPost | null>
     console.log(`Fetching post with slug "${slug}" at timestamp: ${new Date().toISOString()}`);
     
     // Add cache-busting parameter to avoid caching issues
-    const cacheBuster = Date.now();
     const response = await fetch(
-      `${WP_API_URL}/posts?slug=${slug}&_embed&cache_bust=${cacheBuster}`,
+      `${WP_API_URL}/posts?slug=${slug}&_embed&cache_bust=${CACHE_BUSTER}`,
       {
         headers: {
           "Content-Type": "application/json",
@@ -214,6 +215,7 @@ export async function getClimbCoachCategories(): Promise<WordPressCategory[]> {
 
 // Gets categories for a specific post
 export async function getCategoriesForPost(categoryIds: number[]): Promise<WordPressCategory[]> {
+  console.log(`Fetching categories for post with categoryIds: ${categoryIds.join(', ')} at ${new Date().toISOString()}`);
   try {
     // If empty array, return empty array
     if (categoryIds.length === 0) {
@@ -222,18 +224,28 @@ export async function getCategoriesForPost(categoryIds: number[]): Promise<WordP
 
     // Filter out the Climb.Coach category
     const filteredCategoryIds = categoryIds.filter(id => id !== CLIMB_COACH_CATEGORY_ID);
+    console.log(`After filtering out Climb.Coach category (${CLIMB_COACH_CATEGORY_ID}), remaining categoryIds: ${filteredCategoryIds.join(', ')}`);
     
     // If all categories were filtered out, return empty array
     if (filteredCategoryIds.length === 0) {
+      console.log('No categories left after filtering out Climb.Coach category');
       return [];
     }
 
+    // Add cache-busting parameter to avoid caching issues
+    const url = `${WP_API_URL}/categories?include=${filteredCategoryIds.join(",")}&cache_bust=${CACHE_BUSTER}`;
+    console.log(`Fetching categories with URL: ${url}`);
+    
     const response = await fetch(
-      `${WP_API_URL}/categories?include=${filteredCategoryIds.join(",")}`,
+      url,
       {
         headers: {
           "Content-Type": "application/json",
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          "Pragma": "no-cache",
+          "Expires": "0",
         },
+        cache: "no-store", // Force fetch to bypass all caches
       }
     );
 
@@ -241,7 +253,9 @@ export async function getCategoriesForPost(categoryIds: number[]): Promise<WordP
       throw new Error(`Error fetching categories: ${response.status}`);
     }
 
-    return await response.json() as WordPressCategory[];
+    const categories = await response.json() as WordPressCategory[];
+    console.log(`Retrieved ${categories.length} categories: ${categories.map(c => c.name).join(', ')}`);
+    return categories;
   } catch (error) {
     console.error("Error fetching categories:", error);
     return [];
