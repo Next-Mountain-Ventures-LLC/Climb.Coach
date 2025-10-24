@@ -16,29 +16,29 @@ interface BlogCarouselProps {
 const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [visiblePosts, setVisiblePosts] = useState(3);
+  const [isMobile, setIsMobile] = useState(false);
   const [postAuthors, setPostAuthors] = useState<Map<number, WordPressAuthor>>(new Map());
   const carouselRef = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Set initial values and fetch authors for posts
+  // Fetch authors for each post
   useEffect(() => {
-    // Fetch authors for each post
-    const fetchData = async () => {
-      console.log('BlogCarousel: Fetching authors for posts:', posts.map(p => p.title.rendered));
+    const fetchAuthors = async () => {
       const authorsMap = await getAuthorsForPosts(posts);
       setPostAuthors(authorsMap);
-      console.log('BlogCarousel: Authors map updated');
     };
     
     if (posts.length > 0) {
-      fetchData();
+      fetchAuthors();
     }
+  }, [posts]);
 
-    // Update visible posts based on screen size
+  // Handle resize and set appropriate view
+  useEffect(() => {
     const handleResize = () => {
-      if (typeof window === 'undefined') return;
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
       
-      if (window.innerWidth < 768) {
+      if (mobile) {
         setVisiblePosts(1);
       } else if (window.innerWidth < 1024) {
         setVisiblePosts(2);
@@ -50,41 +50,24 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
     // Set initial value
     handleResize();
     
-    // Add event listener for window resize
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', handleResize);
-    }
+    // Add event listener
+    window.addEventListener('resize', handleResize);
     
-    // Clean up
+    // Cleanup
     return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', handleResize);
-      }
+      window.removeEventListener('resize', handleResize);
     };
-  }, [posts]);
+  }, []);
 
   // Handle previous slide
   const prevSlide = () => {
-    if (currentSlide > 0) {
-      setCurrentSlide(currentSlide - 1);
-    } else {
-      // Wrap around to the last slide
-      setCurrentSlide(Math.max(0, posts.length - 1));
-    }
+    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : posts.length - 1));
   };
 
   // Handle next slide
   const nextSlide = () => {
-    if (currentSlide < posts.length - 1) {
-      setCurrentSlide(currentSlide + 1);
-    } else {
-      // Wrap around to the first slide
-      setCurrentSlide(0);
-    }
+    setCurrentSlide((prev) => (prev < posts.length - 1 ? prev + 1 : 0));
   };
-
-  // Calculate maximum slide index
-  const maxSlideIndex = Math.max(0, posts.length - visiblePosts);
 
   // Early return if no posts
   if (posts.length === 0) {
@@ -109,21 +92,28 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
           </a>
         </div>
 
-        {/* Carousel Container */}
-        <div ref={containerRef} className="relative overflow-hidden">
+        <div className="relative">
           {/* Navigation Buttons */}
-          {posts.length > visiblePosts && (
+          {posts.length > 1 && (
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-0 sm:-translate-x-4 z-10 bg-white rounded-full p-2 shadow-md border border-gray-200 hover:bg-gray-100 transition-colors md:-translate-x-5"
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md border border-gray-200 hover:bg-gray-100 transition-colors"
+                style={{ 
+                  transform: 'translateY(-50%) translateX(0)',
+                  left: isMobile ? '5px' : '-20px' 
+                }}
                 aria-label="Previous slide"
               >
                 <ChevronLeft className="h-5 w-5 text-dark-slate" />
               </button>
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-0 sm:translate-x-4 z-10 bg-white rounded-full p-2 shadow-md border border-gray-200 hover:bg-gray-100 transition-colors md:translate-x-5"
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md border border-gray-200 hover:bg-gray-100 transition-colors"
+                style={{ 
+                  transform: 'translateY(-50%) translateX(0)',
+                  right: isMobile ? '5px' : '-20px' 
+                }}
                 aria-label="Next slide"
               >
                 <ChevronRight className="h-5 w-5 text-dark-slate" />
@@ -131,49 +121,51 @@ const BlogCarousel: React.FC<BlogCarouselProps> = ({ posts }) => {
             </>
           )}
 
-          {/* Carousel Content */}
-          <div 
-            ref={carouselRef}
-            className="flex gap-4 md:gap-6 transition-transform duration-300 ease-in-out px-2 md:px-0"
-            style={{ 
-              transform: `translateX(-${currentSlide * (100 / visiblePosts)}%)`,
-              width: `${posts.length * 100}%`,
-            }}
-          >
-            {posts.map((post, index) => (
-              <div
-                key={post.id}
-                className="flex-shrink-0 flex-grow-0 px-2"
-                style={{ 
-                  width: `${100 / posts.length}%`,
-                }}
-              >
-                <BlogCard 
-                  post={post} 
-                  categories={[]} 
-                  author={postAuthors.get(post.author) || null}
-                  isCarousel={true}
-                />
-              </div>
-            ))}
+          {/* Carousel wrapper with overflow hidden */}
+          <div className="overflow-hidden">
+            {/* Carousel Content */}
+            <div 
+              ref={carouselRef}
+              className="flex transition-transform duration-300 ease-in-out"
+              style={{
+                transform: `translateX(-${currentSlide * 100}%)`,
+              }}
+            >
+              {posts.map((post) => (
+                <div
+                  key={post.id}
+                  className="flex-shrink-0 w-full px-3 sm:px-4"
+                  style={{
+                    width: `${100 / visiblePosts}%`, 
+                  }}
+                >
+                  <BlogCard 
+                    post={post} 
+                    categories={[]} 
+                    author={postAuthors.get(post.author) || null}
+                    isCarousel={true}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Mobile Dots Navigation */}
-        {posts.length > 1 && (
-          <div className="flex justify-center gap-2 mt-6 md:hidden">
-            {Array.from({ length: posts.length }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full ${
-                  currentSlide === index ? 'bg-blue-mell' : 'bg-gray-300'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        )}
+          {/* Mobile Dots Navigation */}
+          {posts.length > 1 && isMobile && (
+            <div className="flex justify-center gap-2 mt-6">
+              {posts.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full ${
+                    currentSlide === index ? 'bg-blue-mell' : 'bg-gray-300'
+                  }`}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );
