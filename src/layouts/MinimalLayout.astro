@@ -1,34 +1,14 @@
 ---
-import HeadSEO from "@/components/HeadSEO.astro";
+import "@/styles/global.css";
+import "@/styles/fonts.css";
+import ClimbCoachSEO from "@/components/ClimbCoachSEO.astro";
 import { Image } from "astro:assets";
 import logo from "../assets/main_no_bg_nw_b5d07dc7.png";
-
-interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  ogImage?: URL | undefined;
-  image?: string | undefined;
-  canonicalUrl?: string | undefined;
-  article?: {
-    publishedTime: string;
-    modifiedTime: string;
-    tags: string[];
-  };
-}
-
-const { title, description, ogImage, image, canonicalUrl, article } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <HeadSEO 
-      title={title} 
-      description={description} 
-      ogImage={ogImage}
-      image={image}
-      canonicalUrl={canonicalUrl}
-      article={article}
-    />
+    <ClimbCoachSEO />
   </head>
   <body class="bg-background min-h-screen font-sans antialiased">
     <div class="relative flex min-h-screen flex-col">

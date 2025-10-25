@@ -1,22 +1,8 @@
 ---
-import "@/styles/global.css";
-import "@/styles/fonts.css";
 import seoImage from '@/assets/seo-image_nw_486998f1.jpg';
 
-interface Props {
-  title?: string | undefined;
-  description?: string | undefined;
-  ogImage?: URL | undefined;
-}
-
+// Get the current URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const defaultTitle = "Climb.Coach | The Performance Coach for Entrepreneurs";
-const defaultDescription = "Break your hustle habit and design a life of constant, beautiful progress.";
-
-// Set default SEO image from imported asset
-const defaultOgImage = new URL(seoImage.src, Astro.site);
-
-// These will be used with the || operator in the component
 ---
 
 <meta charset="utf-8" />
@@ -30,21 +16,25 @@ const defaultOgImage = new URL(seoImage.src, Astro.site);
   type="image/png"
   href="/climbcoachfavicon_no_bg_nw_b15ea69e.png"
 />
-<title>{title || defaultTitle}</title>
-<meta name="title" content={title || defaultTitle} />
-<meta name="description" content={description || defaultDescription} />
 
+<!-- SEO Meta Tags -->
+<title>Climb.Coach | The Performance Coach for Entrepreneurs</title>
+<meta name="title" content="Climb.Coach | The Performance Coach for Entrepreneurs" />
+<meta name="description" content="Break your hustle habit and design a life of constant, beautiful progress." />
+
+<!-- Open Graph / Facebook Meta Tags -->
 <meta property="og:type" content="website" />
 <meta property="og:url" content={canonicalURL} />
-<meta property="og:title" content={title || defaultTitle} />
-<meta property="og:description" content={description || defaultDescription} />
-<meta property="og:image" content={ogImage || defaultOgImage} />
+<meta property="og:title" content="Climb.Coach | The Performance Coach for Entrepreneurs" />
+<meta property="og:description" content="Break your hustle habit and design a life of constant, beautiful progress." />
+<meta property="og:image" content={new URL(seoImage.src, Astro.site)} />
 
+<!-- Twitter Meta Tags -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={canonicalURL} />
-<meta property="twitter:title" content={title || defaultTitle} />
-<meta property="twitter:description" content={description || defaultDescription} />
-<meta property="twitter:image" content={ogImage || defaultOgImage} />
+<meta property="twitter:title" content="Climb.Coach | The Performance Coach for Entrepreneurs" />
+<meta property="twitter:description" content="Break your hustle habit and design a life of constant, beautiful progress." />
+<meta property="twitter:image" content={new URL(seoImage.src, Astro.site)} />
 
 <!-- DO NOT REMOVE - Plausible Analytics must always be enabled -->
 <script is:inline>

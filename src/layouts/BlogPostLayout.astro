@@ -28,24 +28,10 @@ const author = await getAuthorById(post.author);
 // Construct the canonical URL
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 
-// Prepare SEO metadata
-const title = `${post.title.rendered} | Climb.Coach`;
-const description = post.excerpt.rendered
-  .replace(/<\/?[^>]+(>|$)/g, '')  // Remove HTML tags
-  .replace(/&hellip;/g, '...')     // Replace HTML entity codes
-  .substring(0, 160);               // Limit to 160 characters
+// We now use a shared SEO component
 ---
 
-<BaseLayout 
-  title={title}
-  description={description}
-  image={post.jetpack_featured_media_url}
-  canonicalUrl={canonicalUrl.toString()}
-  article={{
-    publishedTime: post.date,
-    modifiedTime: post.modified,
-    tags: postCategories.map(cat => cat.name)
-  }}
+<BaseLayout
 >
   <main class="pt-8 pb-16">
     <div class="container px-4 sm:px-6 lg:px-8 mx-auto">
