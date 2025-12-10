@@ -102,7 +102,14 @@ const About = () => {
             <div className="flex items-start gap-6 flex-col md:flex-row">
               <div className="flex-shrink-0">
                 <div className="w-24 h-24 rounded-full shadow-lg border-4 border-white overflow-hidden">
-                  <img src={tysonProfileImg.src} alt="Tyson Reuer" width={tysonProfileImg.width} height={tysonProfileImg.height} className="w-full h-full object-cover" />
+                  <img 
+                    src={tysonProfileImg.src} 
+                    alt="Tyson Reuer" 
+                    width={tysonProfileImg.width} 
+                    height={tysonProfileImg.height} 
+                    className="w-full h-full object-cover" 
+                    style={{ objectPosition: "50% 20%" }}
+                  />
                 </div>
               </div>
               

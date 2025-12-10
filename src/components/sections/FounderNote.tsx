@@ -67,7 +67,14 @@ const FounderNote = () => {
             
             <div className="flex items-center space-x-4 bg-gradient-to-r from-blue-mell/10 to-mountain-green/10 p-4 rounded-lg border border-blue-mell/20 transform hover:translate-x-1 hover:shadow-md transition-all duration-300">
               <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-md ring-4 ring-cambridge-blue/30 overflow-hidden">
-                <img src={tysonProfileImg.src} alt="Tyson Reuer" width={tysonProfileImg.width} height={tysonProfileImg.height} className="w-full h-full object-cover" />
+                <img 
+                  src={tysonProfileImg.src} 
+                  alt="Tyson Reuer" 
+                  width={tysonProfileImg.width} 
+                  height={tysonProfileImg.height} 
+                  className="w-full h-full object-cover" 
+                  style={{ objectPosition: "50% 20%" }}
+                />
               </div>
               <div>
                 <div className="font-heading font-bold text-lg text-charcoal">Tyson Reuer</div>
