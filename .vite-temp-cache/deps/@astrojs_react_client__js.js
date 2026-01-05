@@ -1,20 +1,20 @@
 import {
   require_react_dom
-} from "./chunk-YE6GIC3I.js";
+} from "./chunk-XHU36PYF.js";
 import {
   require_react
-} from "./chunk-7QNKCUMK.js";
+} from "./chunk-32E4H3EV.js";
 import {
   __commonJS,
   __toESM
-} from "./chunk-5WRI5ZAA.js";
+} from "./chunk-G3PMV62Z.js";
 
 // node_modules/react-dom/client.js
 var require_client = __commonJS({
   "node_modules/react-dom/client.js"(exports) {
     "use strict";
     var m = require_react_dom();
-    if (true) {
+    if (false) {
       exports.createRoot = m.createRoot;
       exports.hydrateRoot = m.hydrateRoot;
     } else {
