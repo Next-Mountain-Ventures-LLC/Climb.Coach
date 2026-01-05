@@ -10,7 +10,7 @@ import Header from "@/components/Header.astro";
   <head>
     <ClimbCoachSEO />
   </head>
-  <body class="bg-background min-h-screen font-sans antialiased">
+  <body class="bg-background min-h-screen font-sans antialiased" data-mountain-bg>
     <div class="relative flex min-h-screen flex-col">
       <Header />
       <main class="flex-auto">
@@ -21,7 +21,7 @@ import Header from "@/components/Header.astro";
       <script>
         // Mountain scroll animation
         document.addEventListener('DOMContentLoaded', () => {
-          const mountainBg = document.querySelector('.bg-\\[url\\(\\\'/mountain-bg\\.svg\\\'\\)\\]');
+          const mountainBg = document.querySelector('[data-mountain-bg]');
           if (mountainBg) {
             let initialPosition = 50;
             window.addEventListener('scroll', () => {
