@@ -1,121 +1,67 @@
 {
-  "hash": "cd3b41ea",
-  "configHash": "b3c6ef6e",
+  "hash": "1dd7785b",
+  "configHash": "fb3f0616",
   "lockfileHash": "5f226ae9",
-  "browserHash": "69d586e3",
+  "browserHash": "0c2d0483",
   "optimized": {
     "@astrojs/react/client.js": {
       "src": "../../node_modules/@astrojs/react/client.js",
       "file": "@astrojs_react_client__js.js",
-      "fileHash": "fe11bb74",
+      "fileHash": "66547bbe",
       "needsInterop": false
     },
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "543a1b81",
+      "fileHash": "f209582a",
       "needsInterop": true
     },
     "react-dom": {
       "src": "../../node_modules/react-dom/index.js",
       "file": "react-dom.js",
-      "fileHash": "f23200f1",
+      "fileHash": "89331866",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "0cdc839b",
+      "fileHash": "6c537db0",
       "needsInterop": true
     },
     "react/jsx-runtime": {
       "src": "../../node_modules/react/jsx-runtime.js",
       "file": "react_jsx-runtime.js",
-      "fileHash": "dc34e686",
+      "fileHash": "940c3475",
       "needsInterop": true
     },
     "astro > cssesc": {
       "src": "../../node_modules/cssesc/cssesc.js",
       "file": "astro___cssesc.js",
-      "fileHash": "930eeb9e",
+      "fileHash": "fd49a0b8",
       "needsInterop": true
     },
     "astro > aria-query": {
       "src": "../../node_modules/aria-query/lib/index.js",
       "file": "astro___aria-query.js",
-      "fileHash": "6227ba53",
+      "fileHash": "868bc3f3",
       "needsInterop": true
     },
     "astro > axobject-query": {
       "src": "../../node_modules/axobject-query/lib/index.js",
       "file": "astro___axobject-query.js",
-      "fileHash": "8d15ed8f",
+      "fileHash": "a35b08eb",
       "needsInterop": true
-    },
-    "@radix-ui/react-separator": {
-      "src": "../../node_modules/@radix-ui/react-separator/dist/index.mjs",
-      "file": "@radix-ui_react-separator.js",
-      "fileHash": "05a09b33",
-      "needsInterop": false
-    },
-    "@radix-ui/react-slot": {
-      "src": "../../node_modules/@radix-ui/react-slot/dist/index.mjs",
-      "file": "@radix-ui_react-slot.js",
-      "fileHash": "1f011a83",
-      "needsInterop": false
-    },
-    "@radix-ui/react-tabs": {
-      "src": "../../node_modules/@radix-ui/react-tabs/dist/index.mjs",
-      "file": "@radix-ui_react-tabs.js",
-      "fileHash": "fc48bd97",
-      "needsInterop": false
-    },
-    "class-variance-authority": {
-      "src": "../../node_modules/class-variance-authority/dist/index.mjs",
-      "file": "class-variance-authority.js",
-      "fileHash": "471a92f1",
-      "needsInterop": false
-    },
-    "clsx": {
-      "src": "../../node_modules/clsx/dist/clsx.mjs",
-      "file": "clsx.js",
-      "fileHash": "0d4708d4",
-      "needsInterop": false
-    },
-    "lucide-react": {
-      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
-      "file": "lucide-react.js",
-      "fileHash": "7635f02d",
-      "needsInterop": false
-    },
-    "tailwind-merge": {
-      "src": "../../node_modules/tailwind-merge/dist/bundle-mjs.mjs",
-      "file": "tailwind-merge.js",
-      "fileHash": "f3332910",
-      "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-7O6DIRTR": {
-      "file": "chunk-7O6DIRTR.js"
+    "chunk-E4JNKZDO": {
+      "file": "chunk-E4JNKZDO.js"
     },
-    "chunk-X3G44R2L": {
-      "file": "chunk-X3G44R2L.js"
+    "chunk-WNPTCGAH": {
+      "file": "chunk-WNPTCGAH.js"
     },
-    "chunk-KDVGFZWC": {
-      "file": "chunk-KDVGFZWC.js"
-    },
-    "chunk-XHU36PYF": {
-      "file": "chunk-XHU36PYF.js"
-    },
-    "chunk-IHRST5LR": {
-      "file": "chunk-IHRST5LR.js"
-    },
-    "chunk-32E4H3EV": {
-      "file": "chunk-32E4H3EV.js"
-    },
-    "chunk-G3PMV62Z": {
-      "file": "chunk-G3PMV62Z.js"
+    "chunk-5WRI5ZAA": {
+      "file": "chunk-5WRI5ZAA.js"
     }
   }
 }
