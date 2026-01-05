@@ -1,5 +1,6 @@
 ---
 import seoImage from '@/assets/seo-image_nw_486998f1.jpg';
+import favicon from '@/assets/climbcoachfavicon_no_bg_nw_b15ea69e.png';
 
 // Get the current URL
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -9,12 +10,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <meta name="robots" content="index, follow" />
 <meta name="googlebot" content="index, follow" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="generator" content="new.website - https://new.website" />
 <link rel="canonical" href={canonicalURL} />
 <link
   rel="shortcut icon"
   type="image/png"
-  href="/climbcoachfavicon_no_bg_nw_b15ea69e.png"
+  href={favicon.src}
 />
 
 <!-- SEO Meta Tags -->
