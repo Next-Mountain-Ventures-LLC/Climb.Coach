@@ -5,20 +5,22 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || "http://localhost:4321",
+  site: process.env.SITE_URL || "https://climb.coach",
   integrations: [react()],
+  image: {
+    remotePatterns: [{ protocol: "https" }],
+    formats: ["image/avif", "image/webp"],
+  },
   vite: {
     plugins: [tailwindcss()],
     build: {
-      // Disable caching
       emptyOutDir: true,
     },
     server: {
       fs: {
-        strict: false
-      }
+        strict: false,
+      },
     },
-    // Clear cache on build
-    cacheDir: '.vite-temp-cache'
+    cacheDir: ".vite-temp-cache",
   },
 });
