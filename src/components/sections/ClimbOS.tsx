@@ -1,14 +1,15 @@
 import React from 'react';
-import { 
-  LayoutTemplate, 
-  CheckCircle, 
-  BarChart, 
-  ListChecks, 
+import {
+  LayoutTemplate,
+  CheckCircle,
+  BarChart,
+  ListChecks,
   Flag,
   ArrowRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import climbosScreenshot from '@/assets/climbos-mobile_nw_5a3f1499.jpeg';
 
 const ClimbOS = () => {
   const features = [
@@ -96,9 +97,9 @@ const ClimbOS = () => {
             <div className="relative max-w-[280px] w-full">
               <div className="absolute -inset-4 bg-gradient-to-br from-mountain-green/50 to-blue-mell/50 rounded-xl blur-md opacity-70"></div>
               <div className="relative rounded-lg border border-mountain-green/40 shadow-xl overflow-hidden">
-                <img 
-                  src="/climbos-mobile_nw_5a3f1499.jpeg" 
-                  alt="ClimbOS mobile interface" 
+                <img
+                  src={climbosScreenshot.src}
+                  alt="ClimbOS mobile interface"
                   className="w-full h-auto rounded-lg shadow-md"
                 />
               </div>

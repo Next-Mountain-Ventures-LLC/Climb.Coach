@@ -2,6 +2,7 @@ import React from 'react';
 import { Mountain, Star, TrendingUp, User, Award, Target } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
+import tysonProfile from '@/assets/tyson-youmatter-7-bw-2_nw_b8200cbd.jpg';
 
 const About = () => {
   return (
@@ -101,10 +102,10 @@ const About = () => {
             <div className="flex items-start gap-6 flex-col md:flex-row">
               <div className="flex-shrink-0">
                 <div className="w-24 h-24 rounded-full shadow-lg border-4 border-white overflow-hidden">
-                  <img 
-                    src="/tyson-profile-optimized_nw_b8200cbd.jpg" 
-                    alt="Tyson Reuer" 
-                    className="w-full h-full object-cover" 
+                  <img
+                    src={tysonProfile.src}
+                    alt="Tyson Reuer"
+                    className="w-full h-full object-cover"
                     style={{ objectPosition: "50% 20%" }}
                   />
                 </div>
