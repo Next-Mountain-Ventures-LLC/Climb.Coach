@@ -31,14 +31,14 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
     setSubmitStatus(null);
 
     try {
-      const formDataObj = new FormData();
-      Object.entries(formData).forEach(([key, value]) => {
-        formDataObj.append(key, value);
-      });
-      
-      const response = await fetch("https://api.new.website/api/submit-form/", {
+      // TODO: Configure form submission backend
+      // Replace with your backend endpoint or form service (e.g., Formspree, EmailJS, etc.)
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formDataObj,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
