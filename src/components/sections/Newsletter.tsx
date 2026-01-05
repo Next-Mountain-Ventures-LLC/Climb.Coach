@@ -36,35 +36,33 @@ const Newsletter = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !firstName || !lastName) return;
-    
+
     setIsSubmitting(true);
     setSubmitStatus(null);
     setShowSuccessMessage(false);
-    
+
     try {
-      const form = e.target as HTMLFormElement;
-      const formData = new FormData(form);
-      
-      // Ensure all required fields are included with correct names
-      formData.set('email', email);
-      formData.set('first_name', firstName);
-      formData.set('last_name', lastName);
-      formData.set('form_name', 'Newsletter Signup');
-      formData.set('form_type', 'newsletter');
-      
-      // Format phone with +1 if provided
-      if (phone) {
-        const formattedPhone = formatPhoneWithCountryCode(phone);
-        formData.set('phone', formattedPhone);
-      }
-      
-      console.log('Submitting form with fields:', [...formData.entries()].map(entry => entry[0] + ': ' + entry[1]));
-      
-      const response = await fetch('https://api.new.website/api/submit-form/', {
+      // TODO: Configure form submission backend
+      // Replace with your backend endpoint or form service (e.g., Formspree, EmailJS, etc.)
+      const payload = {
+        email,
+        first_name: firstName,
+        last_name: lastName,
+        phone: phone ? formatPhoneWithCountryCode(phone) : '',
+        form_name: 'Newsletter Signup',
+        form_type: 'newsletter',
+      };
+
+      console.log('Submitting form with fields:', payload);
+
+      const response = await fetch('/api/newsletter', {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
       });
-      
+
       if (response.ok) {
         setSubmitStatus('success');
         setShowSuccessMessage(true);
