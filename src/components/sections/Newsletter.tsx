@@ -101,13 +101,10 @@ const Newsletter = () => {
                 Get exclusive productivity tips, entrepreneurial wisdom, and actionable advice delivered straight to your inbox.
               </p>
               
-              <form 
+              <form
                 id="newsletter-form"
                 className="space-y-4"
                 onSubmit={step === 'email' ? handleNext : handleSubmit}
-                method="post"
-                encType="multipart/form-data"
-                action="https://api.new.website/api/submit-form/"
                 name="newsletter-signup"
               >
                 <input type="hidden" name="form_name" value="Newsletter Signup" />
