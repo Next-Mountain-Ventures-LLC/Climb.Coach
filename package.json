@@ -40,7 +40,6 @@
     "shadcn": "^2.5.0",
     "sharp-cli": "^5.2.0",
     "tslib": "^2.8.1",
-    "typescript": "^5.8.2",
-    "vercel": "^41.4.1"
+    "typescript": "^5.8.2"
   }
 }
